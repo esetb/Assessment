@@ -42,7 +42,11 @@ public class Name {
 		return title + " " + firstName + " " + lastName;
 	}
 	
-	public boolean equals() {
-		return true;
+	// test for object value equality not object equality
+	public boolean equals(Name name) {
+		return this.title == name.getTitle() 
+				&& this.firstName == name.getFirstName() 
+				&& this.lastName == name.getLastName();
 	}
+	
 }
