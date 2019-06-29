@@ -5,7 +5,5 @@ import org.junit.platform.suite.api.SelectClasses;
 import org.junit.runner.RunWith;
 
 @RunWith(JUnitPlatform.class)
-@SelectClasses({NameTest.class})
-public class TestSuite {
-  //nothing
-}
+@SelectClasses({TestName.class})
+public class RunTestSuite {}
