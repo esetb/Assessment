@@ -3,7 +3,7 @@ package com.eamonn_sweeney;
 import java.time.LocalDate;
 
 public abstract class Employee {
-	protected int uID;
+	protected int idNum;
 	protected Name name;
 	protected Department dept;
 	protected LocalDate dateStarted;
@@ -12,16 +12,16 @@ public abstract class Employee {
 	
 	
 	/**
-	 * @param uID
+	 * @param idNum
 	 * @param name
 	 * @param dept
 	 * @param dateStarted
 	 * @param phoneNum
 	 * @param monthlyPay
 	 */
-	protected Employee(int uID, Name name, Department dept, LocalDate dateStarted, 
+	protected Employee(int idNum, Name name, Department dept, LocalDate dateStarted, 
 			String phoneNum, double monthlyPay) {
-		this.uID = uID;
+		this.idNum = idNum;
 		this.name = name;
 		this.dept = dept;
 		this.dateStarted = dateStarted;
@@ -32,28 +32,28 @@ public abstract class Employee {
 	/**
 	 * @return the name
 	 */
-	protected Name getName() {
+	public Name getName() {
 		return name;
 	}
 	
 	/**
 	 * @param name the name to set
 	 */
-	protected void setName(Name name) {
+	public void setName(Name name) {
 		this.name = name;
 	}
 	
 	/**
 	 * @return the dept
 	 */
-	protected Department getDept() {
+	public Department getDept() {
 		return dept;
 	}
 	
 	/**
 	 * @param dept the dept to set
 	 */
-	protected void setDept(Department dept) {
+	public void setDept(Department dept) {
 		this.dept = dept;
 	}
 	
@@ -67,43 +67,43 @@ public abstract class Employee {
 	/**
 	 * @param dateStarted the dateStarted to set
 	 */
-	protected void setDateStarted(LocalDate dateStarted) {
+	public void setDateStarted(LocalDate dateStarted) {
 		this.dateStarted = dateStarted;
 	}
 	
 	/**
 	 * @return the phoneNum
 	 */
-	protected String getPhoneNum() {
+	public String getPhoneNum() {
 		return phoneNum;
 	}
 	
 	/**
 	 * @param phoneNum the phoneNum to set
 	 */
-	protected void setPhoneNum(String phoneNum) {
+	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 	
 	/**
 	 * @return the monthlyPay
 	 */
-	protected double getMonthlyPay() {
+	public double getMonthlyPay() {
 		return monthlyPay;
 	}
 	
 	/**
 	 * @param monthlyPay the monthlyPay to set
 	 */
-	protected void setMonthlyPay(double monthlyPay) {
+	public void setMonthlyPay(double monthlyPay) {
 		this.monthlyPay = monthlyPay;
 	}
 	
 	/**
 	 * @return the uID
 	 */
-	protected int getuID() {
-		return uID;
+	public int getIdNum() {
+		return idNum;
 	}
 	
 }
