@@ -13,16 +13,42 @@ public class Developer extends Employee {
 	 * @param dateStarted
 	 * @param phoneNum
 	 * @param monthlyPay
-	 * @param level 
+	 * @param level
+	 * @param hourlyRate
 	 */
-	public Developer(int uID, Name name, Department dept, LocalDate dateStarted, 
-			String phoneNum, double monthlyPay, int level) {
-		this.uID = uID;
-		this.dept = dept;
-		this.dateStarted = dateStarted;
-		this.phoneNum = phoneNum;
-		this.monthlyPay = monthlyPay;
+	public Developer(int uID, Name name, Department dept, LocalDate dateStarted, String phoneNum, double monthlyPay,
+			int level, double hourlyRate) {
+		super(uID, name, dept, dateStarted, phoneNum, monthlyPay);
 		this.level = level;
-		
+		this.hourlyRate = hourlyRate;
 	}
+
+	/**
+	 * @return the level
+	 */
+	public int getLevel() {
+		return level;
+	}
+
+	/**
+	 * @param level the level to set
+	 */
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	/**
+	 * @return the hourlyRate
+	 */
+	public double getHourlyRate() {
+		return hourlyRate;
+	}
+
+	/**
+	 * @param hourlyRate the hourlyRate to set
+	 */
+	public void setHourlyRate(double hourlyRate) {
+		this.hourlyRate = hourlyRate;
+	}
+	
 }

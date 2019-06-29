@@ -139,6 +139,33 @@ package com.eamonn_sweeney;
  *  line. 
  */
 
+/* 
+ * 	Classes
+ * 
+ * 	public class Controller()
+ * 
+ *  public class Department(int deptID, String deptName, int numEmployees)
+ *  
+ * 	protected class Employee(int uID, Name name, Department dept, LocalDate dateStarted, 
+				String phoneNum, double monthlyPay)
+				
+ * 		public class Developer(int uID, Name name, Department dept, LocalDate dateStarted, 
+ * 				String phoneNum, double monthlyPay, int level, double hourlyRate)
+ * 
+ * 		public class Manager(int uID, Name name, Department dept, LocalDate dateStarted, 
+ * 				String phoneNum, double monthlyPay, int numStaff, double salary, double bonus)
+ * 
+ *  public class Name(String title, String firstName, String lastName)
+ *  
+ *  public class Holiday(LocalDate startDate, LocalDate endDate, Manager) ???
+ *  			 Holiday(LocalDate startDate, LocalDate endDate, Manager, Developer) ???
+ *  
+ *  public class Menu(???) pass in file location for help file?
+ * 
+ * 	public class FileIO()
+ * 	
+ */
+
 public class Controller {
 
 	public static void main(String[] args) {
