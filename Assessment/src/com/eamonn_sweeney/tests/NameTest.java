@@ -12,7 +12,7 @@ import com.eamonn_sweeney.Name;
  * @author Eamonn
  *
  */
-class TestName {
+class NameTest {
 
 	@Test
 	void testGetTitle() {

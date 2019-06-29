@@ -1,61 +1,63 @@
 package com.eamonn_sweeney;
 
 public class Department {
-	private int deptID;
+	private int deptId;
 	private String deptName;
 	private int numEmployees;
 	
 	/**
-	 * @param deptID
+	 * @param deptId
 	 * @param deptName
 	 * @param numEmployees
 	 */
-	public Department(int deptID, String deptName, int numEmployees) {
-		this.deptID = deptID;
+	public Department(int deptId, String deptName, int numEmployees) {
+		super();
+		this.deptId = deptId;
 		this.deptName = deptName;
 		this.numEmployees = numEmployees;
 	}
-	
+
 	/**
-	 * @return the deptID
+	 * @return the deptId
 	 */
-	public int getDeptID() {
-		return deptID;
+	public int getDeptId() {
+		return deptId;
 	}
-	
+
 	/**
-	 * @param deptID the deptID to set
+	 * @param deptId the deptId to set
 	 */
-	public void setDeptID(int deptID) {
-		this.deptID = deptID;
+	public void setDeptId(int deptId) {
+		this.deptId = deptId;
 	}
-	
+
 	/**
 	 * @return the deptName
 	 */
 	public String getDeptName() {
 		return deptName;
 	}
-	
+
 	/**
 	 * @param deptName the deptName to set
 	 */
 	public void setDeptName(String deptName) {
 		this.deptName = deptName;
 	}
-	
+
 	/**
 	 * @return the numEmployees
 	 */
 	public int getNumEmployees() {
 		return numEmployees;
 	}
-	
+
 	/**
 	 * @param numEmployees the numEmployees to set
 	 */
 	public void setNumEmployees(int numEmployees) {
 		this.numEmployees = numEmployees;
 	}
+	
 	
 }
