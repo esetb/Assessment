@@ -1,12 +1,17 @@
 package com.eamonn_sweeney;
 
+/*
+ * 	Fields
+ * 
+ * 
+ *  Constructors
+ * 
+ * 
+ * 	Methods
+ * 		public void display()
+ * 		public int getChoice()
+ * 		
+ */
 public class Menu {
 
-	public void display() {
-		
-	}
-	
-	public int getUserChoice() {
-		return 0;
-	}
 }

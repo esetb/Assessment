@@ -1,5 +1,8 @@
 package com.eamonn_sweeney;
 
+/*
+ * Use an enumerator for title?
+ */
 public class Name {
 	private String title;
 	private String firstName;
