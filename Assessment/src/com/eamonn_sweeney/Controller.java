@@ -22,7 +22,7 @@ package com.eamonn_sweeney;
  *  instantiate an Employee). Followed by a Manager class, and the Developer 
  *  class both of which will inherit from Employee. 
  *  All classes should have appropriate constructors, getter and setters, and 
- *  also a toString method and  an equal's method.
+ *  also a toString method and an equal's method.
  *  Each new employee added will have their own unique id.
  *  
  *  The Employee Class will be abstract and have;
