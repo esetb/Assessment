@@ -16,8 +16,8 @@ public class Developer extends Employee {
 	 * @param level
 	 * @param hourlyRate
 	 */
-	public Developer(int idNum, Name name, Department dept, LocalDate dateStarted, String phoneNum, double monthlyPay,
-			int level) {
+	public Developer(int idNum, Name name, Department dept, LocalDate dateStarted, 
+			String phoneNum, double monthlyPay, int level) {
 		super(idNum, name, dept, dateStarted, phoneNum, monthlyPay);
 		this.level = level;
 		this.hourlyRate = 0;

@@ -1,5 +1,7 @@
 package com.eamonn_sweeney;
 
+import com.eamonn_sweeney.Name.Title;
+
 /*
  * Assessment 4520
  * 
@@ -157,7 +159,7 @@ package com.eamonn_sweeney;
 public class Controller {
 
 	public static void main(String[] args) {
-		System.out.println("Working!");
+		Name name = new Name(Title.MR, "Eamonn", "Sweeney");
 
 	}
 
