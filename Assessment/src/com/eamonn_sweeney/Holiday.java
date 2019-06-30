@@ -1,5 +1,11 @@
 package com.eamonn_sweeney;
 
-public class Holiday {
+import java.time.LocalDate;
 
+public class Holiday {
+	LocalDate startDate;
+	LocalDate endDate;
+	Employee emp;
+	
+	
 }
