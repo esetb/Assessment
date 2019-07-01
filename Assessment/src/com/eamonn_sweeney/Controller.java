@@ -1,6 +1,7 @@
+/**
+ * Controller - contains the applications main() method.
+ */
 package com.eamonn_sweeney;
-
-import com.eamonn_sweeney.Developer.Level;
 
 /*
  * Assessment 4520
@@ -159,10 +160,12 @@ import com.eamonn_sweeney.Developer.Level;
 public class Controller {
 
 	public static void main(String[] args) {
-		Name name = new Name("Mr", "Eamonn", "Sweeney");
-		Level l = Developer.Level.ONE;
-		System.out.println(name.getTitle());
-		System.out.println(l);
+		// load data
+		// main loop
+		//		display menu
+		//		get user choice
+		//		call method
+		// write data
 	}
-
+	
 }

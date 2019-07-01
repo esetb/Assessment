@@ -1,5 +1,5 @@
 /**
- * 
+ * com.eamonn_sweeney.Developer Class Tests
  */
 package com.eamonn_sweeney.tests;
 
@@ -14,7 +14,7 @@ import com.eamonn_sweeney.Name;
 import com.eamonn_sweeney.Department; 
 
 /**
- * @author Eamonn
+ * @author Eamonn A. Sweeney
  *
  */
 class DeveloperTest {
@@ -29,7 +29,7 @@ class DeveloperTest {
 		Name name = new Name("Mr", "Eamonn", "Sweeney");
 		Department dept = new Department(1, "DevOps", 8);
 		LocalDate dateStarted = LocalDate.of(2018, 9, 14);
-		this.developer = new Developer(1, name, dept, dateStarted, "0873094169", 4000.00, Level.ONE);
+		developer = new Developer(1, name, dept, dateStarted, "0873094169", 4000.00, Level.ONE);
 	}
 
 	@Test
