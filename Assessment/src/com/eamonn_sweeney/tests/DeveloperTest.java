@@ -42,7 +42,7 @@ class DeveloperTest {
 	}
 	
 	/**
-	 * Test method for {@link com.eamonn_sweeney.Developer#setLevel(Level level)}.
+	 * Test method for {@link com.eamonn_sweeney.Developer#setLevel(com.eamonn_sweeney.Developer.Level)}.
 	 */
 	@Test
 	void testSetLevel() {

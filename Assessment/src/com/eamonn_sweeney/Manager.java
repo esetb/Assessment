@@ -18,9 +18,9 @@ public class Manager extends Employee {
 	 * @param salary
 	 * @param bonus
 	 */
-	public Manager(int idNum, Name name, Department dept, LocalDate dateStarted, String phoneNum, double monthlyPay,
-			int numStaff, double salary, double bonus) {
-		super(idNum, name, dept, dateStarted, phoneNum, monthlyPay);
+	public Manager(int idNum, Name name, Department dept, LocalDate dateStarted, 
+			String phoneNum, int numStaff, double salary, double bonus) {
+		super(idNum, name, dept, dateStarted, phoneNum, (salary / 12));
 		this.numStaff = numStaff;
 		this.salary = salary;
 		this.bonus = bonus;
@@ -52,6 +52,7 @@ public class Manager extends Employee {
 	 */
 	public void setSalary(double salary) {
 		this.salary = salary;
+		setMonthlyPay(salary / 12);
 	}
 
 	/**

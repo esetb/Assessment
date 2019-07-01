@@ -101,12 +101,19 @@ public abstract class Employee {
 	}
 	
 	/**
-	 * @return the uID
+	 * @return the idNum
 	 */
 	public int getIdNum() {
 		return idNum;
 	}
 
+	/**
+	 * @param idNum the idNum to set
+	 */
+	public void setIdNum(int idNum) {
+		this.idNum = idNum;
+	}
+	
 	@Override
 	public String toString() {
 		return "Employee [idNum=" + idNum 
