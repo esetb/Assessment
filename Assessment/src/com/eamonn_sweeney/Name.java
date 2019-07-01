@@ -1,5 +1,7 @@
 package com.eamonn_sweeney;
 
+import java.util.Objects;
+
 public class Name {
 	private String title;
 	private String firstName;
@@ -17,7 +19,7 @@ public class Name {
 	}
 
 	/**
-	 * @return the title enum
+	 * @return the title
 	 */
 	public String getTitle() {
 		return title;
@@ -60,7 +62,29 @@ public class Name {
 
 	@Override
 	public String toString() {
-		return title.toString() + " " + firstName + " " + lastName;
+		return "Name [title=" + title 
+				+ ", firstName=" + firstName 
+				+ ", lastName=" + lastName 
+				+ "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(firstName, lastName, title);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Name))
+			return false;
+		Name other = (Name) obj;
+		return Objects.equals(firstName, other.firstName) 
+				&& Objects.equals(lastName, other.lastName)
+				&& Objects.equals(title, other.title);
 	}
 	
 }

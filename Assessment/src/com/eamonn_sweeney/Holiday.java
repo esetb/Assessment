@@ -7,5 +7,4 @@ public class Holiday {
 	LocalDate endDate;
 	Employee emp;
 	
-	
 }

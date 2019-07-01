@@ -1,6 +1,7 @@
 package com.eamonn_sweeney;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public abstract class Employee {
 	protected int idNum;
@@ -104,6 +105,39 @@ public abstract class Employee {
 	 */
 	public int getIdNum() {
 		return idNum;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [idNum=" + idNum 
+				+ ", name=" + name 
+				+ ", dept=" + dept.getName() 
+				+ ", dateStarted=" + dateStarted
+				+ ", phoneNum=" + phoneNum 
+				+ ", monthlyPay=" + monthlyPay 
+				+ "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dateStarted, dept, idNum, monthlyPay, name, phoneNum);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Employee))
+			return false;
+		Employee other = (Employee) obj;
+		return Objects.equals(dateStarted, other.dateStarted) 
+				&& Objects.equals(dept, other.dept)
+				&& idNum == other.idNum
+				&& Double.doubleToLongBits(monthlyPay) == Double.doubleToLongBits(other.monthlyPay)
+				&& Objects.equals(name, other.name) 
+				&& Objects.equals(phoneNum, other.phoneNum);
 	}
 	
 }

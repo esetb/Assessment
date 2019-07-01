@@ -1,5 +1,7 @@
 package com.eamonn_sweeney;
 
+import com.eamonn_sweeney.Developer.Level;
+
 /*
  * Assessment 4520
  * 
@@ -158,7 +160,9 @@ public class Controller {
 
 	public static void main(String[] args) {
 		Name name = new Name("Mr", "Eamonn", "Sweeney");
+		Level l = Developer.Level.ONE;
 		System.out.println(name.getTitle());
+		System.out.println(l);
 	}
 
 }

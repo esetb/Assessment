@@ -1,48 +1,50 @@
 package com.eamonn_sweeney;
 
+import java.util.Objects;
+
 public class Department {
-	private int deptId;
-	private String deptName;
+	private int idNum;
+	private String name;
 	private int numEmployees;
 	
 	/**
-	 * @param deptId
-	 * @param deptName
+	 * @param idNum
+	 * @param name
 	 * @param numEmployees
 	 */
-	public Department(int deptId, String deptName, int numEmployees) {
+	public Department(int idNum, String name, int numEmployees) {
 		super();
-		this.deptId = deptId;
-		this.deptName = deptName;
+		this.idNum = idNum;
+		this.name = name;
 		this.numEmployees = numEmployees;
 	}
 
 	/**
-	 * @return the deptId
+	 * @return the idNum
 	 */
-	public int getDeptId() {
-		return deptId;
+	public int getIdNum() {
+		return idNum;
 	}
 
 	/**
-	 * @param deptId the deptId to set
+	 * @param idNum the idNum to set
 	 */
-	public void setDeptId(int deptId) {
-		this.deptId = deptId;
+	public void setIdNum(int idNum) {
+		this.idNum = idNum;
 	}
 
 	/**
-	 * @return the deptName
+	 * @return the name
 	 */
-	public String getDeptName() {
-		return deptName;
+	public String getName() {
+		return name;
 	}
 
 	/**
-	 * @param deptName the deptName to set
+	 * @param name the name to set
 	 */
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -58,6 +60,32 @@ public class Department {
 	public void setNumEmployees(int numEmployees) {
 		this.numEmployees = numEmployees;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Department [idNum=" + idNum 
+				+ ", name=" + name 
+				+ ", numEmployees=" + numEmployees 
+				+ "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idNum, name, numEmployees);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Department))
+			return false;
+		Department other = (Department) obj;
+		return idNum == other.idNum 
+				&& Objects.equals(name, other.name) 
+				&& numEmployees == other.numEmployees;
+	}
+		
 }
