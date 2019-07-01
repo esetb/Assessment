@@ -18,35 +18,35 @@ class NameTest {
 	
 	@Test
 	void testGetTitle() {
-		assertTrue(name.getTitle().contentEquals("Mr"));
+		assertTrue(name.getTitle().equals("Mr"));
 	}
 	
 	@Test
 	void testGetFirstName() {
-		assertTrue(name.getFirstName().contentEquals("Eamonn"));
+		assertTrue(name.getFirstName().equals("Eamonn"));
 	}	
 	
 	@Test
 	void testGetLastName() {
-		assertTrue(name.getLastName().contentEquals("Sweeney"));
+		assertTrue(name.getLastName().equals("Sweeney"));
 	}		
 	
 	@Test
 	void testSetTitle() {
 		name.setTitle("Master");
-		assertTrue(name.getTitle().contentEquals("Master"));
+		assertTrue(name.getTitle().equals("Master"));
 	}
 	
 	@Test
 	void testSetFirstName() {
 		name.setFirstName("Anthony");
-		assertTrue(name.getFirstName().contentEquals("Anthony"));
+		assertTrue(name.getFirstName().equals("Anthony"));
 	}
 	
 	@Test
 	void testSetLastName() {
 		name.setLastName("Allen");
-		assertTrue(name.getLastName().contentEquals("Allen"));
+		assertTrue(name.getLastName().equals("Allen"));
 	}
 	
 	@Test
@@ -54,4 +54,5 @@ class NameTest {
 		Name name2 = name;
 		assertTrue(name2.equals(name));
 	}
+	
 }
