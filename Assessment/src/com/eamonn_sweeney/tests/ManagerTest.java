@@ -12,17 +12,24 @@ import java.time.LocalDate;
 import com.eamonn_sweeney.Department;
 import com.eamonn_sweeney.Manager;
 import com.eamonn_sweeney.Name;
+
 /**
  * @author STUDENT
  *
  */
 class ManagerTest {
 
+	private Manager man;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
+		Name name = new Name("Mr", "Eamonn", "Sweeney");
+		Department dept = new Department(1, "DevOps", 8);
+		LocalDate dateStarted = LocalDate.of(2018, 9, 14);
+		man = new Manager(1, name, dept, dateStarted, "0873094169", 8, 60000.00, .10);
 	}
 
 	/**
