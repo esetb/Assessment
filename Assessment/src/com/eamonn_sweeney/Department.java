@@ -13,7 +13,6 @@ public class Department {
 	 * @param numEmployees
 	 */
 	public Department(int idNum, String name, int numEmployees) {
-		super();
 		this.idNum = idNum;
 		this.name = name;
 		this.numEmployees = numEmployees;

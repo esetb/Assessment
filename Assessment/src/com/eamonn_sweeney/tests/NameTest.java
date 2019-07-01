@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.eamonn_sweeney.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,13 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import com.eamonn_sweeney.Name;
 
-/**
- * @author Eamonn
- *
- */
+
 class NameTest {
 	
-	private Name name = new Name("Mr", "Eamonn", "Sweeney");;
+	private Name name = new Name("Mr", "Eamonn", "Sweeney");
 	
 	@Test
 	void testGetTitle() {
@@ -51,7 +45,7 @@ class NameTest {
 	
 	@Test
 	void testEquals() {
-		Name name2 = name;
+		Name name2 = new Name("Mr", "Eamonn", "Sweeney");
 		assertTrue(name2.equals(name));
 	}
 	

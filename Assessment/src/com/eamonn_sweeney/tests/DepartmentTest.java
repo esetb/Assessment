@@ -1,23 +1,22 @@
 package com.eamonn_sweeney.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
 import com.eamonn_sweeney.Department;
-import com.eamonn_sweeney.Name;
+
 
 class DepartmentTest {
 
 	private Department dept = new Department(1, "Development", 10); 
 	
 	@Test
-	void testGetDeptIdNum() {
+	void testGetIdNum() {
 		assertEquals(1, dept.getIdNum());
 	}
 
 	@Test
-	void testGetDeptName() {
+	void testGetName() {
 		assertTrue(dept.getName().equals("Development"));
 	}
 	
@@ -27,13 +26,13 @@ class DepartmentTest {
 	}	
 	
 	@Test
-	void testSetDeptIdNum() {
+	void testSetIdNum() {
 		dept.setIdNum(7);
 		assertEquals(7, dept.getIdNum());
 	}
 
 	@Test
-	void testSetDeptName() {
+	void testSetName() {
 		dept.setName("DevOps");
 		assertTrue(dept.getName().equals("DevOps"));
 	}
@@ -46,7 +45,7 @@ class DepartmentTest {
 	
 	@Test
 	void testEquals() {
-		Department dept2 = dept;
+		Department dept2 = new Department(1, "Development", 10);
 		assertTrue(dept2.equals(dept));
 	}
 	
