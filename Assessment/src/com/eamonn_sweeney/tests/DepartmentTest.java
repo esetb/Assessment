@@ -22,7 +22,7 @@ class DepartmentTest {
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
-		this.dept = new Department(1, "Development", 10); 
+		dept = new Department(1, "Development", 10); 
 	}
 	
 	/**
