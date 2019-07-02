@@ -9,9 +9,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import com.eamonn_sweeney.Department;
-import com.eamonn_sweeney.Manager;
-import com.eamonn_sweeney.Name;
+import com.eamonn_sweeney.app.models.Department;
+import com.eamonn_sweeney.app.models.Manager;
+import com.eamonn_sweeney.app.models.Name;
 
 /**
  * @author Eamonn A. Sweeney

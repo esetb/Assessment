@@ -1,28 +1,15 @@
 /**
  * Menu - .
  */
-package com.eamonn_sweeney;
+package com.eamonn_sweeney.app.views;
 
-import java.util.ArrayList;
 
+/**
+ * @author Eamonn A. Sweeney
+ *
+ */
 public class Menu {
-	private ArrayList<Employee> employees;
-	private ArrayList<Department> departments;
-	
-	public Menu() {
-		/* load data
-		 * main loop - run()
-		 * write data
-		 */
-	}
-	
-	public void run() {
-		/* display menu
-		 * get user choice
-		 * call methods
-		 */
-	}
-	
+
 	public void displayMain() {
 		System.out.println("*** Main Menu ***"
 				+ "1. List all Employees" 

@@ -1,8 +1,16 @@
-package com.eamonn_sweeney;
+/**
+ * Abstract Employee Class
+ */
+package com.eamonn_sweeney.app.models;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
+
+/**
+ * @author Eamonn A. Sweeney
+ *
+ */
 public abstract class Employee {
 	protected int idNum;
 	protected Name name;

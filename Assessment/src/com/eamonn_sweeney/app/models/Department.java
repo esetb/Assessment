@@ -1,7 +1,15 @@
-package com.eamonn_sweeney;
+/**
+ * Department Class
+ */
+package com.eamonn_sweeney.app.models;
 
 import java.util.Objects;
 
+
+/**
+ * @author Eamonn A. Sweeney
+ *
+ */
 public class Department {
 	private int idNum;
 	private String name;

@@ -1,7 +1,15 @@
-package com.eamonn_sweeney;
+/**
+ * Name Class
+ */
+package com.eamonn_sweeney.app.models;
 
 import java.util.Objects;
 
+
+/**
+ * @author Eamonn A. Sweeney
+ *
+ */
 public class Name {
 	private String title;
 	private String firstName;

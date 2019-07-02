@@ -142,11 +142,13 @@
  */
 package com.eamonn_sweeney;
 
+import com.eamonn_sweeney.app.controllers.AppController;
+
 public class Main {
 	
 	public static void main(String[] args) {
-		Menu menu = new Menu();
-		menu.run();
+		AppController app = new AppController();
+		app.run();
 	}
 	
 }

@@ -1,8 +1,16 @@
-package com.eamonn_sweeney;
+/**
+ * Manager Class extends Employee
+ */
+package com.eamonn_sweeney.app.models;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
+
+/**
+ * @author Eamonn A. Sweeney
+ *
+ */
 public class Manager extends Employee {
 	private int numStaff;
 	private double salary;

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.eamonn_sweeney.Department;
+import com.eamonn_sweeney.app.models.Department;
 
 /**
  * @author Eamonn A. Sweeney

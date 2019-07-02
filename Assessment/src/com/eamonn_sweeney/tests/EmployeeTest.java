@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import com.eamonn_sweeney.Employee;
-import com.eamonn_sweeney.Name;
-import com.eamonn_sweeney.Department;
-import com.eamonn_sweeney.Developer;
+import com.eamonn_sweeney.app.models.Employee;
+import com.eamonn_sweeney.app.models.Name;
+import com.eamonn_sweeney.app.models.Department;
+import com.eamonn_sweeney.app.models.Developer;
 
 
 /**

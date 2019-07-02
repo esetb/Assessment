@@ -1,7 +1,15 @@
-package com.eamonn_sweeney;
+/**
+ * Holiday Class
+ */
+package com.eamonn_sweeney.app.models;
 
 import java.time.LocalDate;
 
+
+/**
+ * @author Eamonn A. Sweeney
+ *
+ */
 public class Holiday {
 	private LocalDate startDate;
 	private LocalDate endDate;

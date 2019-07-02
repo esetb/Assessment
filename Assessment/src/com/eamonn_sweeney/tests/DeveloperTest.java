@@ -8,10 +8,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import com.eamonn_sweeney.Department;
-import com.eamonn_sweeney.Developer;
-import com.eamonn_sweeney.Developer.Level;
-import com.eamonn_sweeney.Name;
+import com.eamonn_sweeney.app.models.Department;
+import com.eamonn_sweeney.app.models.Developer;
+import com.eamonn_sweeney.app.models.Developer.Level;
+import com.eamonn_sweeney.app.models.Name;
  
 
 /**
