@@ -37,7 +37,7 @@ class ManagerTest {
 	 */
 	@Test
 	void testGetNumStaff() {
-		fail("Not yet implemented");
+		assertEquals(8, man.getNumStaff());
 	}
 
 	/**
@@ -45,7 +45,8 @@ class ManagerTest {
 	 */
 	@Test
 	void testSetNumStaff() {
-		fail("Not yet implemented");
+		man.setNumStaff(10);
+		assertEquals(10, man.getNumStaff());
 	}
 
 	/**
@@ -53,7 +54,7 @@ class ManagerTest {
 	 */
 	@Test
 	void testGetSalary() {
-		fail("Not yet implemented");
+		assertEquals(60000.00, man.getSalary());
 	}
 
 	/**
@@ -61,7 +62,8 @@ class ManagerTest {
 	 */
 	@Test
 	void testSetSalary() {
-		fail("Not yet implemented");
+		man.setSalary(65000.00);
+		assertEquals(65000.00, man.getSalary());
 	}
 
 	/**
@@ -69,7 +71,7 @@ class ManagerTest {
 	 */
 	@Test
 	void testGetBonus() {
-		fail("Not yet implemented");
+		assertEquals(.1, man.getBonus());
 	}
 
 	/**
@@ -77,7 +79,8 @@ class ManagerTest {
 	 */
 	@Test
 	void testSetBonus() {
-		fail("Not yet implemented");
+		man.setBonus(.15);
+		assertEquals(.15, man.getBonus());
 	}
 
 }
