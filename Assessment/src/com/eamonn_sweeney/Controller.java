@@ -3,25 +3,23 @@
  */
 package com.eamonn_sweeney;
 
-import java.time.LocalDate;
-
 /*
- * Assessment 4520
+ * 	Assessment 4520-323 - Create an Event Driven Program using Java.
  * 
  * 
- * Task A
- * Create all classes for the application using Inheritance, Abstraction, 
- * Composition and Interfaces where you deem necessary.
+ * 	Task A
+ * 	Create all classes for the application using Inheritance, Abstraction, 
+ * 	Composition and Interfaces where you deem necessary.
  * 
- * To start create a Name class which will consist of three variables title, 
- * first name, and last name. Create appropriate constructors, getter and 
- * setters add a toString method. 
- * Create a test class and ensure all is working as expected.
+ * 	To start create a Name class which will consist of three variables title, 
+ * 	first name, and last name. Create appropriate constructors, getter and 
+ * 	setters add a toString method. 
+ * 	Create a test class and ensure all is working as expected.
  * 
- * Next create a Department class which will consist of a department ID, 
- * Department name, and number of employees. Create appropriate constructors, 
- * getter and setters add a toString method, add an equal's method.
- * Create a test class and ensure all is working as expected.
+ * 	Next create a Department class which will consist of a department ID, 
+ * 	Department name, and number of employees. Create appropriate constructors, 
+ * 	getter and setters add a toString method, add an equal's method.
+ * 	Create a test class and ensure all is working as expected.
  *  
  *  Next create an Employee class which will be abstract (you won't be able to
  *  instantiate an Employee). Followed by a Manager class, and the Developer 
