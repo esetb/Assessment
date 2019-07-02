@@ -1,11 +1,29 @@
 /**
- * Menu - contains static methods to display the applications various menus.
+ * Menu - .
  */
 package com.eamonn_sweeney;
 
-public class Menu {
+import java.util.ArrayList;
 
-	public static void displayMain() {
+public class Menu {
+	private ArrayList<Employee> employees;
+	private ArrayList<Department> departments;
+	
+	public Menu() {
+		/* load data
+		 * main loop - run()
+		 * write data
+		 */
+	}
+	
+	public void run() {
+		/* display menu
+		 * get user choice
+		 * call methods
+		 */
+	}
+	
+	public void displayMain() {
 		System.out.println("*** Main Menu ***"
 				+ "1. List all Employees" 
 				+ "2. Add a new Employee" 
@@ -20,11 +38,11 @@ public class Menu {
 				);
 	}
 	
-	public static void displayHolidayBooking() {
+	public void displayHolidayBooking() {
 		System.out.println();
 	}
 
-	public static void displayPayment() {
+	public void displayPayment() {
 		System.out.println();
 	}
 	

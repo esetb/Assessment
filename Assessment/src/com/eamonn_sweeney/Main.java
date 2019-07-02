@@ -1,7 +1,6 @@
 /**
- * Controller - contains the applications main() method.
+ * Main - contains the applications main() method.
  */
-package com.eamonn_sweeney;
 
 /*
  * 	Assessment 4520-323 - Create an Event Driven Program using Java.
@@ -141,31 +140,13 @@ package com.eamonn_sweeney;
  *  Opening braces ( { ) will be placed at the end of the line and not on a new 
  *  line. 
  */
+package com.eamonn_sweeney;
 
-/* 
- * 	Classes
- * 
- * 	public class Controller
- *  public class Department  
- * 	protected class Employee	
- * 		public class Developer extends Employee
- * 		public class Manager extends Employee
- *  public class Name
- *  public class Holiday
- *  public class Menu
- * 	public class FileIO
- * 	
- */
-
-public class Controller {
-
+public class Main {
+	
 	public static void main(String[] args) {
-		// load data
-		// main loop
-		//		display menu
-		//		get user choice
-		//		call method
-		// write data
+		Menu menu = new Menu();
+		menu.run();
 	}
 	
 }
