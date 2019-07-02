@@ -39,11 +39,11 @@ public class Menu {
 	}
 	
 	public void displayHolidayBooking() {
-		System.out.println();
+		
 	}
 
 	public void displayPayment() {
-		System.out.println();
+
 	}
 	
 }

@@ -14,7 +14,7 @@ import com.eamonn_sweeney.Manager;
 import com.eamonn_sweeney.Name;
 
 /**
- * @author STUDENT
+ * @author Eamonn A. Sweeney
  *
  */
 class ManagerTest {

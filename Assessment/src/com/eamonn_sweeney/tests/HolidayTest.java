@@ -1,5 +1,5 @@
 /**
- * 
+ * com.eamonn_sweeney.Holiday Class Tests
  */
 package com.eamonn_sweeney.tests;
 
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author STUDENT
+ * @author Eamonn A. Sweeney
  *
  */
 class HolidayTest {

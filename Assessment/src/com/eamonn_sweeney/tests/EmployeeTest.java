@@ -4,11 +4,10 @@
 package com.eamonn_sweeney.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.time.LocalDate;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
 
 import com.eamonn_sweeney.Employee;
 import com.eamonn_sweeney.Name;
@@ -35,7 +34,7 @@ class EmployeeTest {
 		name = new Name("Mr", "Eamonn", "Sweeney");
 		dept = new Department(1, "Development", 8);
 		dateStarted = LocalDate.of(2018, 9, 14);
-		emp = new Developer(1, name, dept, dateStarted, "0873094169", 4000.00);
+		emp = new Developer(1, name, dept, dateStarted, "0873904169", 4000.00);
 	}
 
 	/**
@@ -97,7 +96,7 @@ class EmployeeTest {
 	 */
 	@Test
 	void testGetPhoneNum() {
-		assertTrue(emp.getPhoneNum().equals("0873094169"));
+		assertTrue(emp.getPhoneNum().equals("0873904169"));
 	}
 
 	/**
