@@ -81,7 +81,7 @@ package com.eamonn_sweeney;
  *  	if they want to either add a Manager or a Developer
  *  	3. Edit an Employee by id
  *  	4. Delete an Employee by id
- *  	5. View all Mangers
+ *  	5. View all Managers
  *  	6. View all Developers
  *  	7. View number of staff within a department
  *  	8. Sub-Menu holiday booking
