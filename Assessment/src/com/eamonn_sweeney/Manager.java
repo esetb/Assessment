@@ -52,7 +52,7 @@ public class Manager extends Employee {
 	 */
 	public void setSalary(double salary) {
 		this.salary = salary;
-		setMonthlyPay(salary / 12);
+		this.monthlyPay = (salary / 12);
 	}
 
 	/**
