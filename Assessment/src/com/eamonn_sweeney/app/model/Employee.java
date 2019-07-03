@@ -1,7 +1,7 @@
 /**
  * Abstract Employee Class
  */
-package com.eamonn_sweeney.app.models;
+package com.eamonn_sweeney.app.model;
 
 import java.time.LocalDate;
 import java.util.Objects;

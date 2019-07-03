@@ -1,15 +1,15 @@
 /**
  * AppController - The Application Controller.
  */
-package com.eamonn_sweeney.app.controllers;
+package com.eamonn_sweeney.app.controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import com.eamonn_sweeney.app.models.Department;
-import com.eamonn_sweeney.app.models.Developer;
-import com.eamonn_sweeney.app.models.Employee;
-import com.eamonn_sweeney.app.models.Name;
+import com.eamonn_sweeney.app.model.Department;
+import com.eamonn_sweeney.app.model.Developer;
+import com.eamonn_sweeney.app.model.Employee;
+import com.eamonn_sweeney.app.model.Name;
 
 
 /**

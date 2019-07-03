@@ -142,7 +142,7 @@
  */
 package com.eamonn_sweeney;
 
-import com.eamonn_sweeney.app.controllers.AppController;
+import com.eamonn_sweeney.app.controller.AppController;
 
 
 /**
