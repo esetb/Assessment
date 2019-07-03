@@ -9,9 +9,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import com.eamonn_sweeney.app.models.Department;
 import com.eamonn_sweeney.app.models.Manager;
 import com.eamonn_sweeney.app.models.Name;
+
 
 /**
  * @author Eamonn A. Sweeney
@@ -20,16 +20,20 @@ import com.eamonn_sweeney.app.models.Name;
 class ManagerTest {
 
 	private Manager man;
+	private int numStaff;
+	private double salary;
+	private double bonus;
 	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
-		Name name = new Name("Mr", "Eamonn", "Sweeney");
-		Department dept = new Department(1, "DevOps", 8);
-		LocalDate dateStarted = LocalDate.of(2018, 9, 14);
-		man = new Manager(1, name, dept, dateStarted, "0873094169", 8, 60000.00, .10);
+		numStaff = 8;
+		salary = 60000.00;
+		bonus = .10;
+		man = new Manager(1, new Name("Mr", "Eamonn", "Sweeney"), 1, 
+				LocalDate.of(2018, 9, 14), "0873094169", numStaff, salary, bonus);
 	}
 
 	/**
@@ -37,7 +41,7 @@ class ManagerTest {
 	 */
 	@Test
 	void testGetNumStaff() {
-		assertEquals(8, man.getNumStaff());
+		assertEquals(numStaff, man.getNumStaff());
 	}
 
 	/**
@@ -54,7 +58,7 @@ class ManagerTest {
 	 */
 	@Test
 	void testGetSalary() {
-		assertEquals(60000.00, man.getSalary());
+		assertEquals(salary, man.getSalary());
 	}
 
 	/**
@@ -71,7 +75,7 @@ class ManagerTest {
 	 */
 	@Test
 	void testGetBonus() {
-		assertEquals(.1, man.getBonus());
+		assertEquals(bonus, man.getBonus());
 	}
 
 	/**

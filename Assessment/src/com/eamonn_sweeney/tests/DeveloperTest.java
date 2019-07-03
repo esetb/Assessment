@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import com.eamonn_sweeney.app.models.Department;
 import com.eamonn_sweeney.app.models.Developer;
 import com.eamonn_sweeney.app.models.Developer.Level;
 import com.eamonn_sweeney.app.models.Name;
@@ -21,16 +20,18 @@ import com.eamonn_sweeney.app.models.Name;
 class DeveloperTest {
 
 	private Developer dev;
+	private Level level;
+	private double hourlyRate;
 	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
-		Name name = new Name("Mr", "Eamonn", "Sweeney");
-		Department dept = new Department(1, "DevOps", 8);
-		LocalDate dateStarted = LocalDate.of(2018, 9, 14);
-		dev = new Developer(1, name, dept, dateStarted, "0873904169", 4000.00);
+		level = Level.ONE;
+		hourlyRate = level.getHourlyRate();
+		dev = new Developer(1, new Name("Mr", "Eamonn", "Sweeney"), 1, 
+				LocalDate.of(2018, 9, 14), "0873904169", level);
 	}
 
 	/**
@@ -38,7 +39,7 @@ class DeveloperTest {
 	 */
 	@Test
 	void testGetLevel() {
-		assertEquals(Level.ONE, dev.getLevel());
+		assertEquals(level, dev.getLevel());
 	}
 	
 	/**
@@ -55,7 +56,7 @@ class DeveloperTest {
 	 */
 	@Test
 	void testGetHourlyRate() {
-		assertEquals(17.0, dev.getHourlyRate());
+		assertEquals(hourlyRate, dev.getHourlyRate());
 	}
 	
 }

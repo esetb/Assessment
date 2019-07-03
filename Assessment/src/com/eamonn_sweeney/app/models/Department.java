@@ -15,7 +15,7 @@ public class Department {
 	private int idNum;
 	private String name;
 	private int numEmployees;
-	
+
 	/**
 	 * @param idNum
 	 * @param name
@@ -26,19 +26,12 @@ public class Department {
 		this.name = name;
 		this.numEmployees = numEmployees;
 	}
-
+	
 	/**
 	 * @return the idNum
 	 */
 	public int getIdNum() {
 		return idNum;
-	}
-
-	/**
-	 * @param idNum the idNum to set
-	 */
-	public void setIdNum(int idNum) {
-		this.idNum = idNum;
 	}
 
 	/**

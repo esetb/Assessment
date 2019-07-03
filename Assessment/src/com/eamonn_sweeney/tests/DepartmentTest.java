@@ -16,13 +16,19 @@ import com.eamonn_sweeney.app.models.Department;
 class DepartmentTest {
 
 	private Department dept;
+	private int idNum;
+	private String name;
+	private int numEmployees;
 	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
-		dept = new Department(1, "Development", 10); 
+		idNum = 1;
+		name = "DevOps";
+		numEmployees = 8;
+		dept = new Department(idNum, name, numEmployees); 
 	}
 	
 	/**
@@ -30,16 +36,7 @@ class DepartmentTest {
 	 */
 	@Test
 	void testGetIdNum() {
-		assertEquals(1, dept.getIdNum());
-	}
-
-	/**
-	 * Test method for {@link com.eamonn_sweeney.Department#setIdNum(int)}.
-	 */
-	@Test
-	void testSetIdNum() { 
-		dept.setIdNum(7);
-		assertEquals(7, dept.getIdNum());
+		assertEquals(idNum, dept.getIdNum());
 	}
 
 	/**
@@ -47,7 +44,7 @@ class DepartmentTest {
 	 */
 	@Test
 	void testGetName() {
-		assertTrue(dept.getName().equals("Development"));
+		assertTrue(dept.getName().equals(name));
 	}
 
 	/**
@@ -55,8 +52,8 @@ class DepartmentTest {
 	 */
 	@Test
 	void testSetName() {
-		dept.setName("DevOps");
-		assertTrue(dept.getName().equals("DevOps"));
+		dept.setName("Development");
+		assertTrue(dept.getName().equals("Development"));
 	}
 
 	/**
@@ -64,7 +61,7 @@ class DepartmentTest {
 	 */
 	@Test
 	void testGetNumEmployees() {
-		assertEquals(10, dept.getNumEmployees());
+		assertEquals(numEmployees, dept.getNumEmployees());
 	}
 
 	/**
@@ -81,7 +78,7 @@ class DepartmentTest {
 	 */
 	@Test
 	void testEqualsObject() {
-		Department dept2 = new Department(1, "Development", 10); 
+		Department dept2 = new Department(idNum, name, numEmployees); 
 		assertTrue(dept2.equals(dept));
 	}
 

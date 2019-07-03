@@ -3,10 +3,13 @@
  */
 package com.eamonn_sweeney.app.controllers;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.eamonn_sweeney.app.models.Department;
+import com.eamonn_sweeney.app.models.Developer;
 import com.eamonn_sweeney.app.models.Employee;
+import com.eamonn_sweeney.app.models.Name;
 
 
 /**
@@ -17,6 +20,8 @@ public class AppController {
 	
 	private ArrayList<Employee> employees;
 	private ArrayList<Department> departments;
+	private int nextEmployeeIdNum;
+	private int nextDepartmentIdNum;
 	
 	/**
 	 * 
@@ -32,8 +37,8 @@ public class AppController {
 	 */
 	private void doSetUp() {
 		// load data - populate arraylists
-		// get highest Employee idNum and set static nextIdNum
-		// get highest Department idNum and set static nextIdNum
+		// get highest Employee idNum and set nextEmployeeIdNum
+		// get highest Department idNum and nextDepartmentIdNum;
 	}
 	
 	/**

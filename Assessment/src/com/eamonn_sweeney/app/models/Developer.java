@@ -21,10 +21,20 @@ public class Developer extends Employee {
 		private final int levelNum;
 		private final double hourlyRate;
 		
+		/**
+		 * 
+		 */
 		private Level(int levelNum, double hourlyRate) {
 			this.levelNum = levelNum;
 			this.hourlyRate = hourlyRate;
 		}
+		
+		/**
+		 * @return the hourlyRate
+		 */
+		public double getHourlyRate() {
+			return hourlyRate;
+		}	
 		
 		@Override
 		public String toString() {
@@ -32,32 +42,35 @@ public class Developer extends Employee {
 		}
 	}
 	private Level level;
+	private double hourlyRate;
 	
 	/**
 	 * @param name
-	 * @param dept
+	 * @param deptIdNum
 	 * @param dateStarted
 	 * @param phoneNum
-	 * @param monthlyPay
 	 */
-	public Developer(Name name, Department dept, LocalDate dateStarted, 
-			String phoneNum, double monthlyPay) {
-		super(name, dept, dateStarted, phoneNum, monthlyPay);
+	public Developer(int idNum, Name name, int deptIdNum, LocalDate dateStarted, 
+			String phoneNum) {
+		super(idNum, name, deptIdNum, dateStarted, phoneNum, 0);
 		this.level = Level.ONE;
+		this.hourlyRate = level.hourlyRate;
+		this.monthlyPay = hourlyRate * 35 * 4;
 	}
 	
 	/**
 	 * @param name
-	 * @param dept
+	 * @param deptIdNum
 	 * @param dateStarted
 	 * @param phoneNum
-	 * @param monthlyPay
 	 * @param level
 	 */
-	public Developer(Name name, Department dept, LocalDate dateStarted, 
-			String phoneNum, double monthlyPay, Level level) {
-		super(name, dept, dateStarted, phoneNum, monthlyPay);
+	public Developer(int idNum, Name name, int deptIdNum, LocalDate dateStarted, 
+			String phoneNum, Level level) {
+		super(idNum, name, deptIdNum, dateStarted, phoneNum, 0);
 		this.level = level;
+		this.hourlyRate = level.hourlyRate;
+		this.monthlyPay = hourlyRate * 35 * 4;
 	}
 	
 	/**
@@ -72,25 +85,26 @@ public class Developer extends Employee {
 	 */
 	public void setLevel(Level level) {
 		this.level = level;
+		this.hourlyRate = level.hourlyRate;
 	}
 
 	/**
 	 * @return the hourlyRate
 	 */
 	public double getHourlyRate() {
-		return level.hourlyRate;
+		return hourlyRate;
 	}
 
 	@Override
 	public String toString() {
 		return "Developer [idNum=" + idNum 
 				+ ", name=" + name
-				+ ", dept=" + dept 
+				+ ", dept=" + deptIdNum 
 				+ ", dateStarted=" + dateStarted 
 				+ ", phoneNum=" + phoneNum 
 				+ ", monthlyPay=" + monthlyPay 
 				+ ", level=" + level
-				+ ", hourlyRate=" + level.hourlyRate
+				+ ", hourlyRate=" + hourlyRate
 				+ "]";
 	}
 
@@ -98,7 +112,7 @@ public class Developer extends Employee {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(level);
+		result = prime * result + Objects.hash(hourlyRate, level);
 		return result;
 	}
 
@@ -111,7 +125,8 @@ public class Developer extends Employee {
 		if (!(obj instanceof Developer))
 			return false;
 		Developer other = (Developer) obj;
-		return level == other.level;
+		return Double.doubleToLongBits(hourlyRate) == Double.doubleToLongBits(other.hourlyRate) 
+				&& level == other.level;
 	}
 	
 }

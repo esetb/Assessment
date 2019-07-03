@@ -11,7 +11,6 @@ import java.time.LocalDate;
 
 import com.eamonn_sweeney.app.models.Employee;
 import com.eamonn_sweeney.app.models.Name;
-import com.eamonn_sweeney.app.models.Department;
 import com.eamonn_sweeney.app.models.Developer;
 
 
@@ -22,8 +21,9 @@ import com.eamonn_sweeney.app.models.Developer;
 class EmployeeTest {
 
 	private Employee emp;
+	private int idNum;
 	private Name name;
-	private Department dept;
+	private int deptIdNum;
 	private LocalDate dateStarted;
 	
 	/**
@@ -31,10 +31,11 @@ class EmployeeTest {
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
+		idNum = 1;
 		name = new Name("Mr", "Eamonn", "Sweeney");
-		dept = new Department(1, "Development", 8);
+		deptIdNum = 0;
 		dateStarted = LocalDate.of(2018, 9, 14);
-		emp = new Developer(name, dept, dateStarted, "0873904169", 4000.00);
+		emp = new Developer(idNum, name, deptIdNum, dateStarted, "0873904169");
 	}
 
 	/**
@@ -56,21 +57,20 @@ class EmployeeTest {
 	}
 
 	/**
-	 * Test method for {@link com.eamonn_sweeney.Employee#getDept()}.
+	 * Test method for {@link com.eamonn_sweeney.Employee#getDeptIdNum()}.
 	 */
 	@Test
-	void testGetDept() {
-		assertEquals(dept, emp.getDept());
+	void testGetDeptIdNum() {
+		assertEquals(deptIdNum, emp.getDeptIdNum());
 	}
 
 	/**
-	 * Test method for {@link com.eamonn_sweeney.Employee#setDept(com.eamonn_sweeney.Department)}.
+	 * Test method for {@link com.eamonn_sweeney.Employee#setDeptIdNum(int)}.
 	 */
 	@Test
-	void testSetDept() {
-		Department newDept = new Department(2, "DevOps", 8);
-		emp.setDept(newDept);
-		assertEquals(newDept, emp.getDept());
+	void testSetDeptIdNum() {
+		emp.setDeptIdNum(7);
+		assertEquals(7, emp.getDeptIdNum());
 	}
 
 	/**
@@ -113,7 +113,8 @@ class EmployeeTest {
 	 */
 	@Test
 	void testGetMonthlyPay() {
-		assertEquals(4000.00, emp.getMonthlyPay());
+		Developer dev = (Developer) emp;
+		assertEquals((dev.getHourlyRate() * 35 * 4), emp.getMonthlyPay());
 	}
 
 	/**
@@ -130,7 +131,7 @@ class EmployeeTest {
 	 */
 	@Test
 	void testGetIdNum() {
-		assertEquals(1, emp.getIdNum());
+		assertEquals(idNum, emp.getIdNum());
 	}
 	
 	/**
@@ -138,7 +139,7 @@ class EmployeeTest {
 	 */
 	@Test
 	void testEqualsObject() {
-		Employee emp2 = new Developer(name, dept, dateStarted, "0873094169", 4000.00);
+		Employee emp2 = new Developer(idNum, name, deptIdNum, dateStarted, "0873904169");;
 		assertTrue(emp2.equals(emp));
 	}
 

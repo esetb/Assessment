@@ -13,14 +13,12 @@ import java.util.Objects;
  */
 public abstract class Employee {
 	
-	private static int nextIdNum;
 	protected int idNum;
 	protected Name name;
-	protected Department dept;
+	protected int deptIdNum;
 	protected LocalDate dateStarted;
 	protected String phoneNum;
 	protected double monthlyPay;
-	
 	
 	/**
 	 * @param idNum
@@ -30,22 +28,14 @@ public abstract class Employee {
 	 * @param phoneNum
 	 * @param monthlyPay
 	 */
-	protected Employee(Name name, Department dept, LocalDate dateStarted, 
+	protected Employee(int idNum, Name name, int deptIdNum, LocalDate dateStarted, 
 			String phoneNum, double monthlyPay) {
-		this.idNum = nextIdNum;
-		nextIdNum++;
+		this.idNum = idNum;
 		this.name = name;
-		this.dept = dept;
+		this.deptIdNum = deptIdNum;
 		this.dateStarted = dateStarted;
 		this.phoneNum = phoneNum;
 		this.monthlyPay = monthlyPay;
-	}
-
-	/**
-	 * @param nextIdNum the nextIdNum to set
-	 */
-	public static void setNextIdNum(int nextIdNum) {
-		Employee.nextIdNum = nextIdNum;
 	}
 	
 	/**
@@ -63,17 +53,17 @@ public abstract class Employee {
 	}
 	
 	/**
-	 * @return the dept
+	 * @return the deptIdNum
 	 */
-	public Department getDept() {
-		return dept;
+	public int getDeptIdNum() {
+		return deptIdNum;
 	}
 	
 	/**
-	 * @param dept the dept to set
+	 * @param dept the deptIdNum to set
 	 */
-	public void setDept(Department dept) {
-		this.dept = dept;
+	public void setDeptIdNum(int deptIdNum) {
+		this.deptIdNum = deptIdNum;
 	}
 	
 	/**
@@ -129,7 +119,7 @@ public abstract class Employee {
 	public String toString() {
 		return "Employee [idNum=" + idNum 
 				+ ", name=" + name 
-				+ ", dept=" + dept.getName() 
+				+ ", deptIdNum=" + deptIdNum
 				+ ", dateStarted=" + dateStarted
 				+ ", phoneNum=" + phoneNum 
 				+ ", monthlyPay=" + monthlyPay 
@@ -138,7 +128,7 @@ public abstract class Employee {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(dateStarted, dept, idNum, monthlyPay, name, phoneNum);
+		return Objects.hash(dateStarted, deptIdNum, idNum, monthlyPay, name, phoneNum);
 	}
 
 	@Override
@@ -151,11 +141,13 @@ public abstract class Employee {
 			return false;
 		Employee other = (Employee) obj;
 		return Objects.equals(dateStarted, other.dateStarted) 
-				&& Objects.equals(dept, other.dept)
+				&& deptIdNum == other.deptIdNum 
 				&& idNum == other.idNum
 				&& Double.doubleToLongBits(monthlyPay) == Double.doubleToLongBits(other.monthlyPay)
 				&& Objects.equals(name, other.name) 
 				&& Objects.equals(phoneNum, other.phoneNum);
 	}
+
+	
 	
 }
