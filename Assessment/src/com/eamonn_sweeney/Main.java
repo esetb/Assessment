@@ -144,6 +144,11 @@ package com.eamonn_sweeney;
 
 import com.eamonn_sweeney.app.controllers.AppController;
 
+
+/**
+ * @author Eamonn A. Sweeney
+ *
+ */
 public class Main {
 	
 	public static void main(String[] args) {

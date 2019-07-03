@@ -11,6 +11,7 @@ import java.util.Objects;
  *
  */
 public class Name {
+	
 	private String title;
 	private String firstName;
 	private String lastName;

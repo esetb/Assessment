@@ -10,4 +10,11 @@ package com.eamonn_sweeney.app.data;
  */
 public class FileIO {
 	
+	private String dataDir;
+	
+	/* readArrayList(File filepath)
+	 * writeArrayList(ArrayList array, File filepath)
+	 * readFileToStringArray(File filePath)
+	 */
+	
 }

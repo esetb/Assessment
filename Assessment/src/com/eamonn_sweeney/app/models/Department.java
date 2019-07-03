@@ -11,6 +11,7 @@ import java.util.Objects;
  *
  */
 public class Department {
+	
 	private int idNum;
 	private String name;
 	private int numEmployees;

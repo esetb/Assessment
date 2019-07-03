@@ -12,6 +12,7 @@ import java.util.Objects;
  *
  */
 public abstract class Employee {
+	
 	protected int idNum;
 	protected Name name;
 	protected Department dept;

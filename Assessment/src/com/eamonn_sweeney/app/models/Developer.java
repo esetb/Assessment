@@ -12,6 +12,7 @@ import java.util.Objects;
  *
  */
 public class Developer extends Employee {
+	
 	public enum Level {
 		ONE(1, 17.0),
 		TWO(2, 18.0),

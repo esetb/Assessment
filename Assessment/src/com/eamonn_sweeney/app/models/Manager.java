@@ -12,6 +12,7 @@ import java.util.Objects;
  *
  */
 public class Manager extends Employee {
+	
 	private int numStaff;
 	private double salary;
 	private double bonus;

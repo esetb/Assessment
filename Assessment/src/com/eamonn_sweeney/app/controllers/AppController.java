@@ -14,10 +14,42 @@ import com.eamonn_sweeney.app.models.Employee;
  *
  */
 public class AppController {
+	
 	private ArrayList<Employee> employees;
 	private ArrayList<Department> departments;
 	
+	/**
+	 * 
+	 */
 	public void run() {
-		
+		doSetUp();
+		doMainLoop();
+		doTearDown();
 	}
+	
+	/**
+	 * 
+	 */
+	private void doSetUp() {
+		// load data - populate arraylists
+	}
+	
+	/**
+	 * 
+	 */
+	private void doMainLoop() {
+		// display menu
+		// get user choice
+		// call methods
+	}
+	
+	/**
+	 * 
+	 */
+	private void doTearDown() {
+		// write data
+		// close resources
+		// exit
+	}
+	
 }
