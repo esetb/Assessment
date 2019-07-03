@@ -13,6 +13,7 @@ import java.util.Objects;
  */
 public class Manager extends Employee {
 	
+	private static final long serialVersionUID = 4532872524230525657L;
 	private int numStaff;
 	private double salary;
 	private double bonus;

@@ -25,6 +25,7 @@ class EmployeeTest {
 	private Name name;
 	private int deptIdNum;
 	private LocalDate dateStarted;
+	private String phoneNum;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -35,7 +36,8 @@ class EmployeeTest {
 		name = new Name("Mr", "Eamonn", "Sweeney");
 		deptIdNum = 0;
 		dateStarted = LocalDate.of(2018, 9, 14);
-		emp = new Developer(idNum, name, deptIdNum, dateStarted, "0873904169");
+		phoneNum = "0873904169";
+		emp = new Developer(idNum, name, deptIdNum, dateStarted, phoneNum);
 	}
 
 	/**
@@ -105,7 +107,7 @@ class EmployeeTest {
 	@Test
 	void testSetPhoneNum() {
 		emp.setPhoneNum("0749561900");
-		assertTrue(emp.getPhoneNum().equals("0749561900"));
+		assertTrue(emp.getPhoneNum().equals(phoneNum));
 	}
 
 	/**
@@ -139,7 +141,7 @@ class EmployeeTest {
 	 */
 	@Test
 	void testEqualsObject() {
-		Employee emp2 = new Developer(idNum, name, deptIdNum, dateStarted, "0873904169");;
+		Employee emp2 = new Developer(idNum, name, deptIdNum, dateStarted, phoneNum);;
 		assertTrue(emp2.equals(emp));
 	}
 

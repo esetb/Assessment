@@ -26,6 +26,13 @@ public class AppController {
 	/**
 	 * 
 	 */
+	public void AppController() {
+		
+	}
+	
+	/**
+	 * 
+	 */
 	public void run() {
 		doSetUp();
 		doMainLoop();

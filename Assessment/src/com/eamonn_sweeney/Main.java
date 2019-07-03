@@ -142,7 +142,16 @@
  */
 package com.eamonn_sweeney;
 
+import java.io.File;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 import com.eamonn_sweeney.app.controller.AppController;
+import com.eamonn_sweeney.app.data.FileIO;
+import com.eamonn_sweeney.app.model.Developer;
+import com.eamonn_sweeney.app.model.Employee;
+import com.eamonn_sweeney.app.model.Manager;
+import com.eamonn_sweeney.app.model.Name;
 
 
 /**
@@ -154,6 +163,31 @@ public class Main {
 	public static void main(String[] args) {
 		AppController app = new AppController();
 		app.run();
+
+		ArrayList<Employee> employees = new ArrayList<>();
+		
+		Developer dev1 = new Developer(1, new Name("Mr", "Donald", "Duck"), 0, 
+				LocalDate.now(), "---");
+		Developer dev2 = new Developer(2, new Name("Mr", "Michael", "Mouse"), 0, 
+				LocalDate.now(), "---");
+		Manager man1 = new Manager(3, new Name("Ms", "Minnie", "Mouse"), 0, 
+				LocalDate.now(), "---", 4, 60000, .1);
+		
+		employees.add(dev1);
+		employees.add(dev2);
+		employees.add(man1);
+		
+		FileIO files = new FileIO();
+		File fileName = new File("/employees.dat");
+		files.writeArrayListToFile(employees, fileName);
+		
+		ArrayList<Employee> employees2 = new ArrayList<>();
+		employees2 = (ArrayList<Employee>) files.readArrayListFromFile(fileName);
+		
+		for (Employee emp : employees2) {
+			System.out.println(emp);
+		}
 	}
+	
 	
 }

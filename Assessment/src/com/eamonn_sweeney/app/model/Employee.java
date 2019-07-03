@@ -3,6 +3,7 @@
  */
 package com.eamonn_sweeney.app.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -11,8 +12,9 @@ import java.util.Objects;
  * @author Eamonn A. Sweeney
  *
  */
-public abstract class Employee {
+public abstract class Employee implements Serializable {
 	
+	protected static final long serialVersionUID = 6721678774293692883L;
 	protected int idNum;
 	protected Name name;
 	protected int deptIdNum;
