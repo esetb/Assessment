@@ -1,7 +1,7 @@
 /**
  * File Input/Output
  */
-package com.eamonn_sweeney.app.files;
+package com.eamonn_sweeney.app.data;
 
 import java.io.File;
 
