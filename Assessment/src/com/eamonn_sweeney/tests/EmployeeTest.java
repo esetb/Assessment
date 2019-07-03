@@ -34,7 +34,7 @@ class EmployeeTest {
 		name = new Name("Mr", "Eamonn", "Sweeney");
 		dept = new Department(1, "Development", 8);
 		dateStarted = LocalDate.of(2018, 9, 14);
-		emp = new Developer(1, name, dept, dateStarted, "0873904169", 4000.00);
+		emp = new Developer(name, dept, dateStarted, "0873904169", 4000.00);
 	}
 
 	/**
@@ -132,22 +132,13 @@ class EmployeeTest {
 	void testGetIdNum() {
 		assertEquals(1, emp.getIdNum());
 	}
-
-	/**
-	 * Test method for {@link com.eamonn_sweeney.Employee#setIdNum(int)}.
-	 */
-	@Test
-	void testSetIdNum() {
-		emp.setIdNum(42);
-		assertEquals(42, emp.getIdNum());
-	}
 	
 	/**
 	 * Test method for {@link com.eamonn_sweeney.Employee#equals(java.lang.Object)}.
 	 */
 	@Test
 	void testEqualsObject() {
-		Employee emp2 = new Developer(1, name, dept, dateStarted, "0873094169", 4000.00);
+		Employee emp2 = new Developer(name, dept, dateStarted, "0873094169", 4000.00);
 		assertTrue(emp2.equals(emp));
 	}
 

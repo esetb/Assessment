@@ -32,6 +32,8 @@ public class AppController {
 	 */
 	private void doSetUp() {
 		// load data - populate arraylists
+		// get highest Employee idNum and set static nextIdNum
+		// get highest Department idNum and set static nextIdNum
 	}
 	
 	/**

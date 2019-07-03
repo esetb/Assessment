@@ -13,6 +13,7 @@ import java.util.Objects;
  */
 public abstract class Employee {
 	
+	private static int nextIdNum;
 	protected int idNum;
 	protected Name name;
 	protected Department dept;
@@ -29,9 +30,10 @@ public abstract class Employee {
 	 * @param phoneNum
 	 * @param monthlyPay
 	 */
-	protected Employee(int idNum, Name name, Department dept, LocalDate dateStarted, 
+	protected Employee(Name name, Department dept, LocalDate dateStarted, 
 			String phoneNum, double monthlyPay) {
-		this.idNum = idNum;
+		this.idNum = nextIdNum;
+		nextIdNum++;
 		this.name = name;
 		this.dept = dept;
 		this.dateStarted = dateStarted;
@@ -39,6 +41,13 @@ public abstract class Employee {
 		this.monthlyPay = monthlyPay;
 	}
 
+	/**
+	 * @param nextIdNum the nextIdNum to set
+	 */
+	public static void setNextIdNum(int nextIdNum) {
+		Employee.nextIdNum = nextIdNum;
+	}
+	
 	/**
 	 * @return the name
 	 */
@@ -114,13 +123,6 @@ public abstract class Employee {
 	 */
 	public int getIdNum() {
 		return idNum;
-	}
-
-	/**
-	 * @param idNum the idNum to set
-	 */
-	public void setIdNum(int idNum) {
-		this.idNum = idNum;
 	}
 	
 	@Override
