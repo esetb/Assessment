@@ -42,6 +42,7 @@ public class Developer extends Employee {
 			return "" + levelNum;
 		}
 	}
+	
 	private Level level;
 	private double hourlyRate;
 	

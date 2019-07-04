@@ -1,7 +1,7 @@
 /**
- * com.eamonn_sweeney.Name Class Tests
+ * com.eamonn_sweeney.app.model.Name Class Tests
  */
-package com.eamonn_sweeney.tests;
+package com.eamonn_sweeney.tests.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,13 +17,19 @@ import com.eamonn_sweeney.app.model.Name;
 class NameTest {
 
 	private Name name;
+	private String title;
+	private String firstName;
+	private String lastName;
 	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
-		name = new Name("Mr", "Eamonn", "Sweeney");
+		title = "Mr";
+		firstName = "Eamonn";
+		lastName = "Sweeney";
+		name = new Name(title, firstName, lastName);
 	}
 
 	/**
@@ -31,7 +37,7 @@ class NameTest {
 	 */
 	@Test
 	void testGetTitle() {
-		assertTrue(name.getTitle().equals("Mr"));
+		assertTrue(name.getTitle().equals(title));
 	}
 
 	/**
@@ -48,7 +54,7 @@ class NameTest {
 	 */
 	@Test
 	void testGetFirstName() {
-		assertTrue(name.getFirstName().equals("Eamonn"));
+		assertTrue(name.getFirstName().equals(firstName));
 	}
 
 	/**
@@ -65,7 +71,7 @@ class NameTest {
 	 */
 	@Test
 	void testGetLastName() {
-		assertTrue(name.getLastName().equals("Sweeney"));
+		assertTrue(name.getLastName().equals(lastName));
 	}
 
 	/**
@@ -82,7 +88,7 @@ class NameTest {
 	 */
 	@Test
 	void testEqualsObject() {
-		Name name2 = new Name("Mr", "Eamonn", "Sweeney");
+		Name name2 = new Name(title, firstName, lastName);
 		assertTrue(name2.equals(name));
 	}
 

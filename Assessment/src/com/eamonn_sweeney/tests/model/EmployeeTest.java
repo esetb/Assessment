@@ -1,7 +1,7 @@
 /**
- * com.eamonn_sweeney.Employee Class Tests
+ * com.eamonn_sweeney.app.model.Employee Class Tests
  */
-package com.eamonn_sweeney.tests;
+package com.eamonn_sweeney.tests.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,7 +37,7 @@ class EmployeeTest {
 		deptIdNum = 0;
 		dateStarted = LocalDate.of(2018, 9, 14);
 		phoneNum = "0873904169";
-		emp = new Developer(idNum, name, deptIdNum, dateStarted, phoneNum);
+		emp = new Developer(idNum, name, deptIdNum, dateStarted, phoneNum, null);
 	}
 
 	/**
@@ -107,7 +107,7 @@ class EmployeeTest {
 	@Test
 	void testSetPhoneNum() {
 		emp.setPhoneNum("0749561900");
-		assertTrue(emp.getPhoneNum().equals(phoneNum));
+		assertTrue(emp.getPhoneNum().equals("0749561900"));
 	}
 
 	/**

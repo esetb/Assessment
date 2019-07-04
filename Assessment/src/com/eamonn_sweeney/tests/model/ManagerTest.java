@@ -1,16 +1,14 @@
 /**
- * com.eamonn_sweeney.Manager Class Tests
+ * com.eamonn_sweeney.app.model.Manager Class Tests
  */
-package com.eamonn_sweeney.tests;
+package com.eamonn_sweeney.tests.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import com.eamonn_sweeney.app.model.Manager;
-import com.eamonn_sweeney.app.model.Name;
 
 
 /**
@@ -32,8 +30,7 @@ class ManagerTest {
 		numStaff = 8;
 		salary = 60000.00;
 		bonus = .10;
-		man = new Manager(1, new Name("Mr", "Eamonn", "Sweeney"), 1, 
-				LocalDate.of(2018, 9, 14), "0873094169", numStaff, salary, bonus);
+		man = new Manager(0, null, 0, null, null, numStaff, salary, bonus);
 	}
 
 	/**

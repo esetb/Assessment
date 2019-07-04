@@ -1,7 +1,7 @@
 /**
- * com.eamonn_sweeney.Developer Class Tests
+ * com.eamonn_sweeney.app.model.Developer Class Tests
  */
-package com.eamonn_sweeney.tests;
+package com.eamonn_sweeney.tests.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
