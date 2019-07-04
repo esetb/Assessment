@@ -148,6 +148,7 @@ import java.util.ArrayList;
 
 import com.eamonn_sweeney.app.controller.AppController;
 import com.eamonn_sweeney.app.data.FileIO;
+import com.eamonn_sweeney.app.model.Department;
 import com.eamonn_sweeney.app.model.Developer;
 import com.eamonn_sweeney.app.model.Employee;
 import com.eamonn_sweeney.app.model.Manager;
@@ -165,26 +166,35 @@ public class Main {
 		app.run();
 
 		ArrayList<Employee> employees = new ArrayList<>();
-		
 		Developer dev1 = new Developer(1, new Name("Mr", "Donald", "Duck"), 0, 
 				LocalDate.now(), "---");
 		Developer dev2 = new Developer(2, new Name("Mr", "Michael", "Mouse"), 0, 
 				LocalDate.now(), "---");
 		Manager man1 = new Manager(3, new Name("Ms", "Minnie", "Mouse"), 0, 
 				LocalDate.now(), "---", 4, 60000, .1);
-		
 		employees.add(dev1);
 		employees.add(dev2);
 		employees.add(man1);
 		
+		ArrayList<Department> departments = new ArrayList<>();
+		departments.add(new Department(1, "DevOps", 2));
+		departments.add(new Department(2, "Development", 4));
+		departments.add(new Department(3, "HR", 8));
+		
 		FileIO files = new FileIO();
-		File fileName = new File("/employees.dat");
-		files.writeArrayListToFile(employees, fileName);
+		files.writeEmployeesToFile(employees);
+		files.writeDepartmentsToFile(departments);
 		
-		ArrayList<Employee> employees2 = files.loadEmployees();
-		
+		ArrayList<Employee> employees2 = files.readEmployeesFromFile();
 		for (Employee emp : employees2) {
 			System.out.println(emp);
+		}
+		
+		System.out.println();
+		
+		ArrayList<Department> departments2 = files.readDepartmentsFromFile();
+		for (Department dept : departments2) {
+			System.out.println(dept);
 		}
 	}
 	

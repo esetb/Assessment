@@ -3,6 +3,7 @@
  */
 package com.eamonn_sweeney.app.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 
@@ -10,8 +11,9 @@ import java.util.Objects;
  * @author Eamonn A. Sweeney
  *
  */
-public class Department {
+public class Department implements Serializable {
 	
+	private static final long serialVersionUID = 1928764860131292735L;
 	private int idNum;
 	private String name;
 	private int numEmployees;

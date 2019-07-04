@@ -12,20 +12,15 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import com.eamonn_sweeney.app.model.Department;
 import com.eamonn_sweeney.app.model.Employee;
-
-
-/* readArrayList(File filepath)
- * writeArrayList(ArrayList array, File filepath)
- * readFileAsString(File filePath)
- */
 
 /**
  * @author Eamonn A. Sweeney
  *
  */
 public class FileIO {
-	
+
 	private File dataDir;
 	private File employeesFile;
 	private File departmentsFile;
@@ -35,56 +30,84 @@ public class FileIO {
 	 * 
 	 */
 	public FileIO() {
-		this.dataDir = new File(System.getProperty("user.dir").concat(
-				"/src/com/eamonn_sweeney/app/data/files/"));
-		this.employeesFile = new File(dataDir + "employees.dat");
-		this.departmentsFile = new File(dataDir + "departments.dat");
-		this.helpFile = new File(dataDir + "help.txt");
+		setFilePaths(new File("src/com/eamonn_sweeney/app/data/files"));
 	}
-	
+
 	/**
 	 * @param dataDir
 	 */
 	public FileIO(File dataDir) {
-		this.dataDir = dataDir;
-		this.employeesFile = new File(dataDir + "employees.dat");
-		this.departmentsFile = new File(dataDir + "departments.dat");
-		this.helpFile = new File(dataDir + "help.txt");
+		setFilePaths(dataDir);
 	}
-	
-	/**
-	 * @return the dataDir
-	 */
-	public File getDataDir() {
-		return dataDir;
-	}
-	
+
 	/**
 	 * 
 	 */
-	public ArrayList<Employee> loadEmployees() {
-		ArrayList<?> employeesObject = readArrayListFromFile(employeesFile);
+	private void setFilePaths(File dataDir) {
+		this.dataDir = dataDir;
+		this.employeesFile = new File(this.dataDir + "/employees.dat");
+		this.departmentsFile = new File(this.dataDir + "/departments.dat");
+		this.helpFile = new File(this.dataDir + "/help.txt");
+	}
+
+	/**
+	 * 
+	 */
+	public ArrayList<Employee> readEmployeesFromFile() {
+		ArrayList<?> genericArrayListObject = readArrayListFromFile(employeesFile);
 		ArrayList<Employee> employees = new ArrayList<>();
-		for (Object obj : employeesObject) {
+		for (Object obj : genericArrayListObject) {
 			if (obj instanceof Employee) {
 				employees.add((Employee) obj);
 			}
 		}
 		return employees;
 	}
-	
+
 	/**
 	 * 
 	 */
-	public ArrayList<?> readArrayListFromFile(File fileName) {
-		File filePath = new File(getDataDir() + "/" + fileName);
+	public void writeEmployeesToFile(ArrayList<Employee> employees) {
+		writeArrayListToFile(employees, employeesFile);
+	}
+
+	/**
+	 * 
+	 */
+	public ArrayList<Department> readDepartmentsFromFile() {
+		ArrayList<?> genericArrayListObject = readArrayListFromFile(departmentsFile);
+		ArrayList<Department> departments = new ArrayList<>();
+		for (Object obj : genericArrayListObject) {
+			if (obj instanceof Department) {
+				departments.add((Department) obj);
+			}
+		}
+		return departments;
+	}
+
+	/**
+	 * 
+	 */
+	public void writeDepartmentsToFile(ArrayList<Department> departments) {
+		writeArrayListToFile(departments, departmentsFile);
+	}
+
+	/**
+	 * 
+	 */
+	public String readHelpFile() {
+		return "";
+	}
+
+	/**
+	 * 
+	 */
+	private ArrayList<?> readArrayListFromFile(File filePath) {
 		ArrayList<?> array = new ArrayList<>();
-		try { 
-			FileInputStream fin= new FileInputStream (filePath);
-			ObjectInputStream ois = new ObjectInputStream(fin);
+		try (FileInputStream fis = new FileInputStream(filePath); 
+				ObjectInputStream ois = new ObjectInputStream(fis);) {
 			array = (ArrayList<?>) ois.readObject();
-			fin.close();
-		} catch(FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			System.exit(0);
 		} catch (IOException e) {
@@ -92,21 +115,19 @@ public class FileIO {
 			System.exit(0);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			System.exit(0);
 		}
 		return array;
 	}
-	
+
 	/**
 	 * 
 	 */
-	public void writeArrayListToFile(ArrayList<?> array, File fileName) {
-		File filePath = new File(getDataDir() + "/" + fileName);
-		try { 
-			FileOutputStream fout= new FileOutputStream(filePath);
-			ObjectOutputStream oos = new ObjectOutputStream(fout);
+	private void writeArrayListToFile(ArrayList<?> array, File filePath) {
+		try (FileOutputStream fos = new FileOutputStream(filePath);
+				ObjectOutputStream oos = new ObjectOutputStream(fos);) {
 			oos.writeObject(array);
-			fout.close();
-		} catch(FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			System.exit(0);
 		} catch (IOException e) {
@@ -114,5 +135,5 @@ public class FileIO {
 			System.exit(0);
 		}
 	}
-	
+
 }
