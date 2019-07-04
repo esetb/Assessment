@@ -12,6 +12,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import com.eamonn_sweeney.app.model.Employee;
+
 
 /* readArrayList(File filepath)
  * writeArrayList(ArrayList array, File filepath)
@@ -25,13 +27,19 @@ import java.util.ArrayList;
 public class FileIO {
 	
 	private File dataDir;
+	private File employeesFile;
+	private File departmentsFile;
+	private File helpFile;
 
 	/**
 	 * 
 	 */
 	public FileIO() {
 		this.dataDir = new File(System.getProperty("user.dir").concat(
-				"/src/com/eamonn_sweeney/app/data/files"));
+				"/src/com/eamonn_sweeney/app/data/files/"));
+		this.employeesFile = new File(dataDir + "employees.dat");
+		this.departmentsFile = new File(dataDir + "departments.dat");
+		this.helpFile = new File(dataDir + "help.txt");
 	}
 	
 	/**
@@ -39,6 +47,9 @@ public class FileIO {
 	 */
 	public FileIO(File dataDir) {
 		this.dataDir = dataDir;
+		this.employeesFile = new File(dataDir + "employees.dat");
+		this.departmentsFile = new File(dataDir + "departments.dat");
+		this.helpFile = new File(dataDir + "help.txt");
 	}
 	
 	/**
@@ -46,6 +57,20 @@ public class FileIO {
 	 */
 	public File getDataDir() {
 		return dataDir;
+	}
+	
+	/**
+	 * 
+	 */
+	public ArrayList<Employee> loadEmployees() {
+		ArrayList<?> employeesObject = readArrayListFromFile(employeesFile);
+		ArrayList<Employee> employees = new ArrayList<>();
+		for (Object obj : employeesObject) {
+			if (obj instanceof Employee) {
+				employees.add((Employee) obj);
+			}
+		}
+		return employees;
 	}
 	
 	/**

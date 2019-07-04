@@ -181,8 +181,7 @@ public class Main {
 		File fileName = new File("/employees.dat");
 		files.writeArrayListToFile(employees, fileName);
 		
-		ArrayList<Employee> employees2 = new ArrayList<>();
-		employees2 = (ArrayList<Employee>) files.readArrayListFromFile(fileName);
+		ArrayList<Employee> employees2 = files.loadEmployees();
 		
 		for (Employee emp : employees2) {
 			System.out.println(emp);
