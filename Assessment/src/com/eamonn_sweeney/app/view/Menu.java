@@ -1,7 +1,7 @@
 /**
  * Menu Class - various static Menu display methods.
  */
-package com.eamonn_sweeney.app.views;
+package com.eamonn_sweeney.app.view;
 
 
 /**

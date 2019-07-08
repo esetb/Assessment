@@ -142,12 +142,11 @@
  */
 package com.eamonn_sweeney;
 
-import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import com.eamonn_sweeney.app.controller.AppController;
-import com.eamonn_sweeney.app.data.FileIO;
+import com.eamonn_sweeney.app.controller.Application;
+import com.eamonn_sweeney.app.controller.FileIO;
 import com.eamonn_sweeney.app.model.Department;
 import com.eamonn_sweeney.app.model.Developer;
 import com.eamonn_sweeney.app.model.Employee;
@@ -162,7 +161,7 @@ import com.eamonn_sweeney.app.model.Name;
 public class Main {
 	
 	public static void main(String[] args) {
-		AppController app = new AppController();
+		Application app = new Application();
 		app.run();
 
 		ArrayList<Employee> employees = new ArrayList<>();

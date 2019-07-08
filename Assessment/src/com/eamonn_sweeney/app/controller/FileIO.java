@@ -1,7 +1,7 @@
 /**
  * File Input/Output
  */
-package com.eamonn_sweeney.app.data;
+package com.eamonn_sweeney.app.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,7 +30,7 @@ public class FileIO {
 	 * 
 	 */
 	public FileIO() {
-		setFilePaths(new File("src/com/eamonn_sweeney/app/data/files"));
+		setFilePaths(new File("src/com/eamonn_sweeney/app/data"));
 	}
 
 	/**
