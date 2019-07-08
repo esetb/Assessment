@@ -1,5 +1,5 @@
 /**
- * Menu Class - various static Menu display methods.
+ * Menu Class
  */
 package com.eamonn_sweeney.app.view;
 

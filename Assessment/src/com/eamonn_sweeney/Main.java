@@ -195,6 +195,11 @@ public class Main {
 		for (Department dept : departments2) {
 			System.out.println(dept);
 		}
+		
+		System.out.println();
+		
+		String helpFile = files.readHelpFile();
+		System.out.println(helpFile);
 	}
 	
 	
