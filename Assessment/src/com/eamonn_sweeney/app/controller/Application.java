@@ -32,6 +32,7 @@ public class Application {
 	 */
 	public Application() {
 		this.files = new FileIO();
+		this.files.doIntegrityCheck();
 		this.employees = files.readEmployeesFromFile();
 		this.departments = files.readDepartmentsFromFile();
 		this.help = files.readHelpFile();
@@ -44,8 +45,7 @@ public class Application {
 	 */
 	public void run() {
 		doMainLoop();
-		files.writeEmployeesToFile(employees);
-		files.writeDepartmentsToFile(departments);
+		doSaveData();
 	}
 	
 	
@@ -56,42 +56,26 @@ public class Application {
 		// display menu
 		// get user choice
 		// switch choice and call methods
-		
-		ArrayList<Employee> employees = new ArrayList<>();
-		Developer dev1 = new Developer(1, new Name("Mr", "Donald", "Duck"), 0, 
-				LocalDate.now(), "---");
-		Developer dev2 = new Developer(2, new Name("Mr", "Michael", "Mouse"), 0, 
-				LocalDate.now(), "---");
-		Manager man1 = new Manager(3, new Name("Ms", "Minnie", "Mouse"), 0, 
-				LocalDate.now(), "---", 4, 60000, .1);
-		employees.add(dev1);
-		employees.add(dev2);
-		employees.add(man1);
-		
-		ArrayList<Department> departments = new ArrayList<>();
-		departments.add(new Department(1, "DevOps", 2));
-		departments.add(new Department(2, "Development", 4));
-		departments.add(new Department(312, "HR", 8));
-		
-		
-		files.writeEmployeesToFile(employees);
-		files.writeDepartmentsToFile(departments);
-		
-		System.out.println();
 		for (Employee emp : employees) {
 			System.out.println(emp);
 		}
-		
 		System.out.println();
+		
 		for (Department dept : departments) {
 			System.out.println(dept);
 		}
-		
-		System.out.println();
-		System.out.println(help);
-		
+		System.out.println("\n" + help);
+	
 		System.out.println("Next Employee ID = " + nextEmployeeIdNum);
 		System.out.println("Next Department ID = " + nextDepartmentIdNum);
+	}
+	
+	/**
+	 * 
+	 */
+	private void doSaveData() {
+		files.writeEmployeesToFile(employees);
+		files.writeDepartmentsToFile(departments);
 	}
 	
 	/**
