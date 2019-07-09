@@ -1,9 +1,11 @@
 /**
- * AppController - The Application Controller.
+ * Application - The Application Controller.
  */
 package com.eamonn_sweeney.app.controller;
 
 import java.util.ArrayList;
+
+import com.eamonn_sweeney.app.model.Application;
 import com.eamonn_sweeney.app.model.Department;
 import com.eamonn_sweeney.app.model.Developer;
 import com.eamonn_sweeney.app.model.Employee;
@@ -15,22 +17,23 @@ import com.eamonn_sweeney.app.view.Menu;
  * @author Eamonn A. Sweeney
  *
  */
-public class Application {
+public class ApplicationController {
 	
 	private ArrayList<Employee> employees;
 	private ArrayList<Department> departments;
 	private String help;
 	private int nextEmployeeIdNum;
 	private int nextDepartmentIdNum;
-	private FileIO files;
-	private ConsoleInput input;
+	private FileIOController files;
+	private ConsoleInputController input;
+	private Application app;
 	
 	/**
 	 * 
 	 */
-	public Application() {
-		this.input = new ConsoleInput();
-		this.files = new FileIO();
+	public ApplicationController() {
+		this.input = new ConsoleInputController();
+		this.files = new FileIOController();
 		this.files.doIntegrityCheck();
 		this.employees = files.readEmployeesFromFile();
 		this.departments = files.readDepartmentsFromFile();
@@ -51,13 +54,13 @@ public class Application {
 	 * 
 	 */
 	private void doMainMenu() {
-		int menuChoice = 0;
-		int exitChoice = 10;
+		int menuOption = 0;
+		boolean exitMenu = false;
 		
 		do {
 			Menu.displayMain();
-			menuChoice = input.getInteger("Please enter an integer between 1 and 10: ", 1, 10);
-			switch (menuChoice) {
+			menuOption = input.getInteger("Please enter a menu option #: ", 1, 10);
+			switch (menuOption) {
 			case 1:
 				listAllEmployees();
 				break;
@@ -85,10 +88,12 @@ public class Application {
 			case 9:
 				doSubMenuPayment();
 				break;
+			case 10:
+				exitMenu = true;
 			default:
 				break;
 			}
-		} while (menuChoice != exitChoice);
+		} while (!exitMenu);
 		
 		System.out.println("Goodbye!");
 	}

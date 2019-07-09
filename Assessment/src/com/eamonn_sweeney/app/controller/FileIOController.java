@@ -26,7 +26,7 @@ import com.eamonn_sweeney.app.model.Name;
  * @author Eamonn A. Sweeney
  *
  */
-public class FileIO {
+public class FileIOController {
 
 	private File dataDir;
 	private File employeesFile;
@@ -36,14 +36,14 @@ public class FileIO {
 	/**
 	 * 
 	 */
-	public FileIO() {
+	public FileIOController() {
 		setFilePaths(new File("src/com/eamonn_sweeney/app/data"));
 	}
 
 	/**
 	 * @param dataDir
 	 */
-	public FileIO(File dataDir) {
+	public FileIOController(File dataDir) {
 		setFilePaths(dataDir);
 	}
 

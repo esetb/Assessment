@@ -11,14 +11,14 @@ import java.util.Scanner;
  * @author Eamonn A. Sweeney
  *
  */
-public class ConsoleInput {
+public class ConsoleInputController {
 
 	private Scanner input;
 	
 	/**
 	 * 
 	 */
-	public ConsoleInput() {
+	public ConsoleInputController() {
 		this.input = new Scanner(System.in);
 	}
 	
@@ -38,8 +38,8 @@ public class ConsoleInput {
 		
 		do {
 			x = getIntegerInput(msg);
-			isValidInput = isNotLessThan(x, min); 
-		} while(!isValidInput);
+			isValidInput = isNotLessThan(min, x); 
+		} while (!isValidInput);
 		
 		return x;
 	}
@@ -53,8 +53,8 @@ public class ConsoleInput {
 		
 		do {
 			x = getIntegerInput(msg);
-			isValidInput = (isNotLessThan(x, min) && isNotGreaterThan(x, max));
-		} while(!isValidInput);
+			isValidInput = (isNotLessThan(min, x) && isNotGreaterThan(max, x));
+		} while (!isValidInput);
 		
 		return x;
 	}
@@ -75,8 +75,8 @@ public class ConsoleInput {
 		
 		do {
 			x = getDoubleInput(msg);
-			isValidInput = isNotLessThan(x, min); 
-		} while(!isValidInput);
+			isValidInput = isNotLessThan(min, x); 
+		} while (!isValidInput);
 		
 		return x;
 	}
@@ -90,8 +90,8 @@ public class ConsoleInput {
 		
 		do {
 			x = getDoubleInput(msg);
-			isValidInput = (isNotLessThan(x, min) && isNotGreaterThan(x, max));
-		} while(!isValidInput);
+			isValidInput = (isNotLessThan(min, x) && isNotGreaterThan(max, x));
+		} while (!isValidInput);
 		
 		return x;
 	}
@@ -112,7 +112,7 @@ public class ConsoleInput {
 				System.out.println("Input must be an integer.");
 				input.nextLine();
 			}
-		} while(!isValidInput);
+		} while (!isValidInput);
 		
 		return x;
 	}
@@ -133,7 +133,7 @@ public class ConsoleInput {
 				System.out.println("Input must be a decimal number.");
 				input.nextLine();
 			}
-		} while(!isValidInput);
+		} while (!isValidInput);
 		
 		return x;
 	}
@@ -141,12 +141,11 @@ public class ConsoleInput {
 	/**
 	 * 
 	 */
-	private boolean isNotLessThan(int x, int min) {
-		
+	private boolean isNotLessThan(int min, int x) {
 		if (x < min) {
 			System.out.println("Input cannot be less than " + min);
 			return false;
-		} 
+		}
 		
 		return true;
 	}
@@ -154,12 +153,11 @@ public class ConsoleInput {
 	/**
 	 * 
 	 */
-	private boolean isNotGreaterThan(int x, int max) {
-		
+	private boolean isNotGreaterThan(int max, int x) {
 		if (x > max) {
 			System.out.println("Input cannot be more than " + max);
 			return false;
-		} 
+		}
 		
 		return true;
 	}
@@ -167,8 +165,7 @@ public class ConsoleInput {
 	/**
 	 * 
 	 */
-	private boolean isNotLessThan(double x, double min) {
-		
+	private boolean isNotLessThan(double min, double x) {
 		if (x < min) {
 			System.out.println("Input cannot be less than " + min);
 			return false;
@@ -180,8 +177,7 @@ public class ConsoleInput {
 	/**
 	 * 
 	 */
-	private boolean isNotGreaterThan(double x, double max) {
-		
+	private boolean isNotGreaterThan(double max, double x) {
 		if (x > max) {
 			System.out.println("Input cannot be more than " + max);
 			return false;

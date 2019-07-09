@@ -142,7 +142,7 @@
  */
 package com.eamonn_sweeney;
 
-import com.eamonn_sweeney.app.controller.Application;
+import com.eamonn_sweeney.app.controller.ApplicationController;
 
 
 /**
@@ -152,7 +152,7 @@ import com.eamonn_sweeney.app.controller.Application;
 public class Main {
 	
 	public static void main(String[] args) {
-		Application app = new Application();
+		ApplicationController app = new ApplicationController();
 		app.run();
 	}
 	
