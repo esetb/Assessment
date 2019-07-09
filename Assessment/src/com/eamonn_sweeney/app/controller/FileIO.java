@@ -58,8 +58,8 @@ public class FileIO {
 	}
 
 	/**
-	 * Check if data files exists and if not generate some initial data.
-	 * File.length returns 0L if a file is empty or does not exist
+	 * Check if data files exists or if it is empty and if so generate some data.
+	 * File.length() returns 0L if a file is empty or does not exist
 	 */
 	public void doIntegrityCheck() {	
 		if (employeesFile.length() == 0) {
@@ -74,33 +74,30 @@ public class FileIO {
 	 * 
 	 */
 	private void generateInitialEmployeeData() {
-			ArrayList<Employee> emps = new ArrayList<>();
+		ArrayList<Employee> emps = new ArrayList<>();
 			
-			Developer dev1 = new Developer(1, new Name("Mr", "Donald", "Duck"), 
-					0, LocalDate.now(), "---");
-			Developer dev2 = new Developer(2, new Name("Mr", "Michael", "Mouse"), 
-					0, LocalDate.now(), "---", Level.TWO);
-			Manager man1 = new Manager(9, new Name("Ms", "Minnie", "Mouse"), 0, 
-					LocalDate.now(), "---", 4, 60000, .1);
-			Manager man2 = new Manager(22, new Name("Mr", "Pluto", "The Dog"), 0, 
-					LocalDate.now(), "---", 4, 60000, .1);
+		emps.add(new Developer(1, new Name("Mr", "Donald", "Duck"), 0, 
+					LocalDate.now(), "---"));
+		emps.add(new Developer(2, new Name("Mr", "Michael", "Mouse"), 0, 
+					LocalDate.now(), "---", Level.TWO));
+		emps.add(new Manager(3, new Name("Ms", "Minnie", "Mouse"), 0, 
+					LocalDate.now(), "---", 4, 60000, .1));
+		emps.add(new Manager(4, new Name("Mr", "Daffy", "Duck"), 0, 
+					LocalDate.now(), "---", 4, 60000, .1));
 			
-			emps.add(dev1);
-			emps.add(dev2);
-			emps.add(man1);
-			emps.add(man2);
-			
-			writeEmployeesToFile(emps);
+		writeEmployeesToFile(emps);
 	}
+	
 	/**
 	 * 
 	 */
 	private void generateInitialDepartmentData() {
 		ArrayList<Department> depts = new ArrayList<>();
 			
-		depts.add(new Department(1, "DevOps", 2));
-		depts.add(new Department(6, "Development", 4));
-		depts.add(new Department(9, "HR", 8));
+		depts.add(new Department(1, "Legal", 11));
+		depts.add(new Department(2, "HR", 12));
+		depts.add(new Department(3, "DevOps", 10));
+		depts.add(new Department(4, "Development", 8));
 		
 		writeDepartmentsToFile(depts);
 	}

@@ -3,15 +3,12 @@
  */
 package com.eamonn_sweeney.app.controller;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-
 import com.eamonn_sweeney.app.model.Department;
-import com.eamonn_sweeney.app.model.Employee;
-// temporary imports to populate arrays.
 import com.eamonn_sweeney.app.model.Developer;
+import com.eamonn_sweeney.app.model.Employee;
 import com.eamonn_sweeney.app.model.Manager;
-import com.eamonn_sweeney.app.model.Name;
+import com.eamonn_sweeney.app.view.Menu;
 
 
 /**
@@ -26,11 +23,13 @@ public class Application {
 	private int nextEmployeeIdNum;
 	private int nextDepartmentIdNum;
 	private FileIO files;
+	private ConsoleInput input;
 	
 	/**
 	 * 
 	 */
 	public Application() {
+		this.input = new ConsoleInput();
 		this.files = new FileIO();
 		this.files.doIntegrityCheck();
 		this.employees = files.readEmployeesFromFile();
@@ -44,32 +43,143 @@ public class Application {
 	 * 
 	 */
 	public void run() {
-		doMainLoop();
+		doMainMenu();
 		doSaveData();
 	}
-	
 	
 	/**
 	 * 
 	 */
-	private void doMainLoop() {
-		// display menu
-		// get user choice
-		// switch choice and call methods
-		for (Employee emp : employees) {
-			System.out.println(emp);
-		}
-		System.out.println();
+	private void doMainMenu() {
+		int menuChoice = 0;
+		int exitChoice = 10;
 		
-		for (Department dept : departments) {
-			System.out.println(dept);
-		}
-		System.out.println("\n" + help);
-	
-		System.out.println("Next Employee ID = " + nextEmployeeIdNum);
-		System.out.println("Next Department ID = " + nextDepartmentIdNum);
+		do {
+			Menu.displayMain();
+			menuChoice = input.getInteger("Please enter an integer between 1 and 10: ", 1, 10);
+			switch (menuChoice) {
+			case 1:
+				listAllEmployees();
+				break;
+			case 2:
+				addNewEmployee();
+				break;
+			case 3:
+				editEmployeeById();
+				break;
+			case 4:
+				deleteEmployeeById();
+				break;
+			case 5:
+				listAllManagers();
+				break;
+			case 6:
+				listAllDevelopers();
+				break;
+			case 7:
+				viewNumStaffInDepartment();
+				break;
+			case 8:
+				doSubMenuHolidayBooking();
+				break;
+			case 9:
+				doSubMenuPayment();
+				break;
+			default:
+				break;
+			}
+		} while (menuChoice != exitChoice);
+		
+		System.out.println("Goodbye!");
 	}
 	
+	/**
+	 * 
+	 */
+	private void listAllEmployees() {
+		for (Employee e : employees) {
+			System.out.println(e);
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	private void addNewEmployee() {
+		System.out.println("addNewEmployee() called.");
+	}
+	
+	/**
+	 * 
+	 */
+	private void addNewDeveloper() {
+		
+	}
+	
+	/**
+	 * 
+	 */
+	private void addNewManager() {
+
+	}
+	
+	/**
+	 * 
+	 */
+	private void editEmployeeById() {
+		System.out.println("editEmployeeById() called.");
+	}
+	
+	/**
+	 * 
+	 */
+	private void deleteEmployeeById() {
+		System.out.println("deleteEmployeeById() called.");
+	}
+	
+	/**
+	 * 
+	 */
+	private void listAllDevelopers() {
+		for (Employee e : employees) {
+			if (e instanceof Developer) {
+				System.out.println(e);
+			}
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	private void listAllManagers() {
+		for (Employee e : employees) {
+			if (e instanceof Manager) {
+				System.out.println(e);
+			}
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	private void viewNumStaffInDepartment() {
+		System.out.println("viewNumStaffInDepartment() called.");
+	}
+	
+	/**
+	 * 
+	 */
+	private void doSubMenuHolidayBooking() {
+		System.out.println("doSubMenuHolidayBooking() called.");
+	}
+	
+	/**
+	 * 
+	 */
+	private void doSubMenuPayment() {
+		System.out.println("doSubMenuPayment() called.");
+	}
+
 	/**
 	 * 
 	 */

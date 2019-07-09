@@ -12,16 +12,16 @@ public class Menu {
 
 	public static void displayMain() {
 		System.out.println("*** Main Menu ***"
-				+ "1. List all Employees" 
-				+ "2. Add a new Employee" 
-				+ "3. Edit an Employee by id"
-				+ "4. Delete an Employee by id" 
-				+ "5. View all Managers" 
-				+ "6. View all Developers"
-				+ "7. View number of staff within a department" 
-				+ "8. Sub-Menu holiday booking" 
-				+ "9. Sub-Menu payment"
-				+ "10. Exit Menu"
+				+ "\n1. List all Employees" 
+				+ "\n2. Add a new Employee" 
+				+ "\n3. Edit an Employee by id"
+				+ "\n4. Delete an Employee by id" 
+				+ "\n5. View all Managers" 
+				+ "\n6. View all Developers"
+				+ "\n7. View number of staff within a department" 
+				+ "\n8. Sub-Menu holiday booking" 
+				+ "\n9. Sub-Menu payment"
+				+ "\n10. Exit Menu"
 				);
 	}
 	
