@@ -10,7 +10,10 @@ package com.eamonn_sweeney.app.view;
  */
 public class Menu {
 
-	public static void displayMain() {
+	/**
+	 * 
+	 */
+	public static void displayMainMenu() {
 		System.out.println("*** Main Menu ***"
 				+ "\n1. List all Employees" 
 				+ "\n2. Add a new Employee" 
@@ -25,12 +28,25 @@ public class Menu {
 				);
 	}
 	
-	public static void displayHolidayBooking() {
-		
+	/**
+	 * 
+	 */
+	public static void displayAddNewEmployeeMenu() {
+		System.out.println();
+	}
+	
+	/**
+	 * 
+	 */
+	public static void displayHolidayBookingMenu() {
+		System.out.println();
 	}
 
-	public static void displayPayment() {
-
+	/**
+	 * 
+	 */
+	public static void displayPaymentMenu() {
+		System.out.println();
 	}
 	
 }

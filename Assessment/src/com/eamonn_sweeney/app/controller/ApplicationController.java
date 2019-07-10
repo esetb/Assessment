@@ -5,7 +5,6 @@ package com.eamonn_sweeney.app.controller;
 
 import java.util.ArrayList;
 
-import com.eamonn_sweeney.app.model.Application;
 import com.eamonn_sweeney.app.model.Department;
 import com.eamonn_sweeney.app.model.Developer;
 import com.eamonn_sweeney.app.model.Employee;
@@ -26,7 +25,6 @@ public class ApplicationController {
 	private int nextDepartmentIdNum;
 	private FileIOController files;
 	private ConsoleInputController input;
-	private Application app;
 	
 	/**
 	 * 
@@ -58,7 +56,7 @@ public class ApplicationController {
 		boolean exitMenu = false;
 		
 		do {
-			Menu.displayMain();
+			Menu.displayMainMenu();
 			menuOption = input.getInteger("Please enter a menu option #: ", 1, 10);
 			switch (menuOption) {
 			case 1:
