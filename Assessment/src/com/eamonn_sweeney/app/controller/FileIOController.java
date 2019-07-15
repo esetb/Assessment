@@ -6,7 +6,6 @@ package com.eamonn_sweeney.app.controller;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -22,9 +21,10 @@ import com.eamonn_sweeney.app.model.Employee;
 import com.eamonn_sweeney.app.model.Manager;
 import com.eamonn_sweeney.app.model.Name;
 
+
 /**
  * @author Eamonn A. Sweeney
- *
+ * 
  */
 public class FileIOController {
 
@@ -58,10 +58,10 @@ public class FileIOController {
 	}
 
 	/**
-	 * Check if data files exists or if it is empty and if so generate some data.
-	 * File.length() returns 0L if a file is empty or does not exist
+	 * Check if data files exist or if they are empty and if so generate some data.
 	 */
-	public void doIntegrityCheck() {	
+	public void doIntegrityCheck() {
+		// File.length() returns 0L if a file is empty or does not exist.
 		if (employeesFile.length() == 0) {
 			generateInitialEmployeeData();
 		}	
@@ -74,32 +74,32 @@ public class FileIOController {
 	 * 
 	 */
 	private void generateInitialEmployeeData() {
-		ArrayList<Employee> emps = new ArrayList<>();
+		ArrayList<Employee> employees = new ArrayList<>();
 			
-		emps.add(new Developer(1, new Name("Mr", "Donald", "Duck"), 0, 
+		employees.add(new Developer(1, new Name("Mr", "Donald", "Duck"), 0, 
 					LocalDate.now(), "---"));
-		emps.add(new Developer(2, new Name("Mr", "Michael", "Mouse"), 0, 
+		employees.add(new Developer(2, new Name("Mr", "Michael", "Mouse"), 0, 
 					LocalDate.now(), "---", Level.TWO));
-		emps.add(new Manager(3, new Name("Ms", "Minnie", "Mouse"), 0, 
+		employees.add(new Manager(3, new Name("Ms", "Minnie", "Mouse"), 0, 
 					LocalDate.now(), "---", 4, 60000, .1));
-		emps.add(new Manager(4, new Name("Mr", "Daffy", "Duck"), 0, 
+		employees.add(new Manager(4, new Name("Mr", "Daffy", "Duck"), 0, 
 					LocalDate.now(), "---", 4, 60000, .1));
 			
-		writeEmployeesToFile(emps);
+		writeEmployeesToFile(employees);
 	}
 	
 	/**
 	 * 
 	 */
 	private void generateInitialDepartmentData() {
-		ArrayList<Department> depts = new ArrayList<>();
+		ArrayList<Department> departments = new ArrayList<>();
 			
-		depts.add(new Department(1, "Legal", 11));
-		depts.add(new Department(2, "HR", 12));
-		depts.add(new Department(3, "DevOps", 10));
-		depts.add(new Department(4, "Development", 8));
+		departments.add(new Department(1, "Legal", 11));
+		departments.add(new Department(2, "HR", 12));
+		departments.add(new Department(3, "DevOps", 10));
+		departments.add(new Department(4, "Development", 8));
 		
-		writeDepartmentsToFile(depts);
+		writeDepartmentsToFile(departments);
 	}
 	
 	/**
@@ -108,7 +108,7 @@ public class FileIOController {
 	public ArrayList<Employee> readEmployeesFromFile() {
 		ArrayList<?> genericArrayListObject = readArrayListFromFile(employeesFile);
 		ArrayList<Employee> employees = new ArrayList<>();
-		
+	
 		for (Object obj : genericArrayListObject) {
 			if (obj instanceof Employee) {
 				employees.add((Employee) obj);
@@ -164,10 +164,7 @@ public class FileIOController {
 		    while ((line = reader.readLine()) != null) {
 		    	help += (line + "\n");
 		    }
-		} catch(FileNotFoundException e) {
-			e.printStackTrace();
-			System.exit(0);
-        } catch (IOException e) {
+		} catch (IOException e) {
         	e.printStackTrace();
 			System.exit(0);
 		}
@@ -184,13 +181,7 @@ public class FileIOController {
 		try (FileInputStream fis = new FileInputStream(filePath); 
 				ObjectInputStream ois = new ObjectInputStream(fis);) {
 			array = (ArrayList<?>) ois.readObject();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			System.exit(0);
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(0);
-		} catch (ClassNotFoundException e) {
+		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 			System.exit(0);
 		}
@@ -205,9 +196,6 @@ public class FileIOController {
 		try (FileOutputStream fos = new FileOutputStream(filePath);
 				ObjectOutputStream oos = new ObjectOutputStream(fos);) {
 			oos.writeObject(array);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			System.exit(0);
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(0);

@@ -15,6 +15,10 @@ import java.util.Objects;
 public abstract class Employee implements Serializable {
 	
 	protected static final long serialVersionUID = 6721678774293692883L;
+	public enum Role {
+		MANAGER,
+		DEVELOPER
+	}
 	protected int idNum;
 	protected Name name;
 	protected int deptIdNum;

@@ -25,6 +25,13 @@ public class ConsoleInputController {
 	/**
 	 * 
 	 */
+	public void close() {
+		input.close();
+	}
+	
+	/**
+	 * 
+	 */
 	public int getInteger(String msg) {
 			return getIntegerInput(msg);
 	}

@@ -25,6 +25,7 @@ public class ApplicationController {
 	private int nextDepartmentIdNum;
 	private FileIOController files;
 	private ConsoleInputController input;
+	int menuOption = 0;
 	
 	/**
 	 * 
@@ -52,7 +53,6 @@ public class ApplicationController {
 	 * 
 	 */
 	private void doMainMenu() {
-		int menuOption = 0;
 		boolean exitMenu = false;
 		
 		do {
@@ -93,6 +93,7 @@ public class ApplicationController {
 			}
 		} while (!exitMenu);
 		
+		input.close();
 		System.out.println("Goodbye!");
 	}
 	
@@ -109,21 +110,47 @@ public class ApplicationController {
 	 * 
 	 */
 	private void addNewEmployee() {
-		System.out.println("addNewEmployee() called.");
+		Employee emp = null;
+		
+		Menu.displayNewEmployeeMenu();
+		menuOption = input.getInteger("Please enter a menu option #: ", 1, 3);
+		switch (menuOption) {
+		case 1:
+			emp = createNewManager();
+			break;
+		case 2:
+			emp = createNewDeveloper();
+			break;
+		case 3:
+			return;
+		}
+		
+		employees.add(emp);
+		nextEmployeeIdNum++;
 	}
 	
 	/**
 	 * 
 	 */
-	private void addNewDeveloper() {
+	private void inputEmployeeData(Employee e) {
+		
 		
 	}
 	
 	/**
 	 * 
 	 */
-	private void addNewManager() {
-
+	private Manager createNewManager() {
+		
+		return null;
+	}
+	
+	/**
+	 * 
+	 */
+	private Developer createNewDeveloper() {
+		
+		return null;
 	}
 	
 	/**

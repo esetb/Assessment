@@ -31,8 +31,13 @@ public class Menu {
 	/**
 	 * 
 	 */
-	public static void displayAddNewEmployeeMenu() {
-		System.out.println();
+	public static void displayNewEmployeeMenu() {
+		System.out.println("\n" 
+				+ "*** Add Employee ***" 
+				+ "\n1. Add a Manager" 
+				+ "\n2. Add a Developer."
+				+ "\n3. Return to Main Menu."
+				);
 	}
 	
 	/**
