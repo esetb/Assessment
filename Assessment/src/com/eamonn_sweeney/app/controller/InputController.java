@@ -1,5 +1,5 @@
 /**
- * 
+ * InputController
  */
 package com.eamonn_sweeney.app.controller;
 
@@ -11,14 +11,14 @@ import java.util.Scanner;
  * @author Eamonn A. Sweeney
  *
  */
-public class ConsoleInputController {
+public class InputController {
 
 	private Scanner input;
 	
 	/**
 	 * 
 	 */
-	public ConsoleInputController() {
+	public InputController() {
 		this.input = new Scanner(System.in);
 	}
 	

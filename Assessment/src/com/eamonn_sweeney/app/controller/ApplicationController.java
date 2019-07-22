@@ -1,5 +1,5 @@
 /**
- * Application - The Application Controller.
+ * ApplicationController
  */
 package com.eamonn_sweeney.app.controller;
 
@@ -24,14 +24,14 @@ public class ApplicationController {
 	private int nextEmployeeIdNum;
 	private int nextDepartmentIdNum;
 	private FileIOController files;
-	private ConsoleInputController input;
+	private InputController input;
 	int menuOption = 0;
 	
 	/**
 	 * 
 	 */
 	public ApplicationController() {
-		this.input = new ConsoleInputController();
+		this.input = new InputController();
 		this.files = new FileIOController();
 		this.files.doIntegrityCheck();
 		this.employees = files.readEmployeesFromFile();
