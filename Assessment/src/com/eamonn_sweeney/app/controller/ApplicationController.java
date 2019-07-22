@@ -33,7 +33,7 @@ public class ApplicationController {
 	public ApplicationController() {
 		this.input = new InputController();
 		this.files = new FileIOController();
-		this.files.doIntegrityCheck();
+		this.files.checkDataExists();
 		this.employees = files.readEmployeesFromFile();
 		this.departments = files.readDepartmentsFromFile();
 		this.help = files.readHelpFile();
@@ -45,14 +45,14 @@ public class ApplicationController {
 	 * 
 	 */
 	public void run() {
-		doMainMenu();
-		doSaveData();
+		mainMenu();
+		saveData();
 	}
 	
 	/**
 	 * 
 	 */
-	private void doMainMenu() {
+	private void mainMenu() {
 		boolean exitMenu = false;
 		
 		do {
@@ -128,29 +128,30 @@ public class ApplicationController {
 		employees.add(emp);
 		nextEmployeeIdNum++;
 	}
-	
-	/**
-	 * 
-	 */
-	private void inputEmployeeData(Employee e) {
 		
-		
-	}
-	
 	/**
 	 * 
 	 */
 	private Manager createNewManager() {
-		
-		return null;
+		EmployeeController ec = new EmployeeController(input);
+		ec.inputData();
+		ManagerController mc = new ManagerController(input);
+		mc.inputData();
+		return new Manager(nextEmployeeIdNum, ec.getName(), ec.getDeptIdNum(),
+				ec.getDateStarted(), ec.getPhoneNum(), mc.getNumStaff(),
+				mc.getSalary(), mc.getBonus);
 	}
 	
 	/**
 	 * 
 	 */
 	private Developer createNewDeveloper() {
-		
-		return null;
+		EmployeeController ec = new EmployeeController(input);
+		ec.inputData();
+		DeveloperController dc = new DeveloperController(input);
+		dc.inputData();
+		return new Developer(nextEmployeeIdNum, ec.getName(), ec.getDeptIdNum(),
+				ec.getDateStarted(), ec.getPhoneNum(), dc.getLevel());
 	}
 	
 	/**
@@ -213,7 +214,7 @@ public class ApplicationController {
 	/**
 	 * 
 	 */
-	private void doSaveData() {
+	private void saveData() {
 		files.writeEmployeesToFile(employees);
 		files.writeDepartmentsToFile(departments);
 	}

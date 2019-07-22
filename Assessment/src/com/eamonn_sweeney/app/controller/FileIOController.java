@@ -60,7 +60,7 @@ public class FileIOController {
 	/**
 	 * Check if data files exist or if they are empty and if so generate some data.
 	 */
-	public void doIntegrityCheck() {
+	public void checkDataExists() {
 		// File.length() returns 0L if a file is empty or does not exist.
 		if (employeesFile.length() == 0) {
 			generateInitialEmployeeData();
@@ -77,7 +77,7 @@ public class FileIOController {
 		ArrayList<Employee> employees = new ArrayList<>();
 			
 		employees.add(new Developer(1, new Name("Mr", "Donald", "Duck"), 0, 
-					LocalDate.now(), "---"));
+					LocalDate.now(), "---", Level.ONE));
 		employees.add(new Developer(2, new Name("Mr", "Michael", "Mouse"), 0, 
 					LocalDate.now(), "---", Level.TWO));
 		employees.add(new Manager(3, new Name("Ms", "Minnie", "Mouse"), 0, 

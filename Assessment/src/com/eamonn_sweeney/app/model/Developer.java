@@ -51,25 +51,11 @@ public class Developer extends Employee {
 	 * @param deptIdNum
 	 * @param dateStarted
 	 * @param phoneNum
-	 */
-	public Developer(int idNum, Name name, int deptIdNum, LocalDate dateStarted, 
-			String phoneNum) {
-		super(idNum, name, deptIdNum, dateStarted, phoneNum, 0);
-		this.level = Level.ONE;
-		this.hourlyRate = level.hourlyRate;
-		this.monthlyPay = hourlyRate * 35 * 4;
-	}
-	
-	/**
-	 * @param name
-	 * @param deptIdNum
-	 * @param dateStarted
-	 * @param phoneNum
 	 * @param level
 	 */
 	public Developer(int idNum, Name name, int deptIdNum, LocalDate dateStarted, 
 			String phoneNum, Level level) {
-		super(idNum, name, deptIdNum, dateStarted, phoneNum, 0);
+		super(idNum, name, deptIdNum, dateStarted, phoneNum);
 		this.level = level;
 		this.hourlyRate = level.hourlyRate;
 		this.monthlyPay = hourlyRate * 35 * 4;
