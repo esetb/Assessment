@@ -1,7 +1,7 @@
 /**
  * Menu Class - various static methods to display the applications menu's.
  */
-package com.eamonn_sweeney.app.view;
+package com.eamonn_sweeney.app.views;
 
 
 /**
@@ -13,7 +13,7 @@ public class Menu {
 	/**
 	 * 
 	 */
-	public static void displayMainMenu() {
+	public static void displayMain() {
 		System.out.println("*** Main Menu ***"
 				+ "\n1. List all Employees" 
 				+ "\n2. Add a new Employee" 
@@ -31,7 +31,7 @@ public class Menu {
 	/**
 	 * 
 	 */
-	public static void displayNewEmployeeMenu() {
+	public static void displayAddNewEmployee() {
 		System.out.println("\n" 
 				+ "*** Add Employee ***" 
 				+ "\n1. Add a Manager" 
@@ -43,14 +43,14 @@ public class Menu {
 	/**
 	 * 
 	 */
-	public static void displayHolidayBookingMenu() {
+	public static void displayHolidayBooking() {
 		System.out.println();
 	}
 
 	/**
 	 * 
 	 */
-	public static void displayPaymentMenu() {
+	public static void displayPayment() {
 		System.out.println();
 	}
 	

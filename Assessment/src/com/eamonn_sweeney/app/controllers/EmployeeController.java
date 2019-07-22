@@ -1,31 +1,22 @@
 /**
  * 
  */
-package com.eamonn_sweeney.app.controller;
+package com.eamonn_sweeney.app.controllers;
 
 import java.time.LocalDate;
 
-import com.eamonn_sweeney.app.model.Name;
+import com.eamonn_sweeney.app.models.Name;
 
 /**
  * @author Eamonn A. Sweeney
  *
  */
-public class EmployeeController {
+public abstract class EmployeeController {
 
-	private InputController input;
-	private Name name;
-	private int deptIdNum; 
-	private LocalDate dateStarted;
-	private String phoneNum;
-	
-	/**
-	 * 
-	 * @param input
-	 */
-	public EmployeeController(InputController input) {
-		this.input = input;
-	}
+	protected Name name;
+	protected int deptIdNum; 
+	protected LocalDate dateStarted;
+	protected String phoneNum;
 
 	/**
 	 * 
@@ -36,37 +27,33 @@ public class EmployeeController {
 		inputDateStarted();
 		inputPhoneNum();
 	}
-
+	
 	/**
 	 * 
 	 */
-	private void inputName() {
-		
-		
+	public void inputName() {
+			
 	}
 
 	/**
 	 * 
 	 */
-	private void inputDeptIdNum() {
-		
-		
+	public void inputDeptIdNum() {
+			
 	}
 	
 	/**
 	 * 
 	 */
-	private void inputDateStarted() {
-		
-		
+	public void inputDateStarted() {
+			
 	}
 	
 	/**
 	 * 
 	 */
-	private void inputPhoneNum() {
-		
-		
+	public void inputPhoneNum() {
+			
 	}
 	
 	/**

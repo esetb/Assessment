@@ -1,31 +1,30 @@
 /**
  * 
  */
-package com.eamonn_sweeney.app.controller;
+package com.eamonn_sweeney.app.controllers;
+
+import com.eamonn_sweeney.app.models.Manager;
 
 /**
  * @author Eamonn A. Sweeney
  *
  */
-public class ManagerController {
+public class ManagerController extends EmployeeController {
 	
-	InputController input;
 	private int numStaff;
 	private double salary;
 	private double bonus;
-	
-	/**
-	 * 
-	 * @param input
-	 */
-	public ManagerController(InputController input) {
-		this.input = input;
-	}
 
+	public Manager createNewManager(int idNum) {
+		return new Manager(idNum, name, deptIdNum, dateStarted, phoneNum
+				, numStaff, salary, bonus);
+	}
+	
 	/**
 	 * 
 	 */
 	public void inputData() {
+		super.inputData();
 		inputNumStaff();
 		inputSalary();
 		inputBonus();

@@ -1,7 +1,7 @@
 /**
- * InputController
+ * Input static methods
  */
-package com.eamonn_sweeney.app.controller;
+package com.eamonn_sweeney.app.helpers;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -11,35 +11,28 @@ import java.util.Scanner;
  * @author Eamonn A. Sweeney
  *
  */
-public class InputController {
+public class Input {
 
-	private Scanner input;
+	private static Scanner input = new Scanner(System.in);
 	
 	/**
 	 * 
 	 */
-	public InputController() {
-		this.input = new Scanner(System.in);
-	}
-	
-	/**
-	 * 
-	 */
-	public void close() {
+	public static void close() {
 		input.close();
 	}
 	
 	/**
 	 * 
 	 */
-	public int getInteger(String msg) {
-			return getIntegerInput(msg);
+	public static int getInteger(String msg) {
+		return getIntegerInput(msg);
 	}
 	
 	/**
 	 * 
 	 */
-	public int getInteger(String msg, int min) {
+	public static int getInteger(String msg, int min) {
 		boolean isValidInput = false;
 		int x = 0;
 		
@@ -54,7 +47,7 @@ public class InputController {
 	/**
 	 * 
 	 */
-	public int getInteger(String msg, int min, int max) {
+	public static int getInteger(String msg, int min, int max) {
 		boolean isValidInput = false;
 		int x = 0;
 		
@@ -69,14 +62,14 @@ public class InputController {
 	/**
 	 * 
 	 */
-	public double getDouble(String msg) {
+	public static double getDouble(String msg) {
 			return getDoubleInput(msg);
 	}
 	
 	/**
 	 * 
 	 */
-	public double getDouble(String msg, double min) {
+	public static double getDouble(String msg, double min) {
 		boolean isValidInput = false;
 		double x = 0;
 		
@@ -91,7 +84,7 @@ public class InputController {
 	/**
 	 * 
 	 */
-	public double getDouble(String msg, double min, double max) {
+	public static double getDouble(String msg, double min, double max) {
 		boolean isValidInput = false;
 		double x = 0;
 		
@@ -106,7 +99,7 @@ public class InputController {
 	/**
 	 * 
 	 */
-	private int getIntegerInput(String msg) {
+	private static int getIntegerInput(String msg) {
 		boolean isValidInput = false;
 		int x = 0;
 		
@@ -127,7 +120,7 @@ public class InputController {
 	/**
 	 * 
 	 */
-	private double getDoubleInput(String msg) {
+	private static double getDoubleInput(String msg) {
 		boolean isValidInput = false;
 		double x = 0;
 		
@@ -148,7 +141,7 @@ public class InputController {
 	/**
 	 * 
 	 */
-	private boolean isNotLessThan(int min, int x) {
+	private static boolean isNotLessThan(int min, int x) {
 		if (x < min) {
 			System.out.println("Input cannot be less than " + min);
 			return false;
@@ -160,7 +153,7 @@ public class InputController {
 	/**
 	 * 
 	 */
-	private boolean isNotGreaterThan(int max, int x) {
+	private static boolean isNotGreaterThan(int max, int x) {
 		if (x > max) {
 			System.out.println("Input cannot be more than " + max);
 			return false;
@@ -172,7 +165,7 @@ public class InputController {
 	/**
 	 * 
 	 */
-	private boolean isNotLessThan(double min, double x) {
+	private static boolean isNotLessThan(double min, double x) {
 		if (x < min) {
 			System.out.println("Input cannot be less than " + min);
 			return false;
@@ -184,7 +177,7 @@ public class InputController {
 	/**
 	 * 
 	 */
-	private boolean isNotGreaterThan(double max, double x) {
+	private static boolean isNotGreaterThan(double max, double x) {
 		if (x > max) {
 			System.out.println("Input cannot be more than " + max);
 			return false;

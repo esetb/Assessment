@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.eamonn_sweeney.app.model;
+package com.eamonn_sweeney.app.models;
 
 import java.time.LocalDate;
 
