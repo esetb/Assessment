@@ -1,13 +1,13 @@
 /**
  * com.eamonn_sweeney.app.model.Department Class Tests
  */
-package com.eamonn_sweeney.tests.model;
+package com.eamonn_sweeney.tests.models;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.eamonn_sweeney.app.model.Department;
+import com.eamonn_sweeney.app.models.Department;
 
 /**
  * @author Eamonn A. Sweeney

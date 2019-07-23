@@ -1,5 +1,5 @@
 /**
- * Input static methods
+ * Console Input static methods
  */
 package com.eamonn_sweeney.app.helpers;
 

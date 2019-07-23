@@ -1,7 +1,7 @@
 /**
  * com.eamonn_sweeney.app.model.Employee Class Tests
  */
-package com.eamonn_sweeney.tests.model;
+package com.eamonn_sweeney.tests.models;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,9 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import com.eamonn_sweeney.app.model.Employee;
-import com.eamonn_sweeney.app.model.Name;
-import com.eamonn_sweeney.app.model.Developer;
+import com.eamonn_sweeney.app.models.Employee;
+import com.eamonn_sweeney.app.models.Name;
+import com.eamonn_sweeney.app.models.Developer;
 
 
 /**
@@ -141,7 +141,8 @@ class EmployeeTest {
 	 */
 	@Test
 	void testEqualsObject() {
-		Employee emp2 = new Developer(idNum, name, deptIdNum, dateStarted, phoneNum);;
+		Employee emp2 = new Developer(idNum, name, deptIdNum, dateStarted, 
+				phoneNum, Developer.Level.ONE);;
 		assertTrue(emp2.equals(emp));
 	}
 
