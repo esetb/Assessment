@@ -13,7 +13,6 @@ import com.eamonn_sweeney.app.models.Developer;
 import com.eamonn_sweeney.app.models.Employee;
 import com.eamonn_sweeney.app.models.Manager;
 import com.eamonn_sweeney.app.models.Name;
-import com.eamonn_sweeney.app.models.Developer.Level;
 import com.eamonn_sweeney.app.views.Menu;
 
 /**
@@ -34,13 +33,12 @@ public class EmployeesController {
 		this.dataFile = new File("src/com/eamonn_sweeney/app/data/employees.dat");
 		this.employees = loadData();
 		this.nextIdNum = getHighestIdNum();
-		
 	}
 	
 	/**
 	 * 
 	 */
-	public void addNewEmployee() {
+	public void addNew() {
 		Employee emp = null;
 		
 		Menu.displayAddNewEmployee();
@@ -94,7 +92,14 @@ public class EmployeesController {
 	/**
 	 * 
 	 */
-	public void deleteById(int idNum) {
+	public void editById() {
+		
+	}
+	
+	/**
+	 * 
+	 */
+	public void deleteById() {
 		
 	}
 	
@@ -135,9 +140,9 @@ public class EmployeesController {
 		// File.length() returns 0L if a file is empty or does not exist.
 		if (dataFile.length() == 0) {
 			employees.add(new Developer(1, new Name("Mr", "Donald", "Duck"), 
-					0, LocalDate.of(2010, 1, 25), "---", Level.ONE));
+					0, LocalDate.of(2010, 1, 25), "---", Developer.Level.ONE));
 			employees.add(new Developer(2, new Name("Mr", "Michael", "Mouse"),
-					0, LocalDate.of(2010, 1, 25), "---", Level.TWO));
+					0, LocalDate.of(2010, 1, 25), "---", Developer.Level.TWO));
 			employees.add(new Manager(3, new Name("Ms", "Minnie", "Mouse"), 
 					0, LocalDate.of(2010, 1, 25), "---", 4, 60000, .1));
 			employees.add(new Manager(4, new Name("Mr", "Daffy", "Duck"), 

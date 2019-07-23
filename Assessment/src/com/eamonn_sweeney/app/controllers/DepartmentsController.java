@@ -51,6 +51,7 @@ public class DepartmentsController {
 	private ArrayList<Department> loadData() {
 		ArrayList<Department> departments = new ArrayList<>();
 		
+		// File.length() returns 0L if a file is empty or does not exist.
 		if (dataFile.length() == 0) {
 			departments.add(new Department(1, "DevOps", 8));
 			departments.add(new Department(2, "Development", 4));

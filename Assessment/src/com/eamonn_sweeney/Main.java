@@ -142,7 +142,8 @@
  */
 package com.eamonn_sweeney;
 
-import com.eamonn_sweeney.app.controller.ApplicationController;
+import com.eamonn_sweeney.app.controllers.ApplicationController;
+import com.eamonn_sweeney.app.helpers.Input;
 
 
 /**
@@ -151,9 +152,21 @@ import com.eamonn_sweeney.app.controller.ApplicationController;
  */
 public class Main {
 	
+	/**
+	 * The Application Entry Point
+	 */
 	public static void main(String[] args) {
-		ApplicationController app = new ApplicationController();
-		app.run();
+		
+		try {
+			ApplicationController app = new ApplicationController();
+			app.run();
+		} catch (Exception e) {
+			System.out.println("Unhandled Exception: " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			Input.close();
+		}
+		
 	}
 	
 }

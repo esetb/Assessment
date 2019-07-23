@@ -19,7 +19,9 @@ public class Input {
 	 * 
 	 */
 	public static void close() {
-		input.close();
+		if (input != null) {
+			input.close();
+		}
 	}
 	
 	/**
@@ -110,7 +112,7 @@ public class Input {
 				isValidInput = true;
 			} catch(InputMismatchException e) {
 				System.out.println("Input must be an integer.");
-				input.nextLine();
+				input.nextLine(); // flush remaining buffer '\n'
 			}
 		} while (!isValidInput);
 		
@@ -131,7 +133,7 @@ public class Input {
 				isValidInput = true;
 			} catch(InputMismatchException e) {
 				System.out.println("Input must be a decimal number.");
-				input.nextLine();
+				input.nextLine(); // flush remaining buffer '\n'
 			}
 		} while (!isValidInput);
 		

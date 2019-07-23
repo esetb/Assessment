@@ -13,8 +13,8 @@ import com.eamonn_sweeney.app.views.Menu;
  */
 public class ApplicationController {
 	
-	private EmployeesController employeesController;
-	private DepartmentsController deptsCtrl;
+	private EmployeesController empCtrl;
+	private DepartmentsController departmentsController;
 
 	private int menuOption = 0;
 	
@@ -22,7 +22,7 @@ public class ApplicationController {
 	 * 
 	 */
 	public ApplicationController() {
-		this.employeesController = new EmployeesController();
+		this.empCtrl = new EmployeesController();
 	}
 	
 	/**
@@ -31,7 +31,6 @@ public class ApplicationController {
 	public void run() {
 		mainMenu();
 		saveData();
-		cleanUp();
 	}	
 	
 	/**
@@ -45,22 +44,22 @@ public class ApplicationController {
 			menuOption = Input.getInteger("Please enter a menu option #: ", 1, 10);
 			switch (menuOption) {
 			case 1:
-				employeesController.listAll();
+				empCtrl.listAll();
 				break;
 			case 2:
-				//addNewEmployee();
+				empCtrl.addNew();
 				break;
 			case 3:
-				//editEmployeeById();
+				empCtrl.editById();
 				break;
 			case 4:
-				//deleteEmployeeById();
+				empCtrl.deleteById();
 				break;
 			case 5:
-				employeesController.listAllManagers();
+				empCtrl.listAllManagers();
 				break;
 			case 6:
-				employeesController.listAllDevelopers();
+				empCtrl.listAllDevelopers();
 				break;
 			case 7:
 				//viewNumStaffInDepartment();
@@ -85,14 +84,7 @@ public class ApplicationController {
 	 * 
 	 */
 	private void saveData() {
-		employeesController.saveData();
-	}
-	
-	/**
-	 * 
-	 */
-	private void cleanUp() {
-		Input.close();
+		empCtrl.saveData();
 	}
 	
 }
