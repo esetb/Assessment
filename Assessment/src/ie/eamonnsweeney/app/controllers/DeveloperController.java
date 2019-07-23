@@ -5,6 +5,7 @@ package ie.eamonnsweeney.app.controllers;
 
 import ie.eamonnsweeney.app.models.Developer;
 
+
 /**
  * @author Eamonn A. Sweeney
  *
@@ -17,16 +18,11 @@ public class DeveloperController extends EmployeeController {
 	 *
 	 */
 	public Developer createNewDeveloper(int idNum) {
-		return new Developer(idNum, name, deptIdNum, dateStarted, phoneNum
-				, level);
-	}
-	
-	/**
-	 * 
-	 */
-	public void inputData() {
 		super.inputData();
 		this.inputLevel();
+		return new Developer(idNum, super.getName(), super.getDeptIdNum()
+				, super.getDateStarted(), super.getPhoneNum()
+				, this.level);
 	}
 
 	/**
@@ -34,13 +30,6 @@ public class DeveloperController extends EmployeeController {
 	 */
 	public void inputLevel() {
 		
-	}
-
-	/**
-	 * @return the level
-	 */
-	public Developer.Level getLevel() {
-		return this.level;
 	}
 	
 }

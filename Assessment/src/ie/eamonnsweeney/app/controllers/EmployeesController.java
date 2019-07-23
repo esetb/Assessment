@@ -126,9 +126,9 @@ public class EmployeesController {
 	 */
 	private Developer addNewDeveloper() {
 		DeveloperController dc = new DeveloperController();
-		dc.inputData();
+		Developer developer = dc.createNewDeveloper(nextIdNum);
 		
-		return dc.createNewDeveloper(nextIdNum);
+		return developer;
 	}
 	
 	/**

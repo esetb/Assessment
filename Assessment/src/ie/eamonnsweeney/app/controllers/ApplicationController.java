@@ -41,25 +41,25 @@ public class ApplicationController {
 		
 		do {
 			Menu.displayMain();
-			this.menuOption = Input.getInteger("Please enter a menu option #: ", 1, 10);
-			switch (this.menuOption) {
+			menuOption = Input.getInteger("Please enter a menu option #: ", 1, 10);
+			switch (menuOption) {
 			case 1:
-				this.empCtrl.listAll();
+				empCtrl.listAll();
 				break;
 			case 2:
-				this.empCtrl.addNew();
+				empCtrl.addNew();
 				break;
 			case 3:
-				this.empCtrl.editById();
+				empCtrl.editById();
 				break;
 			case 4:
-				this.empCtrl.deleteById();
+				empCtrl.deleteById();
 				break;
 			case 5:
-				this.empCtrl.listAllManagers();
+				empCtrl.listAllManagers();
 				break;
 			case 6:
-				this.empCtrl.listAllDevelopers();
+				empCtrl.listAllDevelopers();
 				break;
 			case 7:
 				//viewNumStaffInDepartment();
@@ -84,7 +84,7 @@ public class ApplicationController {
 	 * 
 	 */
 	private void saveData() {
-		this.empCtrl.saveData();
+		empCtrl.saveData();
 	}
 	
 }

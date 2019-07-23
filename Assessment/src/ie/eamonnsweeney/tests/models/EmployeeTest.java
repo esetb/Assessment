@@ -111,24 +111,6 @@ class EmployeeTest {
 	}
 
 	/**
-	 * Test method for {@link ie.eamonnsweeney.Employee#getMonthlyPay()}.
-	 */
-	@Test
-	void testGetMonthlyPay() {
-		Developer dev = (Developer) emp;
-		assertEquals((dev.getHourlyRate() * 35 * 4), emp.getMonthlyPay());
-	}
-
-	/**
-	 * Test method for {@link ie.eamonnsweeney.Employee#setMonthlyPay(double)}.
-	 */
-	@Test
-	void testSetMonthlyPay() {
-		emp.setMonthlyPay(6000.00);
-		assertEquals(6000.00, emp.getMonthlyPay());
-	}
-
-	/**
 	 * Test method for {@link ie.eamonnsweeney.Employee#getIdNum()}.
 	 */
 	@Test

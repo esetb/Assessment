@@ -6,7 +6,6 @@ package ie.eamonnsweeney.app.models;
 import java.time.LocalDate;
 import java.util.Objects;
 
-
 /**
  * @author Eamonn A. Sweeney
  *
@@ -31,20 +30,18 @@ public class Developer extends Employee {
 		}
 		
 		/**
-		 * @return the hourlyRate
+		 * 
 		 */
 		public double getHourlyRate() {
-			return hourlyRate;
-		}	
+			return this.hourlyRate;
+		}
 		
 		@Override
 		public String toString() {
-			return "" + levelNum;
+			return "" + this.levelNum;
 		}
 	}
-	
 	private Level level;
-	private double hourlyRate;
 	
 	/**
 	 * @param name
@@ -57,8 +54,7 @@ public class Developer extends Employee {
 			String phoneNum, Level level) {
 		super(idNum, name, deptIdNum, dateStarted, phoneNum);
 		this.level = level;
-		this.hourlyRate = level.hourlyRate;
-		this.monthlyPay = hourlyRate * 35 * 4;
+		this.monthlyPay = (level.getHourlyRate() * 35 * 4);
 	}
 	
 	/**
@@ -71,28 +67,18 @@ public class Developer extends Employee {
 	/**
 	 * @param level the level to set
 	 */
-	public void setLevel(Level level) {
+	public void setLevel(Developer.Level level) {
 		this.level = level;
-		this.hourlyRate = level.hourlyRate;
-	}
-
-	/**
-	 * @return the hourlyRate
-	 */
-	public double getHourlyRate() {
-		return hourlyRate;
 	}
 
 	@Override
 	public String toString() {
-		return "Developer [idNum=" + idNum 
-				+ ", name=" + name
-				+ ", dept=" + deptIdNum 
-				+ ", dateStarted=" + dateStarted 
-				+ ", phoneNum=" + phoneNum 
-				+ ", monthlyPay=" + monthlyPay 
-				+ ", level=" + level
-				+ ", hourlyRate=" + hourlyRate
+		return "Developer [idNum=" + this.idNum 
+				+ ", name=" + this.name
+				+ ", dept=" + this.deptIdNum 
+				+ ", dateStarted=" + this.dateStarted 
+				+ ", phoneNum=" + this.phoneNum  
+				+ ", level=" + this.level
 				+ "]";
 	}
 
@@ -100,7 +86,7 @@ public class Developer extends Employee {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(hourlyRate, level);
+		result = prime * result + Objects.hash(level);
 		return result;
 	}
 
@@ -113,8 +99,7 @@ public class Developer extends Employee {
 		if (!(obj instanceof Developer))
 			return false;
 		Developer other = (Developer) obj;
-		return Double.doubleToLongBits(hourlyRate) == Double.doubleToLongBits(other.hourlyRate) 
-				&& level == other.level;
+		return level == other.level;
 	}
 	
 }

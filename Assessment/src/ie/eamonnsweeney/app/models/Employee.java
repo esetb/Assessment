@@ -114,13 +114,13 @@ public abstract class Employee implements Serializable {
 	public int getIdNum() {
 		return idNum;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Employee [idNum=" + idNum 
 				+ ", name=" + name 
-				+ ", deptIdNum=" + deptIdNum
-				+ ", dateStarted=" + dateStarted
+				+ ", deptIdNum=" + deptIdNum 
+				+ ", dateStarted=" + dateStarted 
 				+ ", phoneNum=" + phoneNum 
 				+ ", monthlyPay=" + monthlyPay 
 				+ "]";
@@ -147,7 +147,5 @@ public abstract class Employee implements Serializable {
 				&& Objects.equals(name, other.name) 
 				&& Objects.equals(phoneNum, other.phoneNum);
 	}
-
-	
 	
 }
