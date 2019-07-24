@@ -14,7 +14,8 @@ public class Menu {
 	 * 
 	 */
 	public static void displayMain() {
-		System.out.println("*** Main Menu ***"
+		System.out.println("\n" 
+				+ "*** Main Menu ***"
 				+ "\n1. List all Employees" 
 				+ "\n2. Add a new Employee" 
 				+ "\n3. Edit an Employee by id"

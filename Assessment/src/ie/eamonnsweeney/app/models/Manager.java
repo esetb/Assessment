@@ -82,16 +82,18 @@ public class Manager extends Employee {
 
 	@Override
 	public String toString() {
-		return "Manager [idNum=" + idNum
-				+ ", name=" + name 
-				+ ", dept=" + deptIdNum 
-				+ ", dateStarted=" + dateStarted 
-				+ ", phoneNum=" + phoneNum
-				+ ", monthlyPay=" + monthlyPay 
-				+ ", numStaff=" + numStaff 
-				+ ", salary=" + salary 
-				+ ", bonus=" + bonus 
-				+ "]";
+		return "" 
+				+ name.getTitle() 
+				+ " " + name.getFirstName() 
+				+ " " + name.getLastName() 
+				+ ", ID: " + idNum 
+				+ ", Department: " + deptIdNum 
+				+ ", Date Started: " + dateStarted 
+				+ ", Phone: " + phoneNum   
+				+ ", Staff Managed: " + numStaff 
+				+ ", Salary: " + String.format("%.2f", salary) 
+				+ ", Bonus: " + String.format("%.2f%%", (bonus * 100))
+				+ ".";
 	}
 
 	@Override

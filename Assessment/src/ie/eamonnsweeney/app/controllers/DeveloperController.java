@@ -30,7 +30,7 @@ public class DeveloperController extends EmployeeController {
 	 */
 	public void inputLevel() {
 		int max = Level.values().length;
-		int level = Input.getInteger("Dev level (1-" + max + "): ");
+		int level = Input.getInteger("Dev level (1-" + max + "): ", 1, max);
 		this.level = Level.values()[level - 1];
 	}
 	

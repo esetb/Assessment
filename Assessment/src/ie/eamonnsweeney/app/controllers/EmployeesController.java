@@ -15,6 +15,7 @@ import ie.eamonnsweeney.app.models.Manager;
 import ie.eamonnsweeney.app.models.Name;
 import ie.eamonnsweeney.app.views.Menu;
 
+
 /**
  * @author Eamonn A. Sweeney
  *
@@ -30,9 +31,9 @@ public class EmployeesController {
 	 * 
 	 */
 	public EmployeesController() {
-		this.dataFile = new File("src/com/eamonn_sweeney/app/data/employees.dat");
+		this.dataFile = new File("src/ie/eamonnsweeney/app/data/employees.dat");
 		this.employees = loadData();
-		this.nextIdNum = getHighestIdNum();
+		this.nextIdNum = (getHighestIdNum() + 1);
 	}
 	
 	/**
@@ -56,14 +57,16 @@ public class EmployeesController {
 		
 		employees.add(emp);
 		nextIdNum++;
-		System.out.println("Employee added.");
+		System.out.println("Employee added.\n");
 	}
 	
 	/**
 	 * 
 	 */
 	public void listAll() {
+		System.out.println("\n*** Employees ***");
 		for (Employee e : employees) {
+			System.out.print(((e instanceof Manager) ? "Manager" : "Developer") + ": ");
 			System.out.println(e);
 		}
 	}
@@ -72,6 +75,7 @@ public class EmployeesController {
 	 * 
 	 */
 	public void listAllManagers() {
+		System.out.println("\n*** Managers ***");
 		for (Employee e : employees) {
 			if (e instanceof Manager) {
 				System.out.println(e);
@@ -83,6 +87,7 @@ public class EmployeesController {
 	 * 
 	 */
 	public void listAllDevelopers() {
+		System.out.println("\n*** Developers ***");
 		for (Employee e : employees) {
 			if (e instanceof Developer) {
 				System.out.println(e);
@@ -101,7 +106,22 @@ public class EmployeesController {
 	 * 
 	 */
 	public void deleteById() {
+		int max = (nextIdNum - 1);
+		int id = Input.getInteger("Employee ID to delete (1-" + max + "): ", 1, max);
+		boolean deletionOccurred = false;
 		
+		for (Employee e : employees) {
+			if (e.getIdNum() == id) {
+				employees.remove(e);
+				System.out.println("Employee with ID: " + id + ", deleted successfully.");
+				deletionOccurred = true;
+				break;
+			}
+		}
+		
+		if (!deletionOccurred) {
+			System.out.println("Employee ID: " + id + " does not exist.");
+		}
 	}
 	
 	/**
@@ -140,13 +160,13 @@ public class EmployeesController {
 		// File.length() returns 0L if a file is empty or does not exist.
 		if (dataFile.length() == 0) {
 			employees.add(new Developer(1, new Name("Mr", "Donald", "Duck"), 
-					0, LocalDate.of(2010, 1, 25), "---", Developer.Level.ONE));
+					1, LocalDate.of(2012, 4, 1), "5551234567", Developer.Level.ONE));
 			employees.add(new Developer(2, new Name("Mr", "Michael", "Mouse"),
-					0, LocalDate.of(2010, 1, 25), "---", Developer.Level.TWO));
+					3, LocalDate.of(2014, 2, 28), "5551234568", Developer.Level.TWO));
 			employees.add(new Manager(3, new Name("Ms", "Minnie", "Mouse"), 
-					0, LocalDate.of(2010, 1, 25), "---", 4, 60000, .1));
+					2, LocalDate.of(2013, 7, 25), "5551234569", 6, 50000, .1));
 			employees.add(new Manager(4, new Name("Mr", "Daffy", "Duck"), 
-					0, LocalDate.of(2010, 1, 25), "---", 4, 60000, .1));
+					1, LocalDate.of(2017, 1, 12), "5551234560", 10, 60000, .155));
 		} else {
 			employees = readDataFromFile();
 		}

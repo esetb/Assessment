@@ -33,12 +33,12 @@ public class Developer extends Employee {
 		 * 
 		 */
 		public double getHourlyRate() {
-			return this.hourlyRate;
+			return hourlyRate;
 		}
 		
 		@Override
 		public String toString() {
-			return "" + this.levelNum;
+			return "" + levelNum;
 		}
 	}
 	private Level level;
@@ -73,13 +73,17 @@ public class Developer extends Employee {
 
 	@Override
 	public String toString() {
-		return "Developer [idNum=" + this.idNum 
-				+ ", name=" + this.name
-				+ ", dept=" + this.deptIdNum 
-				+ ", dateStarted=" + this.dateStarted 
-				+ ", phoneNum=" + this.phoneNum  
-				+ ", level=" + this.level
-				+ "]";
+		return "" 
+				+ name.getTitle() 
+				+ " " + name.getFirstName() 
+				+ " " + name.getLastName() 
+				+ ", ID: " + idNum 
+				+ ", Department: " + deptIdNum 
+				+ ", Date Started: " + dateStarted 
+				+ ", Phone: " + phoneNum  
+				+ ", Level: " + level
+				+ ", Hourly Rate: " + level.getHourlyRate()
+				+ ".";
 	}
 
 	@Override
