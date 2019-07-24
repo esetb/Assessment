@@ -25,9 +25,8 @@ public class ManagerController extends EmployeeController {
 		this.inputNumStaff();
 		this.inputSalary();
 		this.inputBonus();
-		return new Manager(idNum, super.getName(), super.getDeptIdNum()
-				, super.getDateStarted(), super.getPhoneNum()
-				, this.numStaff, this.salary, this.bonus);
+		return new Manager(idNum, getName(), getDeptIdNum(), getDateStarted()
+				, getPhoneNum(), this.numStaff, this.salary, this.bonus);
 	}
 
 	/**

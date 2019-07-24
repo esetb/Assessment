@@ -14,37 +14,37 @@ import ie.eamonnsweeney.app.models.Name;
  */
 public abstract class EmployeeController {
 
-	protected Name name;
-	protected int deptIdNum; 
-	protected LocalDate dateStarted;
-	protected String phoneNum;
+	private Name name;
+	private int deptIdNum; 
+	private LocalDate dateStarted;
+	private String phoneNum;
 
 	/**
 	 * @return the name
 	 */
 	protected Name getName() {
-		return this.name;
+		return name;
 	}
 
 	/**
 	 * @return the deptIdNum
 	 */
 	protected int getDeptIdNum() {
-		return this.deptIdNum;
+		return deptIdNum;
 	}
 
 	/**
 	 * @return the dateStarted
 	 */
 	protected LocalDate getDateStarted() {
-		return this.dateStarted;
+		return dateStarted;
 	}
 
 	/**
 	 * @return the phoneNum
 	 */
 	protected String getPhoneNum() {
-		return this.phoneNum;
+		return phoneNum;
 	}
 	
 	/**

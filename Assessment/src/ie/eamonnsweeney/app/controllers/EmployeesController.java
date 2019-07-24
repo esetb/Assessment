@@ -42,7 +42,7 @@ public class EmployeesController {
 		Employee emp = null;
 		
 		Menu.displayAddNewEmployee();
-		menuOption = Input.getInteger("Please enter a menu option #: ", 1, 3);
+		menuOption = Input.getInteger("Please enter a menu option (1-3): ", 1, 3);
 		switch (menuOption) {
 		case 1:
 			emp = addNewManager();
