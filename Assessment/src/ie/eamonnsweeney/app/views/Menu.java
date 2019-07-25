@@ -40,13 +40,6 @@ public class Menu {
 				+ "\n3. Return to Main Menu."
 				);
 	}
-	
-	/**
-	 * 
-	 */
-	public static void displayHolidayBooking() {
-		System.out.println();
-	}
 
 	/**
 	 * 
