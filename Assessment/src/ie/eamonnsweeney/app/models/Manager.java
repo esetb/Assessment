@@ -17,7 +17,7 @@ public class Manager extends Employee {
 	private int numStaff;
 	private double salary;
 	private double bonus;
-
+	
 	/**
 	 * @param idNum
 	 * @param name

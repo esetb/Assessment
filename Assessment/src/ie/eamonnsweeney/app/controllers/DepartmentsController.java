@@ -19,7 +19,6 @@ public class DepartmentsController {
 	private File dataFile;
 	private ArrayList<Department> departments;
 	private int nextIdNum;
-	private int menuOption;
 	
 	/**
 	 * 

@@ -6,6 +6,7 @@ package ie.eamonnsweeney.app.controllers;
 import ie.eamonnsweeney.app.helpers.Input;
 import ie.eamonnsweeney.app.models.Developer;
 import ie.eamonnsweeney.app.models.Developer.Level;
+import ie.eamonnsweeney.app.models.Employee;
 
 /**
  * @author Eamonn A. Sweeney
@@ -13,25 +14,50 @@ import ie.eamonnsweeney.app.models.Developer.Level;
  */
 public class DeveloperController extends EmployeeController {
 	
-	private Level level;
-
+	private Developer developer;
+	
 	/**
-	 *
+	 * 
 	 */
-	public Developer createNewDeveloper(int idNum) {
-		super.inputData();
-		this.inputLevel();
-		return new Developer(idNum, getName(), getDeptIdNum(), getDateStarted()
-				, getPhoneNum(), this.level);
+	public DeveloperController(int idNum) {
+		super((Employee) new Developer(idNum, null, 0, null, null, null));
+		this.developer = (Developer) getEmployee();
+	}
+	
+	/**
+	 * 
+	 */
+	public DeveloperController(Employee employee) {
+		super(employee);
+		this.developer = (Developer) employee;
+	}
+	
+	/**
+	 * 
+	 */
+	public Developer createNewDeveloper() {
+		inputName();
+		inputDeptIdNum();
+		inputDateStarted();
+		inputPhoneNum();
+		inputLevel();
+		return developer;
 	}
 
 	/**
 	 * 
 	 */
-	public void inputLevel() {
+	public void edit() {
+		
+	}
+	
+	/**
+	 * 
+	 */
+	private void inputLevel() {
 		int max = Level.values().length;
 		int level = Input.getInteger("Dev level (1-" + max + "): ", 1, max);
-		this.level = Level.values()[level - 1];
+		this.developer.setLevel(Level.values()[level - 1]);
 	}
 	
 }

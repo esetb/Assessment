@@ -61,7 +61,7 @@ public class EmployeesController {
 		
 		employees.add(emp);
 		nextIdNum++;
-		System.out.println("Employee added.\n");
+		System.out.println("Employee added.");
 	}
 	
 	/**
@@ -104,7 +104,27 @@ public class EmployeesController {
 	 * 
 	 */
 	public void editById() {
+		int max = (nextIdNum - 1);
+		int id = Input.getInteger("Employee ID to edit (1-" + max + "): ", 1, max);
+		boolean idFound = false;
 		
+		for (Employee e : employees) {
+			if (e.getIdNum() == id) {
+				if (e instanceof Manager) {
+					ManagerController mc = new ManagerController(e);
+					mc.edit();
+				} else {
+					DeveloperController dc = new DeveloperController(e);
+					dc.edit();
+				}
+				idFound = true;
+				break;
+			}
+		}
+		
+		if (!idFound) {
+			System.out.println("Employee ID: " + id + " does not exist.");
+		}
 	}
 	
 	/**
@@ -113,18 +133,18 @@ public class EmployeesController {
 	public void deleteById() {
 		int max = (nextIdNum - 1);
 		int id = Input.getInteger("Employee ID to delete (1-" + max + "): ", 1, max);
-		boolean deletionOccurred = false;
+		boolean idFound = false;
 		
 		for (Employee e : employees) {
 			if (e.getIdNum() == id) {
 				employees.remove(e);
 				System.out.println("Employee with ID: " + id + ", deleted successfully.");
-				deletionOccurred = true;
+				idFound = true;
 				break;
 			}
 		}
 		
-		if (!deletionOccurred) {
+		if (!idFound) {
 			System.out.println("Employee ID: " + id + " does not exist.");
 		}
 	}
@@ -140,20 +160,16 @@ public class EmployeesController {
 	 * 
 	 */
 	private Manager addNewManager() {
-		ManagerController mc = new ManagerController();
-		Manager manager = mc.createNewManager(nextIdNum);
-		
-		return manager;
+		ManagerController mc = new ManagerController(nextIdNum);
+		return mc.createNewManager();
 	}
 	
 	/**
 	 * 
 	 */
 	private Developer addNewDeveloper() {
-		DeveloperController dc = new DeveloperController();
-		Developer developer = dc.createNewDeveloper(nextIdNum);
-		
-		return developer;
+		DeveloperController dc = new DeveloperController(nextIdNum);
+		return dc.createNewDeveloper();
 	}
 	
 	/**

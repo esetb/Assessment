@@ -4,6 +4,7 @@
 package ie.eamonnsweeney.app.controllers;
 
 import ie.eamonnsweeney.app.helpers.Input;
+import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
 
 
@@ -13,56 +14,68 @@ import ie.eamonnsweeney.app.models.Manager;
  */
 public class ManagerController extends EmployeeController {
 	
-	private int numStaff;
-	private double salary;
-	private double bonus;
+	private Manager manager;
 
 	/**
 	 * 
 	 */
-	public Manager createNewManager(int idNum) {
-		super.inputData();
-		this.inputNumStaff();
-		this.inputSalary();
-		this.inputBonus();
-		return new Manager(idNum, getName(), getDeptIdNum(), getDateStarted()
-				, getPhoneNum(), this.numStaff, this.salary, this.bonus);
+	public ManagerController(int idNum) {
+		super((Employee) new Manager(idNum, null, 0, null, null, 0, 0.0, 0.0));
+		this.manager = (Manager) getEmployee();
 	}
 
 	/**
 	 * 
 	 */
+	public ManagerController(Employee employee) {
+		super(employee);
+		this.manager = (Manager) employee;
+	}
+	
+	/**
+	 * 
+	 */
+	public Manager createNewManager() {
+		inputName();
+		inputDeptIdNum();
+		inputDateStarted();
+		inputPhoneNum();
+		inputNumStaff();
+		inputSalary();
+		inputBonus();
+		return manager;
+	}
+
+	/**
+	 * 
+	 */
+	public void edit() {
+		
+		
+	}
+	
+	/**
+	 * 
+	 */
 	private void inputNumStaff() {
-		this.numStaff = Input.getInteger("Number of Staff (1-14): ", 1, 14);
+		int numStaff = Input.getInteger("Number of Staff (1-14): ", 1, 14);
+		this.manager.setNumStaff(numStaff);
 	}
 	
 	/**
 	 * 
 	 */
 	private void inputSalary() {
-		this.salary = Input.getDouble("Salary (25000-65000): ", 25000, 65000);
+		double salary = Input.getDouble("Salary (25000-65000): ", 25000, 65000);
+		this.manager.setSalary(salary);
 	}
 	
 	/**
 	 * 
 	 */
 	private void inputBonus() {
-		this.bonus = Input.getDouble("Bonus % (0.0-1.0): ", 0.0, 1.0);
+		double bonus = Input.getDouble("Bonus % (0.0-1.0): ", 0.0, 1.0);
+		this.manager.setBonus(bonus);
 	}
 	
-	/*
-	System.out.println("\n" 
-				+ "*** Edit Employee ***" 
-				+ "\n1. Title" 
-				+ "\n2. First Name"
-				+ "\n3. Last Name"
-				+ "\n4. Dept ID"
-				+ "\n5. Date Started"
-				+ "\n6. Phone #"
-				+ "\n7. Number of Staff"
-				+ "\n8. Salary"
-				+ "\n9. Bonus %"
-				+ "\n10. Return to Main Menu."
-				);
-	 */
 }
