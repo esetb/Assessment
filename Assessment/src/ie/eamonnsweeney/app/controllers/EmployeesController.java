@@ -13,7 +13,6 @@ import ie.eamonnsweeney.app.models.Developer;
 import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
 import ie.eamonnsweeney.app.models.Name;
-import ie.eamonnsweeney.app.views.Menu;
 
 
 /**
@@ -25,7 +24,6 @@ public class EmployeesController {
 	private File dataFile;
 	private ArrayList<Employee> employees;
 	private int nextIdNum;
-	private int menuOption;
 	
 	/**
 	 * 
@@ -41,8 +39,14 @@ public class EmployeesController {
 	 */
 	public void addNew() {
 		Employee emp = null;
+		int menuOption = 0;
 		
-		Menu.displayAddNewEmployee();
+		System.out.println("\n" 
+				+ "*** Add Employee ***" 
+				+ "\n1. Add a Manager" 
+				+ "\n2. Add a Developer."
+				+ "\n3. Return to Main Menu."
+				);
 		menuOption = Input.getInteger("Please enter a menu option (1-3): ", 1, 3);
 		switch (menuOption) {
 		case 1:

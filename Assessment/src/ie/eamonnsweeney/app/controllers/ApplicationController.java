@@ -4,7 +4,6 @@
 package ie.eamonnsweeney.app.controllers;
 
 import ie.eamonnsweeney.app.helpers.Input;
-import ie.eamonnsweeney.app.views.Menu;
 
 
 /**
@@ -15,7 +14,6 @@ public class ApplicationController {
 	
 	private EmployeesController empCtrl;
 	private DepartmentsController deptCtrl;
-	private int menuOption = 0;
 	
 	/**
 	 * 
@@ -38,9 +36,22 @@ public class ApplicationController {
 	 */
 	private void mainMenu() {
 		boolean exitMenu = false;
+		int menuOption = 0;
 		
 		do {
-			Menu.displayMain();
+			System.out.println("\n" 
+					+ "*** Main Menu ***"
+					+ "\n1. List all Employees" 
+					+ "\n2. Add a new Employee" 
+					+ "\n3. Edit an Employee by id"
+					+ "\n4. Delete an Employee by id" 
+					+ "\n5. View all Managers" 
+					+ "\n6. View all Developers"
+					+ "\n7. View number of staff within a department" 
+					+ "\n8. Sub-Menu holiday booking" 
+					+ "\n9. Sub-Menu payment"
+					+ "\n10. Exit Menu"
+					);
 			menuOption = Input.getInteger("Please enter a menu option #: ", 1, 10);
 			switch (menuOption) {
 			case 1:

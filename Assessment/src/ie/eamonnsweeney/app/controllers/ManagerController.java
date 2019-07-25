@@ -50,4 +50,19 @@ public class ManagerController extends EmployeeController {
 		this.bonus = Input.getDouble("Bonus % (0.0-1.0): ", 0.0, 1.0);
 	}
 	
+	/*
+	System.out.println("\n" 
+				+ "*** Edit Employee ***" 
+				+ "\n1. Title" 
+				+ "\n2. First Name"
+				+ "\n3. Last Name"
+				+ "\n4. Dept ID"
+				+ "\n5. Date Started"
+				+ "\n6. Phone #"
+				+ "\n7. Number of Staff"
+				+ "\n8. Salary"
+				+ "\n9. Bonus %"
+				+ "\n10. Return to Main Menu."
+				);
+	 */
 }
