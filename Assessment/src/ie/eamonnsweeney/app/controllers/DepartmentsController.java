@@ -26,8 +26,8 @@ public class DepartmentsController {
 	 */
 	public DepartmentsController() {
 		this.dataFile = new File("src/com/eamonn_sweeney/app/data/departments.dat");
-		this.departments = this.loadData();
-		this.nextIdNum = this.getHighestIdNum();
+		this.departments = loadData();
+		this.nextIdNum = (getHighestIdNum() + 1);
 	}
 	
 	/**

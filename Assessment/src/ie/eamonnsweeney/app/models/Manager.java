@@ -113,9 +113,11 @@ public class Manager extends Employee {
 		if (!(obj instanceof Manager))
 			return false;
 		Manager other = (Manager) obj;
-		return Double.doubleToLongBits(bonus) == Double.doubleToLongBits(other.bonus) 
+		return Double.doubleToLongBits(bonus) 
+				== Double.doubleToLongBits(other.bonus) 
 				&& numStaff == other.numStaff
-				&& Double.doubleToLongBits(salary) == Double.doubleToLongBits(other.salary);
+				&& Double.doubleToLongBits(salary) 
+				== Double.doubleToLongBits(other.salary);
 	}
 	
 }

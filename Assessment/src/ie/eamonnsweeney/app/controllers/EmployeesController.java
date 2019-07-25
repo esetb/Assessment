@@ -66,7 +66,8 @@ public class EmployeesController {
 	public void listAll() {
 		System.out.println("\n*** Employees ***");
 		for (Employee e : employees) {
-			System.out.print(((e instanceof Manager) ? "Manager" : "Developer") + ": ");
+			System.out.print(
+					((e instanceof Manager) ? "Manager" : "Developer") + ": ");
 			System.out.println(e);
 		}
 	}
