@@ -142,8 +142,7 @@
  */
 
 /* TODO:
- * refactor Input to take a raw string and return primitives.
- * Edit Employee by ID
+ * Refactor Input to take a raw string and return primitives.
  * DepartmentsController
  */
 
