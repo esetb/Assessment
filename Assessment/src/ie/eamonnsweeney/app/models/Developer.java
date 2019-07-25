@@ -6,9 +6,10 @@ package ie.eamonnsweeney.app.models;
 import java.time.LocalDate;
 import java.util.Objects;
 
+
 /**
  * @author Eamonn A. Sweeney
- *
+ * 
  */
 public class Developer extends Employee {
 
