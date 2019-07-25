@@ -85,6 +85,7 @@ public class ApplicationController {
 	 */
 	private void saveData() {
 		empCtrl.saveData();
+		deptCtrl.saveData();
 	}
 	
 }

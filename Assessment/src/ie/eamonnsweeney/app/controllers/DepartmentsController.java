@@ -41,6 +41,13 @@ public class DepartmentsController {
 	
 	/**
 	 * 
+	 */
+	public void saveData() {
+		FileIO.writeGenericArrayList(departments, dataFile);
+	}
+	
+	/**
+	 * 
 	 * 
 	 */
 	private ArrayList<Department> loadData() {
