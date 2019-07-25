@@ -55,7 +55,7 @@ public class Developer extends Employee {
 			String phoneNum, Level level) {
 		super(idNum, name, deptIdNum, dateStarted, phoneNum);
 		this.level = level;
-		this.monthlyPay = (level.getHourlyRate() * 35 * 4);
+		super.setMonthlyPay(level.getHourlyRate() * 35 * 4);
 	}
 	
 	/**
@@ -74,14 +74,15 @@ public class Developer extends Employee {
 
 	@Override
 	public String toString() {
-		return "" 
+		Name name =  super.getName();
+		return ""
 				+ name.getTitle() 
 				+ " " + name.getFirstName() 
 				+ " " + name.getLastName() 
-				+ ", ID: " + idNum 
-				+ ", Department: " + deptIdNum 
-				+ ", Date Started: " + dateStarted 
-				+ ", Phone: " + phoneNum  
+				+ ", ID: " + super.getIdNum()
+				+ ", Department: " + super.getIdNum()
+				+ ", Date Started: " + super.getDateStarted()
+				+ ", Phone: " + super.getPhoneNum() 
 				+ ", Level: " + level
 				+ ", Hourly Rate: " + level.getHourlyRate()
 				+ ".";

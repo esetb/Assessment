@@ -34,7 +34,7 @@ public class Manager extends Employee {
 		this.numStaff = numStaff;
 		this.salary = salary;
 		this.bonus = bonus;
-		this.monthlyPay = (salary / 12);
+		super.setMonthlyPay(salary / 12);
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class Manager extends Employee {
 	 */
 	public void setSalary(double salary) {
 		this.salary = salary;
-		this.monthlyPay = (salary / 12);
+		super.setMonthlyPay(salary / 12);
 	}
 
 	/**
@@ -82,14 +82,15 @@ public class Manager extends Employee {
 
 	@Override
 	public String toString() {
+		Name name =  super.getName();
 		return "" 
 				+ name.getTitle() 
 				+ " " + name.getFirstName() 
 				+ " " + name.getLastName() 
-				+ ", ID: " + idNum 
-				+ ", Department: " + deptIdNum 
-				+ ", Date Started: " + dateStarted 
-				+ ", Phone: " + phoneNum   
+				+ ", ID: " + super.getIdNum()
+				+ ", Department: " + super.getDeptIdNum()
+				+ ", Date Started: " + super.getDateStarted().toString()
+				+ ", Phone: " + super.getPhoneNum()  
 				+ ", Staff Managed: " + numStaff 
 				+ ", Salary: " + String.format("%.2f", salary) 
 				+ ", Bonus: " + String.format("%.2f%%", (bonus * 100))

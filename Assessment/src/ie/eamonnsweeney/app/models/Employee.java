@@ -14,13 +14,13 @@ import java.util.Objects;
  */
 public abstract class Employee implements Serializable {
 	
-	protected static final long serialVersionUID = 6721678774293692883L;
-	protected int idNum;
-	protected Name name;
-	protected int deptIdNum;
-	protected LocalDate dateStarted;
-	protected String phoneNum;
-	protected double monthlyPay;
+	private static final long serialVersionUID = 6721678774293692883L;
+	private int idNum;
+	private Name name;
+	private int deptIdNum;
+	private LocalDate dateStarted;
+	private String phoneNum;
+	private double monthlyPay;
 	
 	/**
 	 * @param idNum
@@ -117,13 +117,15 @@ public abstract class Employee implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Employee [idNum=" + idNum 
-				+ ", name=" + name 
-				+ ", deptIdNum=" + deptIdNum 
-				+ ", dateStarted=" + dateStarted 
-				+ ", phoneNum=" + phoneNum 
-				+ ", monthlyPay=" + monthlyPay 
-				+ "]";
+		return "Employee: "  + name.getTitle() 
+				+ " " + name.getFirstName()
+				+ " " + name.getLastName()
+				+ ", ID:" + idNum 
+				+ ", Dept ID: " + deptIdNum 
+				+ ", Date Started: " + dateStarted 
+				+ ", Phone #: " + phoneNum 
+				+ ", Monthly Pay" + monthlyPay 
+				+ ".";
 	}
 
 	@Override
