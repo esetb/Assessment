@@ -74,15 +74,14 @@ public class Developer extends Employee {
 
 	@Override
 	public String toString() {
-		Name name =  super.getName();
 		return ""
-				+ name.getTitle() 
-				+ " " + name.getFirstName() 
-				+ " " + name.getLastName() 
-				+ ", ID: " + super.getIdNum()
-				+ ", Department: " + super.getIdNum()
-				+ ", Date Started: " + super.getDateStarted()
-				+ ", Phone: " + super.getPhoneNum() 
+				+ getName().getTitle() 
+				+ " " + getName().getFirstName() 
+				+ " " + getName().getLastName() 
+				+ ", ID: " + getIdNum()
+				+ ", Department: " + getIdNum()
+				+ ", Date Started: " + getDateStarted()
+				+ ", Phone: " + getPhoneNum() 
 				+ ", Level: " + level
 				+ ", Hourly Rate: " + level.getHourlyRate()
 				+ ".";

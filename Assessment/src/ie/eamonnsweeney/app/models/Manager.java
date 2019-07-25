@@ -82,15 +82,14 @@ public class Manager extends Employee {
 
 	@Override
 	public String toString() {
-		Name name =  super.getName();
 		return "" 
-				+ name.getTitle() 
-				+ " " + name.getFirstName() 
-				+ " " + name.getLastName() 
-				+ ", ID: " + super.getIdNum()
-				+ ", Department: " + super.getDeptIdNum()
-				+ ", Date Started: " + super.getDateStarted().toString()
-				+ ", Phone: " + super.getPhoneNum()  
+				+ getName().getTitle() 
+				+ " " + getName().getFirstName() 
+				+ " " + getName().getLastName() 
+				+ ", ID: " + getIdNum()
+				+ ", Department: " + getDeptIdNum()
+				+ ", Date Started: " + getDateStarted().toString()
+				+ ", Phone: " + getPhoneNum()  
 				+ ", Staff Managed: " + numStaff 
 				+ ", Salary: " + String.format("%.2f", salary) 
 				+ ", Bonus: " + String.format("%.2f%%", (bonus * 100))
