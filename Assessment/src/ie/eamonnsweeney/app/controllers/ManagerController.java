@@ -42,6 +42,40 @@ public class ManagerController extends EmployeeController {
 		super.setEmployee(employee);
 		this.manager = (Manager) employee;
 		
+		boolean exitMenu = false;
+		int menuOption = 0;
+		
+		do {
+			displayEditEmployeeMenu();
+			System.out.print(
+					"\n7. Number of Staff: " + manager.getNumStaff()
+					+ "\n8. Salary: " + manager.getSalary()
+					+ "\n9. Bonus: " + manager.getBonus()
+					+ "\n10. Done (return to main menu): "
+					);
+			menuOption = Input.getInteger("Please enter a menu option #: ", 1, 10);
+			switch (menuOption) {
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+			case 6:
+				editEmployeeData(menuOption);
+				break;
+			case 7:
+				inputNumStaff();
+				break;
+			case 8:
+				inputSalary();
+				break;
+			case 9:
+				inputBonus();
+				break;
+			case 10:
+				exitMenu = true;
+			}
+		} while (!exitMenu);
 		
 	}
 	

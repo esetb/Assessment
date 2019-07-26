@@ -42,6 +42,44 @@ public class DeveloperController extends EmployeeController {
 		this.developer = (Developer) employee;
 		super.setEmployee(employee);
 		
+		boolean exitMenu = false;
+		int menuOption = 0;
+		
+		do {
+			displayEditEmployeeMenu();
+			System.out.print(
+					"\n7. Level: " + developer.getLevel().toString()
+					+ "\n8. Done (return to main menu): "
+					);
+			menuOption = Input.getInteger("Please enter a menu option #: ", 1, 8);
+			switch (menuOption) {
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+			case 6:
+				editEmployeeData(menuOption);
+				break;
+			case 7:
+				inputLevel();
+				break;
+			case 8:
+				exitMenu = true;
+			}
+		} while (!exitMenu);
+	}
+	
+	/**
+	 * 
+	 */
+	protected void displayEditMenu() {
+		displayEditEmployeeMenu();
+		System.out.print(
+				"\n7. Level: " + developer.getLevel().toString()
+				+ "\n8. Done (return to main menu): "
+				);
+		
 	}
 	
 	/**

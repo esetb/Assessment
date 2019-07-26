@@ -24,7 +24,6 @@ public abstract class EmployeeController {
 	}
 	
 	/**
-	 * @return 
 	 * 
 	 */
 	protected void setEmployee(Employee employee) {
@@ -83,6 +82,47 @@ public abstract class EmployeeController {
 		this.employee.setPhoneNum(phoneNum);	
 	}
 
+	/**
+	 * 
+	 */
+	protected void displayEditEmployeeMenu() {
+		System.out.print("\n" 
+				+ "*** Edit Employee ***"
+				+ "\n1. Title: " + employee.getName().getTitle()
+				+ "\n2. First Name: " + employee.getName().getFirstName()
+				+ "\n3. LastName: " + employee.getName().getLastName()
+				+ "\n4. Dept ID #: " + employee.getDeptIdNum()
+				+ "\n5. Date Started: " + employee.getDateStarted().toString()
+				+ "\n6. Phone #: " + employee.getPhoneNum()
+				);
+	}
+	
+	/**
+	 * 
+	 */
+	protected void editEmployeeData(int menuOption) {
+		switch (menuOption) {
+		case 1:
+			inputTitle();
+			break;
+		case 2:
+			inputFirstName();
+			break;
+		case 3:
+			inputLastName();
+			break;
+		case 4:
+			inputDeptIdNum();
+			break;
+		case 5:
+			inputDateStarted();
+			break;
+		case 6:
+			inputPhoneNum();
+			break;
+		}
+	}
+	
 	/**
 	 * 
 	 */
