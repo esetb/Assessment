@@ -51,7 +51,7 @@ public class ManagerController extends EmployeeController {
 					"\n7. Number of Staff: " + manager.getNumStaff()
 					+ "\n8. Salary: " + manager.getSalary()
 					+ "\n9. Bonus: " + manager.getBonus()
-					+ "\n10. Done (return to main menu): "
+					+ "\n10. Done (return to main menu)\n"
 					);
 			menuOption = Input.getInteger("Please enter a menu option #: ", 1, 10);
 			switch (menuOption) {
