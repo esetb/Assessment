@@ -19,23 +19,9 @@ public class ManagerController extends EmployeeController {
 	/**
 	 * 
 	 */
-	public ManagerController(int idNum) {
-		super((Employee) new Manager(idNum, null, 0, null, null, 0, 0.0, 0.0));
-		this.manager = (Manager) getEmployee();
-	}
-
-	/**
-	 * 
-	 */
-	public ManagerController(Employee employee) {
-		super(employee);
-		this.manager = (Manager) employee;
-	}
-	
-	/**
-	 * 
-	 */
-	public Manager createNewManager() {
+	public Manager createNewManager(int idNum) {
+		this.manager = new Manager(idNum, null, 0, null, null, 0, 0.0, 0.0);
+		super.setEmployee((Employee) manager); 
 		inputName();
 		inputDeptIdNum();
 		inputDateStarted();
@@ -49,7 +35,9 @@ public class ManagerController extends EmployeeController {
 	/**
 	 * 
 	 */
-	public void edit() {
+	public void edit(Employee employee) {
+		super.setEmployee(employee);
+		this.manager = (Manager) employee;
 		
 		
 	}

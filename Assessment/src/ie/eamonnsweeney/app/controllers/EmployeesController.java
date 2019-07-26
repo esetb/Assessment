@@ -111,11 +111,11 @@ public class EmployeesController {
 		for (Employee e : employees) {
 			if (e.getIdNum() == id) {
 				if (e instanceof Manager) {
-					ManagerController mc = new ManagerController(e);
-					mc.edit();
+					ManagerController mc = new ManagerController();
+					mc.edit(e);
 				} else {
-					DeveloperController dc = new DeveloperController(e);
-					dc.edit();
+					DeveloperController dc = new DeveloperController();
+					dc.edit(e);
 				}
 				idFound = true;
 				break;
@@ -160,16 +160,16 @@ public class EmployeesController {
 	 * 
 	 */
 	private Manager addNewManager() {
-		ManagerController mc = new ManagerController(nextIdNum);
-		return mc.createNewManager();
+		ManagerController mc = new ManagerController();
+		return mc.createNewManager(nextIdNum);
 	}
 	
 	/**
 	 * 
 	 */
 	private Developer addNewDeveloper() {
-		DeveloperController dc = new DeveloperController(nextIdNum);
-		return dc.createNewDeveloper();
+		DeveloperController dc = new DeveloperController();
+		return dc.createNewDeveloper(nextIdNum);
 	}
 	
 	/**

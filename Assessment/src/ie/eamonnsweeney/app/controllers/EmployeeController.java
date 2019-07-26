@@ -20,15 +20,16 @@ public abstract class EmployeeController {
 	/**
 	 * 
 	 */
-	protected EmployeeController(Employee employee) {
-		this.employee = employee;
+	protected Employee getEmployee() {
+		return employee;
 	}
 	
 	/**
+	 * @return 
 	 * 
 	 */
-	protected Employee getEmployee() {
-		return employee;
+	protected void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 	
 	/**
@@ -72,6 +73,6 @@ public abstract class EmployeeController {
 	/**
 	 * 
 	 */
-	protected abstract void edit();
+	protected abstract void edit(Employee employee);
 	
 }
