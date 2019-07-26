@@ -6,6 +6,7 @@ package ie.eamonnsweeney.app.controllers;
 import ie.eamonnsweeney.app.helpers.Input;
 import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
+import ie.eamonnsweeney.app.models.Name;
 
 
 /**
@@ -20,9 +21,11 @@ public class ManagerController extends EmployeeController {
 	 * 
 	 */
 	public Manager createNewManager(int idNum) {
-		this.manager = new Manager(idNum, null, 0, null, null, 0, 0.0, 0.0);
+		this.manager = new Manager(idNum, new Name("","",""), 0, null, null, 0, 0.0, 0.0);
 		super.setEmployee((Employee) manager); 
-		inputName();
+		inputTitle();
+		inputFirstName();
+		inputLastName();
 		inputDeptIdNum();
 		inputDateStarted();
 		inputPhoneNum();

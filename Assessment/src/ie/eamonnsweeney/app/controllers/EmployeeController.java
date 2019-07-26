@@ -6,7 +6,6 @@ package ie.eamonnsweeney.app.controllers;
 import java.time.LocalDate;
 import ie.eamonnsweeney.app.helpers.Input;
 import ie.eamonnsweeney.app.models.Employee;
-import ie.eamonnsweeney.app.models.Name;
 
 
 /**
@@ -31,17 +30,31 @@ public abstract class EmployeeController {
 	protected void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+
+	/**
+	 * 
+	 */
+	protected void inputTitle() {
+		String title = Input.getString("Title: ");	
+		this.employee.getName().setTitle(title);
+	}
 	
 	/**
 	 * 
 	 */
-	protected void inputName() {
-		String title = Input.getString("Title: ");
-		String fName = Input.getString("First Name: ");
-		String lName = Input.getString("Surname: ");	
-		this.employee.setName(new Name(title, fName, lName));
+	protected void inputFirstName() {
+		String firstName = Input.getString("First Name: ");	
+		this.employee.getName().setTitle(firstName);
 	}
-
+	
+	/**
+	 * 
+	 */
+	protected void inputLastName() {
+		String lastName = Input.getString("Last Name: ");	
+		this.employee.getName().setTitle(lastName);
+	}
+	
 	/**
 	 * 
 	 */

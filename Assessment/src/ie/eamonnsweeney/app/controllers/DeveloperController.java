@@ -7,7 +7,7 @@ import ie.eamonnsweeney.app.helpers.Input;
 import ie.eamonnsweeney.app.models.Developer;
 import ie.eamonnsweeney.app.models.Developer.Level;
 import ie.eamonnsweeney.app.models.Employee;
-import ie.eamonnsweeney.app.models.Manager;
+import ie.eamonnsweeney.app.models.Name;
 
 
 /**
@@ -22,9 +22,12 @@ public class DeveloperController extends EmployeeController {
 	 * 
 	 */
 	public Developer createNewDeveloper(int idNum) {
-		this.developer = new Developer(idNum, null, 0, null, null, null);
+		this.developer = new Developer(idNum, new Name("","",""), 0, null, null
+				, Level.ONE);
 		super.setEmployee((Employee) developer); 
-		inputName();
+		inputTitle();
+		inputFirstName();
+		inputLastName();
 		inputDeptIdNum();
 		inputDateStarted();
 		inputPhoneNum();
