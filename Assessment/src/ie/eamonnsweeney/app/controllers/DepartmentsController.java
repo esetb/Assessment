@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import ie.eamonnsweeney.app.helpers.FileIO;
 import ie.eamonnsweeney.app.models.Department;
+import ie.eamonnsweeney.app.models.Menu;
 
 
 /**
@@ -27,6 +28,38 @@ public class DepartmentsController {
 		this.dataFile = new File("src/ie/eamonnsweeney/app/data/departments.dat");
 		this.departments = loadData();
 		this.nextIdNum = (getHighestIdNum() + 1);
+	}
+
+	/**
+	 * 
+	 */
+	public void displayMenu() {
+		String menuTitle = "Departments Menu";
+		String[] menuItems = {
+				"List All", 
+				"View Department", 
+				"Show Help", 
+				"Return to Main Menu"
+				};
+		Menu menu = new Menu(menuTitle, menuItems);
+		boolean exitMenu = false;
+		
+		do {
+			menu.display();
+			switch (menu.getOption()) {
+			case 1:
+				listAll();
+				break;
+			case 2:
+				// list dept details (id name # employees/managers/developers).
+			case 3:
+				// show help
+				break;
+			case 4:
+				exitMenu = true;
+			}
+		} while (!exitMenu);
+		
 	}
 	
 	/**
@@ -54,11 +87,9 @@ public class DepartmentsController {
 		
 		// File.length() returns 0L if a file is empty or does not exist.
 		if (dataFile.length() == 0) {
-			departments.add(new Department(1, "DevOps", 8));
-			departments.add(new Department(2, "Development", 4));
-			departments.add(new Department(3, "Data Analytics", 6));
-			departments.add(new Department(4, "Legal", 10));
-			departments.add(new Department(5, "Human Resources", 12));
+			departments.add(new Department(1, "Development", 0));
+			departments.add(new Department(2, "DevOps", 0));
+			departments.add(new Department(3, "QA", 0));
 		} else {
 			departments = readDataFromFile();
 		}

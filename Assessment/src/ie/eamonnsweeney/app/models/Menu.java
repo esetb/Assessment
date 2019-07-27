@@ -3,6 +3,7 @@
  */
 package ie.eamonnsweeney.app.models;
 
+import ie.eamonnsweeney.app.helpers.Input;
 
 /**
  * @author Eamonn A. Sweeney
@@ -10,27 +11,31 @@ package ie.eamonnsweeney.app.models;
  */
 public class Menu {
 	private String name;
-	private String[] items;
+	private String[] options;
 	private String renderedMenu;
 	
 	/**
 	 * 
 	 */
-	public Menu(String name, String[] items) {
+	public Menu(String name, String[] options) {
 		this.name = name;
-		this.items = items;
+		this.options = options;
+		renderMenu();
 	}
 	
 	/**
 	 * 
 	 */
-	public String getRenderedMenu() {
-		if (renderedMenu != null) {
-			return renderedMenu;
-		}
-		
-		renderMenu();
-		return renderedMenu;
+	public void display() {
+		System.out.println(renderedMenu);
+	}
+	/**
+	 * 
+	 */
+	public int getOption() {
+		int numOptions = options.length + 1;
+		return Input.getInteger("Enter menu option (1-" 
+				+ numOptions + "): ", 1, numOptions);
 	}
 	
 	/**
@@ -38,23 +43,9 @@ public class Menu {
 	 */
 	private void renderMenu() {
 		renderedMenu = "" + name;
-		for (int i = 0 ; i < items.length ; i++) {
-			renderedMenu += ("\n" + (i + 1) + ". " + items[i]); 
+		for (int i = 0 ; i < options.length ; i++) {
+			renderedMenu += ("\n" + (i + 1) + ". " + options[i]); 
 		}
 	}
-	
-	/**
-	 * @return 
-	 * 
-	 */
-	@Override
-	public String toString() {
-		if (renderedMenu != null) {
-			return renderedMenu;
-		}
-		
-		renderMenu();
-		return renderedMenu;
-	}
-	
+
 }

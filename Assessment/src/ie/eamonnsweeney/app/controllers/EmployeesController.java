@@ -12,6 +12,7 @@ import ie.eamonnsweeney.app.helpers.Input;
 import ie.eamonnsweeney.app.models.Developer;
 import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
+import ie.eamonnsweeney.app.models.Menu;
 import ie.eamonnsweeney.app.models.Name;
 
 
@@ -32,6 +33,60 @@ public class EmployeesController {
 		this.dataFile = new File("src/ie/eamonnsweeney/app/data/employees.dat");
 		this.employees = loadData();
 		this.nextIdNum = (getHighestIdNum() + 1);
+	}
+	
+	
+	/**
+	 * 
+	 */
+	public void displayMenu() {
+		String menuTitle = "Employees Menu";
+		String[] menuItems = {
+				"List All", 
+				"List Managers", 
+				"List Developers",
+				"Add Employee",
+				"Edit Employee",
+				"Delete Employee",
+				"Payment",
+				"Show Help", 
+				"Return to Main Menu"
+				};
+		Menu menu = new Menu(menuTitle, menuItems);
+		boolean exitMenu = false;
+
+		do {
+			menu.display();
+			switch (menu.getOption()) {
+			case 1:
+				listAll();
+				break;
+			case 2:
+				listManagers();
+			case 3:
+				listDevelopers();
+				break;
+			case 4:
+				addNew();
+				break;
+			case 5:
+				editById();
+				break;
+			case 6:
+				deleteById();
+				break;
+			case 7:
+				// payment
+				break;
+			case 8:
+				// show help - employees
+				break;
+			case 9:
+				exitMenu = true;
+				break;
+			}
+		} while (!exitMenu);
+
 	}
 	
 	/**
