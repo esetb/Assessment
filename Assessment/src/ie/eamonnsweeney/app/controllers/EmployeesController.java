@@ -79,7 +79,7 @@ public class EmployeesController {
 	/**
 	 * 
 	 */
-	public void listAllManagers() {
+	public void listManagers() {
 		System.out.println("\n*** Managers ***");
 		for (Employee e : employees) {
 			if (e instanceof Manager) {
@@ -91,7 +91,7 @@ public class EmployeesController {
 	/**
 	 * 
 	 */
-	public void listAllDevelopers() {
+	public void listDevelopers() {
 		System.out.println("\n*** Developers ***");
 		for (Employee e : employees) {
 			if (e instanceof Developer) {

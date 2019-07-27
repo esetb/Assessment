@@ -27,8 +27,8 @@ public class ApplicationController {
 	 * 
 	 */
 	public void run() {
-		this.mainMenu();
-		this.saveData();
+		mainMenu();
+		saveData();
 	}	
 	
 	/**
@@ -37,58 +37,122 @@ public class ApplicationController {
 	private void mainMenu() {
 		boolean exitMenu = false;
 		int menuOption = 0;
-		
+		/* 
+		 * The main menu as presented in the assessment brief has too many concerns 
+		 * and out of sequence items (Department items between Employee items)
+		 * 
+		 * I have split the main menu to separate its concerns and to provide a
+		 * more logical sequence of menu items in the sub menus.
+		 */
 		do {
 			System.out.println("\n" 
 					+ "*** Main Menu ***"
-					+ "\n1. List all Employees" 
-					+ "\n2. Add a new Employee" 
-					+ "\n3. Edit an Employee by id"
-					+ "\n4. Delete an Employee by id" 
-					+ "\n5. View all Managers" 
-					+ "\n6. View all Developers"
-					+ "\n7. View number of staff within a department" 
-					+ "\n8. Sub-Menu holiday booking" 
-					+ "\n9. Sub-Menu payment"
-					+ "\n10. Exit Menu"
+					+ "\n1. Manage Departments"
+					+ "\n2. Manage Employees" 
+					+ "\n3. Show Help"
+					+ "\n4. Exit Program"
 					);
-			menuOption = Input.getInteger("Please enter a menu option #: ", 1, 10);
+			menuOption = Input.getInteger("Enter menu option #: ", 1, 4);
+			switch (menuOption) {
+			case 1:
+				departmentsSubMenu();
+				break;
+			case 2:
+				employeesSubMenu();
+			case 3:
+				// show help - main menu
+				break;
+			case 4:
+				exitMenu = true;
+			}
+		} while (!exitMenu);
+		
+		System.out.println("Goodbye!");
+	}
+	
+	/**
+	 * 
+	 */
+	private void departmentsSubMenu() {
+		boolean exitMenu = false;
+		int menuOption = 0;
+
+		do {
+			System.out.println("\n" 
+					+ "*** Departments Menu ***"
+					+ "\n1. List All"
+					+ "\n2. View Department"  
+					+ "\n3. Show Help"
+					+ "\n4. Return to Main Menu."
+					);
+			menuOption = Input.getInteger("Please enter a menu option #: ", 1, 11);
+			switch (menuOption) {
+			case 1:
+				deptCtrl.listAll();
+				break;
+			case 2:
+				// list dept details (id name # employees/managers/developers).
+			case 3:
+				// show help
+				break;
+			case 4:
+				exitMenu = true;
+			}
+		} while (!exitMenu);
+		
+	}
+	
+	/**
+	 * 
+	 */
+	private void employeesSubMenu() {
+		boolean exitMenu = false;
+		int menuOption = 0;
+
+		do {
+			System.out.println("\n" 
+					+ "*** Employees Menu ***"
+					+ "\n1. List All"
+					+ "\n2. List Managers" 
+					+ "\n3. List Developers"
+					+ "\n4. Add Employee" 
+					+ "\n5. Edit Employee"
+					+ "\n6. Delete Employee" 
+					+ "\n7. Payment" 
+					+ "\n8. Show Help"
+					+ "\n9. Return to Main Menu."
+					);
+			menuOption = Input.getInteger("Please enter a menu option #: ", 1, 9);
 			switch (menuOption) {
 			case 1:
 				empCtrl.listAll();
 				break;
 			case 2:
-				empCtrl.addNew();
-				break;
+				empCtrl.listManagers();
 			case 3:
-				empCtrl.editById();
+				empCtrl.listDevelopers();
 				break;
 			case 4:
-				empCtrl.deleteById();
+				empCtrl.addNew();
 				break;
 			case 5:
-				empCtrl.listAllManagers();
+				empCtrl.editById();
 				break;
 			case 6:
-				empCtrl.listAllDevelopers();
+				empCtrl.deleteById();
 				break;
 			case 7:
-				//viewNumStaffInDepartment();
+				// payment
 				break;
 			case 8:
-				//doSubMenuHolidayBooking();
+				// show help - employees
 				break;
 			case 9:
-				//doSubMenuPayment();
-				break;
-			case 10:
 				exitMenu = true;
-			default:
-				break;
+				break	;
 			}
 		} while (!exitMenu);
-		
-		System.out.println("Goodbye!");
+
 	}
 	
 	/**
