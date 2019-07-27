@@ -4,6 +4,8 @@
 package ie.eamonnsweeney.app.controllers;
 
 import ie.eamonnsweeney.app.helpers.Input;
+import ie.eamonnsweeney.app.models.Menu;
+import ie.eamonnsweeney.app.views.ConsoleView;
 
 
 /**
@@ -14,6 +16,8 @@ public class ApplicationController {
 	
 	private EmployeesController empCtrl;
 	private DepartmentsController deptCtrl;
+	private ConsoleView view;
+	
 	
 	/**
 	 * 
@@ -21,6 +25,7 @@ public class ApplicationController {
 	public ApplicationController() {
 		this.empCtrl = new EmployeesController();
 		this.deptCtrl = new DepartmentsController();
+		this.view = new ConsoleView();
 	}
 	
 	/**
@@ -31,27 +36,34 @@ public class ApplicationController {
 		saveData();
 	}	
 	
+	/* 
+	 * The main menu as presented in the assessment brief has too many concerns 
+	 * and out of sequence items (Department items between Employee items)
+	 * 
+	 * I have split the main menu to a series of sub menus in order to separate 
+	 * its concerns and to provide a more logical sequence of menu items in the 
+	 * sub menus.
+	 */
+
 	/**
 	 * 
 	 */
 	private void mainMenu() {
+		Menu menu = null;
+		String menuTitle = "Main Menu";
+		String[] menuItems = {
+				"Manage Departments", 
+				"Manage Employees", 
+				"Show Help", 
+				"Exit Program"
+				};
 		boolean exitMenu = false;
 		int menuOption = 0;
-		/* 
-		 * The main menu as presented in the assessment brief has too many concerns 
-		 * and out of sequence items (Department items between Employee items)
-		 * 
-		 * I have split the main menu to separate its concerns and to provide a
-		 * more logical sequence of menu items in the sub menus.
-		 */
+		
+		menu = (menu == null) ? new Menu(menuTitle, menuItems) : menu;
+
 		do {
-			System.out.println("\n" 
-					+ "*** Main Menu ***"
-					+ "\n1. Manage Departments"
-					+ "\n2. Manage Employees" 
-					+ "\n3. Show Help"
-					+ "\n4. Exit Program"
-					);
+			System.out.println(menu);
 			menuOption = Input.getInteger("Enter menu option #: ", 1, 4);
 			switch (menuOption) {
 			case 1:
