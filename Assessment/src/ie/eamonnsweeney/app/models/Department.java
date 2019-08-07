@@ -66,10 +66,11 @@ public class Department implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Department: " + name 
-				+ ", Dept ID: " + idNum 
-				+ ", # Employees: " + numEmployees 
-				+ ".";
+		return "" 
+				+ name 
+				+ ", ID: " + idNum 
+				+ ", Employees: " + numEmployees
+				;
 	}
 
 	@Override

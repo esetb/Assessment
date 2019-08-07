@@ -81,21 +81,6 @@ public abstract class EmployeeController {
 		String phoneNum = Input.getString("Phone #: ");	
 		this.employee.setPhoneNum(phoneNum);	
 	}
-
-	/**
-	 * 
-	 */
-	protected void displayEditEmployeeMenu() {
-		System.out.print("\n" 
-				+ "*** Edit Employee ***"
-				+ "\n1. Title: " + employee.getName().getTitle()
-				+ "\n2. First Name: " + employee.getName().getFirstName()
-				+ "\n3. LastName: " + employee.getName().getLastName()
-				+ "\n4. Dept ID #: " + employee.getDeptIdNum()
-				+ "\n5. Date Started: " + employee.getDateStarted().toString()
-				+ "\n6. Phone #: " + employee.getPhoneNum()
-				);
-	}
 	
 	/**
 	 * 

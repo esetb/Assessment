@@ -33,7 +33,7 @@ public class Menu {
 	 * 
 	 */
 	public int getOption() {
-		int numOptions = options.length + 1;
+		int numOptions = options.length;
 		return Input.getInteger("Enter menu option (1-" 
 				+ numOptions + "): ", 1, numOptions);
 	}

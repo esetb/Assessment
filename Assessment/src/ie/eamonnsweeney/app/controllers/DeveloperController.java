@@ -7,6 +7,7 @@ import ie.eamonnsweeney.app.helpers.Input;
 import ie.eamonnsweeney.app.models.Developer;
 import ie.eamonnsweeney.app.models.Developer.Level;
 import ie.eamonnsweeney.app.models.Employee;
+import ie.eamonnsweeney.app.models.Menu;
 import ie.eamonnsweeney.app.models.Name;
 
 
@@ -41,17 +42,24 @@ public class DeveloperController extends EmployeeController {
 	public void edit(Employee employee) {
 		this.developer = (Developer) employee;
 		super.setEmployee(employee);
-		
+		String menuTitle = "Edit Developer Menu";
+		String[] menuItems = {
+				"Title: " + employee.getName().getTitle(),
+				"First Name: " + employee.getName().getFirstName(),
+				"Last Name: " + employee.getName().getLastName(),
+				"Dept ID #: " + employee.getDeptIdNum(),
+				"Date Started: " + employee.getDateStarted().toString(),
+				"Phone #: " + employee.getPhoneNum(),
+				"Level: " + developer.getLevel(),
+				"Done (return to main menu)"
+				};
+		Menu menu = new Menu(menuTitle, menuItems);
 		boolean exitMenu = false;
 		int menuOption = 0;
 		
 		do {
-			displayEditEmployeeMenu();
-			System.out.print(
-					"\n7. Level: " + developer.getLevel().toString()
-					+ "\n8. Done (return to main menu): "
-					);
-			menuOption = Input.getInteger("Please enter a menu option #: ", 1, 8);
+			menu.display();
+			menuOption = menu.getOption();
 			switch (menuOption) {
 			case 1:
 			case 2:
@@ -68,18 +76,6 @@ public class DeveloperController extends EmployeeController {
 				exitMenu = true;
 			}
 		} while (!exitMenu);
-	}
-	
-	/**
-	 * 
-	 */
-	protected void displayEditMenu() {
-		displayEditEmployeeMenu();
-		System.out.print(
-				"\n7. Level: " + developer.getLevel().toString()
-				+ "\n8. Done (return to main menu): "
-				);
-		
 	}
 	
 	/**

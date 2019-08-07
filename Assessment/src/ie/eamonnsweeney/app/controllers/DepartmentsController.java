@@ -37,7 +37,8 @@ public class DepartmentsController {
 		String menuTitle = "Departments Menu";
 		String[] menuItems = {
 				"List All", 
-				"View Department", 
+				"View Department",
+				"Add Department",
 				"Show Help", 
 				"Return to Main Menu"
 				};
@@ -53,10 +54,13 @@ public class DepartmentsController {
 			case 2:
 				// list dept details (id name # employees/managers/developers).
 			case 3:
+				addNew();
+			case 4:
 				// show help
 				break;
-			case 4:
+			case 5:
 				exitMenu = true;
+				break;
 			}
 		} while (!exitMenu);
 		
@@ -66,6 +70,7 @@ public class DepartmentsController {
 	 * 
 	 */
 	public void listAll() {
+		System.out.println("\n*** Departments ***");
 		for (Department e : departments) {
 			System.out.println(e);
 		}
@@ -76,6 +81,14 @@ public class DepartmentsController {
 	 */
 	public void saveData() {
 		FileIO.writeGenericArrayList(departments, dataFile);
+	}
+	
+	/**
+	 * 
+	 */
+	private Department addNew() {
+		DepartmentController dc = new DepartmentController();
+		return dc.createNewDepartment(nextIdNum);
 	}
 	
 	/**

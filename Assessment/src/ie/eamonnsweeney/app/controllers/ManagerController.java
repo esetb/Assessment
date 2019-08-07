@@ -6,6 +6,7 @@ package ie.eamonnsweeney.app.controllers;
 import ie.eamonnsweeney.app.helpers.Input;
 import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
+import ie.eamonnsweeney.app.models.Menu;
 import ie.eamonnsweeney.app.models.Name;
 
 
@@ -41,19 +42,26 @@ public class ManagerController extends EmployeeController {
 	public void edit(Employee employee) {
 		super.setEmployee(employee);
 		this.manager = (Manager) employee;
-		
+		String menuTitle = "Edit Manager Menu";
+		String[] menuItems = {
+				"Title: " + employee.getName().getTitle(),
+				"First Name: " + employee.getName().getFirstName(),
+				"Last Name: " + employee.getName().getLastName(),
+				"Dept ID #: " + employee.getDeptIdNum(),
+				"Date Started: " + employee.getDateStarted().toString(),
+				"Phone #: " + employee.getPhoneNum(),
+				"Num Staff: " + manager.getNumStaff(),
+				"Salary: " + manager.getSalary(),
+				"Bonus: "  + manager.getBonus(), 
+				"Done (return to main menu)"
+				};
+		Menu menu = new Menu(menuTitle, menuItems);
 		boolean exitMenu = false;
 		int menuOption = 0;
 		
 		do {
-			displayEditEmployeeMenu();
-			System.out.print(
-					"\n7. Number of Staff: " + manager.getNumStaff()
-					+ "\n8. Salary: " + manager.getSalary()
-					+ "\n9. Bonus: " + manager.getBonus()
-					+ "\n10. Done (return to main menu)\n"
-					);
-			menuOption = Input.getInteger("Please enter a menu option #: ", 1, 10);
+			menu.display();
+			menuOption = menu.getOption();
 			switch (menuOption) {
 			case 1:
 			case 2:
