@@ -29,8 +29,8 @@ public class EmployeesController {
 	/**
 	 * 
 	 */
-	public EmployeesController(InputController inputController) {
-		this.fileIOController = new FileIOController();
+	public EmployeesController(FileIOController fileIOController, InputController inputController) {
+		this.fileIOController = fileIOController;
 		this.inputController = inputController;
 		this.dataFile = new File("src/ie/eamonnsweeney/app/data/employees.dat");
 		this.employees = loadData();

@@ -25,8 +25,8 @@ public class DepartmentsController {
 	/**
 	 * 
 	 */
-	public DepartmentsController(InputController inputController) {
-		this.fileIOController = new FileIOController();
+	public DepartmentsController(FileIOController fileIOController, InputController inputController) {
+		this.fileIOController = fileIOController;
 		this.inputController = inputController;
 		this.dataFile = new File("src/ie/eamonnsweeney/app/data/departments.dat");
 		this.departments = loadData();

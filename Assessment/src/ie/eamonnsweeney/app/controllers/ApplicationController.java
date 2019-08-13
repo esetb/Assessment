@@ -12,17 +12,18 @@ import ie.eamonnsweeney.app.models.Menu;
  */
 public class ApplicationController {
 	
+	private InputController inputController;
 	private EmployeesController employeesController;
 	private DepartmentsController departmentsController;
-	private InputController inputController;
 	
 	/**
 	 * 
 	 */
 	public ApplicationController() {
+		FileIOController fileIOController = new FileIOController();
 		this.inputController = new InputController();
-		this.employeesController = new EmployeesController(inputController);
-		this.departmentsController = new DepartmentsController(inputController);
+		this.employeesController = new EmployeesController(fileIOController, inputController);
+		this.departmentsController = new DepartmentsController(fileIOController, inputController);
 	}
 	
 	/**
