@@ -1,7 +1,7 @@
 /**
- * File Input/Output static methods.
+ * 
  */
-package ie.eamonnsweeney.app.helpers;
+package ie.eamonnsweeney.app.controllers;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,16 +13,17 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+
 /**
  * @author Eamonn A. Sweeney
- * 
+ *
  */
-public class FileIO {
+public class FileIOController {
 
 	/**
 	 * 
 	 */
-	public static String readTextFile(File filePath) {
+	public String readTextFile(File filePath) {
 		String text = "";
 		String line = null;
 		
@@ -46,7 +47,7 @@ public class FileIO {
 	/**
 	 * 
 	 */
-	public static ArrayList<?> readGenericArrayList(File filePath) {
+	public ArrayList<?> readGenericArrayList(File filePath) {
 		ArrayList<?> array = new ArrayList<>();
 		
 		try (FileInputStream fis = new FileInputStream(filePath); 
@@ -63,7 +64,7 @@ public class FileIO {
 	/**
 	 * 
 	 */
-	public static void writeGenericArrayList(ArrayList<?> array, File filePath) {
+	public void writeGenericArrayList(ArrayList<?> array, File filePath) {
 		try (FileOutputStream fos = new FileOutputStream(filePath);
 				ObjectOutputStream oos = new ObjectOutputStream(fos);) {
 			oos.writeObject(array);

@@ -6,7 +6,6 @@ package ie.eamonnsweeney.app.controllers;
 import java.io.File;
 import java.util.ArrayList;
 
-import ie.eamonnsweeney.app.helpers.FileIO;
 import ie.eamonnsweeney.app.models.Department;
 import ie.eamonnsweeney.app.models.Menu;
 
@@ -17,6 +16,7 @@ import ie.eamonnsweeney.app.models.Menu;
  */
 public class DepartmentsController {
 
+	private FileIOController fileIOController;
 	private InputController inputController;
 	private File dataFile;
 	private ArrayList<Department> departments;
@@ -26,6 +26,7 @@ public class DepartmentsController {
 	 * 
 	 */
 	public DepartmentsController(InputController inputController) {
+		this.fileIOController = new FileIOController();
 		this.inputController = inputController;
 		this.dataFile = new File("src/ie/eamonnsweeney/app/data/departments.dat");
 		this.departments = loadData();
@@ -84,7 +85,7 @@ public class DepartmentsController {
 	 * 
 	 */
 	public void saveData() {
-		FileIO.writeGenericArrayList(departments, dataFile);
+		fileIOController.writeGenericArrayList(departments, dataFile);
 	}
 	
 	/**
@@ -118,7 +119,7 @@ public class DepartmentsController {
 	 * 
 	 */
 	private ArrayList<Department> readDataFromFile() {
-		ArrayList<?> genericArrayListObject = FileIO.readGenericArrayList(dataFile);
+		ArrayList<?> genericArrayListObject = fileIOController.readGenericArrayList(dataFile);
 		ArrayList<Department> departments = new ArrayList<>();
 	
 		for (Object obj : genericArrayListObject) {

@@ -7,7 +7,6 @@ import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import ie.eamonnsweeney.app.helpers.FileIO;
 import ie.eamonnsweeney.app.models.Developer;
 import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
@@ -21,6 +20,7 @@ import ie.eamonnsweeney.app.models.Name;
  */
 public class EmployeesController {
 
+	private FileIOController fileIOController;
 	private InputController inputController;
 	private File dataFile;
 	private ArrayList<Employee> employees;
@@ -30,6 +30,7 @@ public class EmployeesController {
 	 * 
 	 */
 	public EmployeesController(InputController inputController) {
+		this.fileIOController = new FileIOController();
 		this.inputController = inputController;
 		this.dataFile = new File("src/ie/eamonnsweeney/app/data/employees.dat");
 		this.employees = loadData();
@@ -213,7 +214,7 @@ public class EmployeesController {
 	 * 
 	 */
 	public void saveData() {
-		FileIO.writeGenericArrayList(employees, dataFile);
+		fileIOController.writeGenericArrayList(employees, dataFile);
 	}
 	
 	/**
@@ -261,7 +262,7 @@ public class EmployeesController {
 	 * 
 	 */
 	private ArrayList<Employee> readDataFromFile() {
-		ArrayList<?> genericArrayListObject = FileIO.readGenericArrayList(dataFile);
+		ArrayList<?> genericArrayListObject = fileIOController.readGenericArrayList(dataFile);
 		ArrayList<Employee> employees = new ArrayList<>();
 	
 		for (Object obj : genericArrayListObject) {
