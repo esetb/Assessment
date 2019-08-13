@@ -59,7 +59,7 @@ public abstract class EmployeeController {
 	 */
 	protected void inputDeptIdNum() {
 		//TODO: get total departments for max
-		int deptIdNum = Input.getInteger("Department ID (1-100): ", 1, 100);
+		int deptIdNum = Input.getInteger("Department ID (1-3): ", 1, 3);
 		this.employee.setDeptIdNum(deptIdNum);
 	}
 	

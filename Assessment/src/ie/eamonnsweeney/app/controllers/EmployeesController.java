@@ -63,6 +63,7 @@ public class EmployeesController {
 				break;
 			case 2:
 				listManagers();
+				break;
 			case 3:
 				listDevelopers();
 				break;
