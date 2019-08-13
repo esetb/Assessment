@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import ie.eamonnsweeney.app.helpers.FileIO;
-import ie.eamonnsweeney.app.helpers.Input;
 import ie.eamonnsweeney.app.models.Developer;
 import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
@@ -22,6 +21,7 @@ import ie.eamonnsweeney.app.models.Name;
  */
 public class EmployeesController {
 
+	private InputController inputController;
 	private File dataFile;
 	private ArrayList<Employee> employees;
 	private int nextIdNum;
@@ -29,7 +29,8 @@ public class EmployeesController {
 	/**
 	 * 
 	 */
-	public EmployeesController() {
+	public EmployeesController(InputController inputController) {
+		this.inputController = inputController;
 		this.dataFile = new File("src/ie/eamonnsweeney/app/data/employees.dat");
 		this.employees = loadData();
 		this.nextIdNum = (getHighestIdNum() + 1);
@@ -52,7 +53,7 @@ public class EmployeesController {
 				"Show Help", 
 				"Return to Main Menu"
 				};
-		Menu menu = new Menu(menuTitle, menuItems);
+		Menu menu = new Menu(inputController, menuTitle, menuItems);
 		boolean exitMenu = false;
 
 		do {
@@ -136,7 +137,7 @@ public class EmployeesController {
 				"Add Developer", 
 				"Return to Main Menu"
 				};
-		Menu menu = new Menu(menuTitle, menuItems);
+		Menu menu = new Menu(inputController, menuTitle, menuItems);
 		boolean exitMenu = false;
 		Employee emp = null;
 		
@@ -164,16 +165,16 @@ public class EmployeesController {
 	 */
 	public void editById() {
 		int max = (nextIdNum - 1);
-		int id = Input.getInteger("Employee ID to edit (1-" + max + "): ", 1, max);
+		int id = inputController.getInteger("Employee ID to edit (1-" + max + "): ", 1, max);
 		boolean idFound = false;
 		
 		for (Employee e : employees) {
 			if (e.getIdNum() == id) {
 				if (e instanceof Manager) {
-					ManagerController mc = new ManagerController();
+					ManagerController mc = new ManagerController(inputController);
 					mc.edit(e);
 				} else {
-					DeveloperController dc = new DeveloperController();
+					DeveloperController dc = new DeveloperController(inputController);
 					dc.edit(e);
 				}
 				idFound = true;
@@ -191,7 +192,7 @@ public class EmployeesController {
 	 */
 	public void deleteById() {
 		int max = (nextIdNum - 1);
-		int id = Input.getInteger("Employee ID to delete (1-" + max + "): ", 1, max);
+		int id = inputController.getInteger("Employee ID to delete (1-" + max + "): ", 1, max);
 		boolean idFound = false;
 		
 		for (Employee e : employees) {
@@ -219,7 +220,7 @@ public class EmployeesController {
 	 * 
 	 */
 	private Manager addNewManager() {
-		ManagerController mc = new ManagerController();
+		ManagerController mc = new ManagerController(inputController);
 		return mc.createNewManager(nextIdNum);
 	}
 	
@@ -227,7 +228,7 @@ public class EmployeesController {
 	 * 
 	 */
 	private Developer addNewDeveloper() {
-		DeveloperController dc = new DeveloperController();
+		DeveloperController dc = new DeveloperController(inputController);
 		return dc.createNewDeveloper(nextIdNum);
 	}
 	
@@ -248,7 +249,7 @@ public class EmployeesController {
 			employees.add(new Developer(4, new Name("Mr", "Dewey", "Duck"),
 					1, LocalDate.of(2014, 3, 14), "5551234562", Developer.Level.TWO));
 			employees.add(new Developer(5, new Name("Mr", "Louie", "Duck"),
-					1, LocalDate.of(2014, 4, 1), "5551234563", Developer.Level.TWO));
+					1, LocalDate.of(2014, 4, 1), "5551234563", Developer.Level.THREE));
 		} else {
 			employees = readDataFromFile();
 		}

@@ -3,7 +3,6 @@
  */
 package ie.eamonnsweeney.app.controllers;
 
-import ie.eamonnsweeney.app.helpers.Input;
 import ie.eamonnsweeney.app.models.Developer;
 import ie.eamonnsweeney.app.models.Developer.Level;
 import ie.eamonnsweeney.app.models.Employee;
@@ -18,6 +17,14 @@ import ie.eamonnsweeney.app.models.Name;
 public class DeveloperController extends EmployeeController {
 	
 	private Developer developer;
+	
+	/**
+	 * 
+	 */
+	public DeveloperController(InputController inputController) {
+		super(inputController);
+	}
+	
 	
 	/**
 	 * 
@@ -40,24 +47,24 @@ public class DeveloperController extends EmployeeController {
 	 * 
 	 */
 	public void edit(Employee employee) {
-		this.developer = (Developer) employee;
 		super.setEmployee(employee);
-		String menuTitle = "Edit Developer Menu";
-		String[] menuItems = {
-				"Title: " + employee.getName().getTitle(),
-				"First Name: " + employee.getName().getFirstName(),
-				"Last Name: " + employee.getName().getLastName(),
-				"Dept ID #: " + employee.getDeptIdNum(),
-				"Date Started: " + employee.getDateStarted().toString(),
-				"Phone #: " + employee.getPhoneNum(),
-				"Level: " + developer.getLevel(),
-				"Done (return to main menu)"
-				};
-		Menu menu = new Menu(menuTitle, menuItems);
+		this.developer = (Developer) employee;
 		boolean exitMenu = false;
 		int menuOption = 0;
 		
 		do {
+			String menuTitle = "Edit Developer Menu";
+			String[] menuItems = {
+					"Title: " + employee.getName().getTitle(),
+					"First Name: " + employee.getName().getFirstName(),
+					"Last Name: " + employee.getName().getLastName(),
+					"Dept ID #: " + employee.getDeptIdNum(),
+					"Date Started: " + employee.getDateStarted().toString(),
+					"Phone #: " + employee.getPhoneNum(),
+					"Level: " + developer.getLevel(),
+					"Done (return to main menu)"
+					};
+			Menu menu = new Menu(inputController, menuTitle, menuItems);
 			menu.display();
 			menuOption = menu.getOption();
 			switch (menuOption) {
@@ -83,7 +90,7 @@ public class DeveloperController extends EmployeeController {
 	 */
 	private void inputLevel() {
 		int max = Level.values().length;
-		int level = Input.getInteger("Dev level (1-" + max + "): ", 1, max);
+		int level = inputController.getInteger("Dev level (1-" + max + "): ", 1, max);
 		this.developer.setLevel(Level.values()[level - 1]);
 	}
 	

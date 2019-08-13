@@ -4,7 +4,6 @@
 package ie.eamonnsweeney.app.controllers;
 
 import java.time.LocalDate;
-import ie.eamonnsweeney.app.helpers.Input;
 import ie.eamonnsweeney.app.models.Employee;
 
 
@@ -15,6 +14,14 @@ import ie.eamonnsweeney.app.models.Employee;
 public abstract class EmployeeController {
 
 	private Employee employee;
+	protected InputController inputController;
+	
+	/**
+	 * 
+	 */
+	public EmployeeController(InputController inputController) {
+		this.inputController = inputController;
+	}
 	
 	/**
 	 * 
@@ -34,7 +41,7 @@ public abstract class EmployeeController {
 	 * 
 	 */
 	protected void inputTitle() {
-		String title = Input.getString("Title: ");	
+		String title = inputController.getString("Title: ");	
 		this.employee.getName().setTitle(title);
 	}
 	
@@ -42,16 +49,16 @@ public abstract class EmployeeController {
 	 * 
 	 */
 	protected void inputFirstName() {
-		String firstName = Input.getString("First Name: ");	
-		this.employee.getName().setTitle(firstName);
+		String firstName = inputController.getString("First Name: ");	
+		this.employee.getName().setFirstName(firstName);
 	}
 	
 	/**
 	 * 
 	 */
 	protected void inputLastName() {
-		String lastName = Input.getString("Last Name: ");	
-		this.employee.getName().setTitle(lastName);
+		String lastName = inputController.getString("Last Name: ");	
+		this.employee.getName().setLastName(lastName);
 	}
 	
 	/**
@@ -59,7 +66,7 @@ public abstract class EmployeeController {
 	 */
 	protected void inputDeptIdNum() {
 		//TODO: get total departments for max
-		int deptIdNum = Input.getInteger("Department ID (1-3): ", 1, 3);
+		int deptIdNum = inputController.getInteger("Department ID (1-3): ", 1, 3);
 		this.employee.setDeptIdNum(deptIdNum);
 	}
 	
@@ -68,9 +75,9 @@ public abstract class EmployeeController {
 	 */
 	protected void inputDateStarted() {
 		//TODO: sanity checking valid date - no feb 31
-		int year = Input.getInteger("Year Started (2000-2019): ", 2000, 2019);
-		int month = Input.getInteger("Month Started (1-12): ", 1, 12);
-		int day = Input.getInteger("Day Started (1-31):", 1, 31);
+		int year = inputController.getInteger("Year Started (2000-2019): ", 2000, 2019);
+		int month = inputController.getInteger("Month Started (1-12): ", 1, 12);
+		int day = inputController.getInteger("Day Started (1-31):", 1, 31);
 		this.employee.setDateStarted(LocalDate.of(year, month, day));
 	}
 	
@@ -78,7 +85,7 @@ public abstract class EmployeeController {
 	 * 
 	 */
 	protected void inputPhoneNum() {
-		String phoneNum = Input.getString("Phone #: ");	
+		String phoneNum = inputController.getString("Phone #: ");	
 		this.employee.setPhoneNum(phoneNum);	
 	}
 	

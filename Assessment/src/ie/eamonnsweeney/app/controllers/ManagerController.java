@@ -3,7 +3,6 @@
  */
 package ie.eamonnsweeney.app.controllers;
 
-import ie.eamonnsweeney.app.helpers.Input;
 import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
 import ie.eamonnsweeney.app.models.Menu;
@@ -15,9 +14,16 @@ import ie.eamonnsweeney.app.models.Name;
  *
  */
 public class ManagerController extends EmployeeController {
-	
+
 	private Manager manager;
 
+	/**
+	 * 
+	 */
+	public ManagerController(InputController inputController) {
+		super(inputController);
+	}
+	
 	/**
 	 * 
 	 */
@@ -42,24 +48,24 @@ public class ManagerController extends EmployeeController {
 	public void edit(Employee employee) {
 		super.setEmployee(employee);
 		this.manager = (Manager) employee;
-		String menuTitle = "Edit Manager Menu";
-		String[] menuItems = {
-				"Title: " + employee.getName().getTitle(),
-				"First Name: " + employee.getName().getFirstName(),
-				"Last Name: " + employee.getName().getLastName(),
-				"Dept ID #: " + employee.getDeptIdNum(),
-				"Date Started: " + employee.getDateStarted().toString(),
-				"Phone #: " + employee.getPhoneNum(),
-				"Num Staff: " + manager.getNumStaff(),
-				"Salary: " + manager.getSalary(),
-				"Bonus: "  + manager.getBonus(), 
-				"Done (return to main menu)"
-				};
-		Menu menu = new Menu(menuTitle, menuItems);
 		boolean exitMenu = false;
 		int menuOption = 0;
 		
 		do {
+			String menuTitle = "Edit Manager Menu";
+			String[] menuItems = {
+					"Title: " + employee.getName().getTitle(),
+					"First Name: " + employee.getName().getFirstName(),
+					"Last Name: " + employee.getName().getLastName(),
+					"Dept ID #: " + employee.getDeptIdNum(),
+					"Date Started: " + employee.getDateStarted().toString(),
+					"Phone #: " + employee.getPhoneNum(),
+					"Num Staff: " + manager.getNumStaff(),
+					"Salary: " + manager.getSalary(),
+					"Bonus: "  + manager.getBonus(), 
+					"Done (return to main menu)"
+					};
+			Menu menu = new Menu(inputController, menuTitle, menuItems);
 			menu.display();
 			menuOption = menu.getOption();
 			switch (menuOption) {
@@ -91,7 +97,7 @@ public class ManagerController extends EmployeeController {
 	 * 
 	 */
 	private void inputNumStaff() {
-		int numStaff = Input.getInteger("Number of Staff (1-14): ", 1, 14);
+		int numStaff = inputController.getInteger("Number of Staff (1-14): ", 1, 14);
 		this.manager.setNumStaff(numStaff);
 	}
 	
@@ -99,7 +105,7 @@ public class ManagerController extends EmployeeController {
 	 * 
 	 */
 	private void inputSalary() {
-		double salary = Input.getDouble("Salary (25000-65000): ", 25000, 65000);
+		double salary = inputController.getDouble("Salary (25000-65000): ", 25000, 65000);
 		this.manager.setSalary(salary);
 	}
 	
@@ -107,7 +113,7 @@ public class ManagerController extends EmployeeController {
 	 * 
 	 */
 	private void inputBonus() {
-		double bonus = Input.getDouble("Bonus % (0.0-1.0): ", 0.0, 1.0);
+		double bonus = inputController.getDouble("Bonus % (0.0-1.0): ", 0.0, 1.0);
 		this.manager.setBonus(bonus);
 	}
 	

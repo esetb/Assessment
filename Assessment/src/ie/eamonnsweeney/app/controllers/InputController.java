@@ -1,43 +1,36 @@
 /**
- * Console Input static methods
+ * 
  */
-package ie.eamonnsweeney.app.helpers;
+package ie.eamonnsweeney.app.controllers;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
-
 
 /**
  * @author Eamonn A. Sweeney
  *
  */
-public class Input {
-
-	private static Scanner strInput = new Scanner(System.in);
-	private static Scanner numInput = new Scanner(System.in);
+public class InputController {
+	private static Scanner input = new Scanner(System.in);
 	
 	/**
 	 * 
 	 */
-	public static void close() {
-		if (strInput != null) {
-			strInput.close();
-		}
-		if (numInput != null) {
-			numInput.close();
+	public void close() {
+		if (input != null) {
+			input.close();
 		}
 	}
 	
 	/**
 	 * 
 	 */
-	public static String getString(String msg) {
+	public String getString(String msg) {
 		boolean isValidInput = false;
 		String s = null;
 		
 		do {
 			System.out.println(msg);
-			s = strInput.nextLine();
+			s = input.nextLine();
 			if (s.equals("")) {
 				System.out.println("Input cannot be empty, please enter a value.");
 			} else {
@@ -51,14 +44,14 @@ public class Input {
 	/**
 	 * 
 	 */
-	public static int getInteger(String msg) {
+	public int getInteger(String msg) {
 		return getIntegerInput(msg);
 	}
 	
 	/**
 	 * 
 	 */
-	public static int getInteger(String msg, int min) {
+	public int getInteger(String msg, int min) {
 		boolean isValidInput = false;
 		int x = 0;
 		
@@ -73,7 +66,7 @@ public class Input {
 	/**
 	 * 
 	 */
-	public static int getInteger(String msg, int min, int max) {
+	public int getInteger(String msg, int min, int max) {
 		boolean isValidInput = false;
 		int x = 0;
 		
@@ -88,14 +81,14 @@ public class Input {
 	/**
 	 * 
 	 */
-	public static double getDouble(String msg) {
+	public double getDouble(String msg) {
 			return getDoubleInput(msg);
 	}
 	
 	/**
 	 * 
 	 */
-	public static double getDouble(String msg, double min) {
+	public double getDouble(String msg, double min) {
 		boolean isValidInput = false;
 		double x = 0;
 		
@@ -110,7 +103,7 @@ public class Input {
 	/**
 	 * 
 	 */
-	public static double getDouble(String msg, double min, double max) {
+	public double getDouble(String msg, double min, double max) {
 		boolean isValidInput = false;
 		double x = 0;
 		
@@ -125,16 +118,15 @@ public class Input {
 	/**
 	 * 
 	 */
-	private static int getIntegerInput(String msg) {
+	private int getIntegerInput(String msg) {
 		boolean isValidInput = false;
 		int x = 0;
 		
 		do {
 			try {
-				System.out.println(msg);
-				x = numInput.nextInt();
+				x = Integer.parseInt(getString(msg));
 				isValidInput = true;
-			} catch(InputMismatchException e) {
+			} catch(NumberFormatException e) {
 				System.out.println("Input must be an integer.");
 			}
 		} while (!isValidInput);
@@ -145,17 +137,16 @@ public class Input {
 	/**
 	 * 
 	 */
-	private static double getDoubleInput(String msg) {
+	private double getDoubleInput(String msg) {
 		boolean isValidInput = false;
 		double x = 0;
 		
 		do {
 			try {
-				System.out.println(msg);
-				x = numInput.nextDouble();
+				x = Double.parseDouble(getString(msg));
 				isValidInput = true;
-			} catch(InputMismatchException e) {
-				System.out.println("Input must be a decimal number.");
+			} catch(NumberFormatException e) {
+				System.out.println("Input must be a decimal value.");
 			}
 		} while (!isValidInput);
 		
@@ -165,7 +156,7 @@ public class Input {
 	/**
 	 * 
 	 */
-	private static boolean isNotLessThan(int min, int x) {
+	private boolean isNotLessThan(int min, int x) {
 		if (x < min) {
 			System.out.println("Input cannot be less than " + min);
 			return false;
@@ -177,7 +168,7 @@ public class Input {
 	/**
 	 * 
 	 */
-	private static boolean isNotGreaterThan(int max, int x) {
+	private boolean isNotGreaterThan(int max, int x) {
 		if (x > max) {
 			System.out.println("Input cannot be more than " + max);
 			return false;
@@ -189,7 +180,7 @@ public class Input {
 	/**
 	 * 
 	 */
-	private static boolean isNotLessThan(double min, double x) {
+	private boolean isNotLessThan(double min, double x) {
 		if (x < min) {
 			System.out.println("Input cannot be less than " + min);
 			return false;
@@ -201,7 +192,7 @@ public class Input {
 	/**
 	 * 
 	 */
-	private static boolean isNotGreaterThan(double max, double x) {
+	private boolean isNotGreaterThan(double max, double x) {
 		if (x > max) {
 			System.out.println("Input cannot be more than " + max);
 			return false;
@@ -209,5 +200,4 @@ public class Input {
 		
 		return true;
 	}
-	
 }

@@ -3,7 +3,6 @@
  */
 package ie.eamonnsweeney.app.controllers;
 
-import ie.eamonnsweeney.app.helpers.Input;
 import ie.eamonnsweeney.app.models.Department;
 import ie.eamonnsweeney.app.models.Menu;
 
@@ -15,7 +14,15 @@ import ie.eamonnsweeney.app.models.Menu;
 public class DepartmentController {
 	
 	private Department department;
-
+	private InputController inputController;
+	
+	/**
+	 * 
+	 */
+	public DepartmentController(InputController inputController) {
+		this.inputController = inputController;
+	}
+	
 	/**
 	 * 
 	 */
@@ -35,7 +42,7 @@ public class DepartmentController {
 				"Dept Name: " + department.getName(),
 				"Done (return to main menu)"
 				};
-		Menu menu = new Menu(menuTitle, menuItems);
+		Menu menu = new Menu(inputController, menuTitle, menuItems);
 		boolean exitMenu = false;
 		int menuOption = 0;
 		
@@ -57,7 +64,7 @@ public class DepartmentController {
 	 * 
 	 */
 	private void inputName() {
-		String name = Input.getString("Enter new name: ");
+		String name = inputController.getString("Enter new name: ");
 		this.department.setName(name);
 	}
 	

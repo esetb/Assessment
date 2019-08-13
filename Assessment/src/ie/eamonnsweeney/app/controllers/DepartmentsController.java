@@ -17,6 +17,7 @@ import ie.eamonnsweeney.app.models.Menu;
  */
 public class DepartmentsController {
 
+	private InputController inputController;
 	private File dataFile;
 	private ArrayList<Department> departments;
 	private int nextIdNum;
@@ -24,7 +25,8 @@ public class DepartmentsController {
 	/**
 	 * 
 	 */
-	public DepartmentsController() {
+	public DepartmentsController(InputController inputController) {
+		this.inputController = inputController;
 		this.dataFile = new File("src/ie/eamonnsweeney/app/data/departments.dat");
 		this.departments = loadData();
 		this.nextIdNum = (getHighestIdNum() + 1);
@@ -42,7 +44,7 @@ public class DepartmentsController {
 				"Show Help", 
 				"Return to Main Menu"
 				};
-		Menu menu = new Menu(menuTitle, menuItems);
+		Menu menu = new Menu(inputController, menuTitle, menuItems);
 		boolean exitMenu = false;
 		
 		do {
@@ -53,8 +55,10 @@ public class DepartmentsController {
 				break;
 			case 2:
 				// list dept details (id name # employees/managers/developers).
+				break;
 			case 3:
 				addNew();
+				break;
 			case 4:
 				// show help
 				break;
@@ -87,7 +91,7 @@ public class DepartmentsController {
 	 * 
 	 */
 	private Department addNew() {
-		DepartmentController dc = new DepartmentController();
+		DepartmentController dc = new DepartmentController(inputController);
 		return dc.createNewDepartment(nextIdNum);
 	}
 	

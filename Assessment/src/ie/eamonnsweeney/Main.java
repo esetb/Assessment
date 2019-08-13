@@ -133,7 +133,6 @@ draw.io
 package ie.eamonnsweeney;
 
 import ie.eamonnsweeney.app.controllers.ApplicationController;
-import ie.eamonnsweeney.app.helpers.Input;
 
 
 /**
@@ -153,8 +152,6 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println("Unhandled Exception: " + e.getMessage());
 			e.printStackTrace();
-		} finally {
-			Input.close();
 		}
 		
 	}

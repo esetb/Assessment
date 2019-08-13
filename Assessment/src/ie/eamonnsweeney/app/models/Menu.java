@@ -3,13 +3,15 @@
  */
 package ie.eamonnsweeney.app.models;
 
-import ie.eamonnsweeney.app.helpers.Input;
+import ie.eamonnsweeney.app.controllers.InputController;
 
 /**
  * @author Eamonn A. Sweeney
  *
  */
 public class Menu {
+	
+	private InputController inputController;
 	private String name;
 	private String[] options;
 	private String renderedMenu;
@@ -17,7 +19,8 @@ public class Menu {
 	/**
 	 * 
 	 */
-	public Menu(String name, String[] options) {
+	public Menu(InputController inputController, String name, String[] options) {
+		this.inputController = inputController;
 		this.name = name;
 		this.options = options;
 		renderMenu();
@@ -34,7 +37,7 @@ public class Menu {
 	 */
 	public int getOption() {
 		int numOptions = options.length;
-		return Input.getInteger("Enter menu option (1-" 
+		return inputController.getInteger("Enter menu option (1-" 
 				+ numOptions + "): ", 1, numOptions);
 	}
 	
@@ -42,7 +45,7 @@ public class Menu {
 	 * 
 	 */
 	private void renderMenu() {
-		renderedMenu = "" + name;
+		renderedMenu = "\n" + name;
 		for (int i = 0 ; i < options.length ; i++) {
 			renderedMenu += ("\n" + (i + 1) + ". " + options[i]); 
 		}

@@ -12,15 +12,17 @@ import ie.eamonnsweeney.app.models.Menu;
  */
 public class ApplicationController {
 	
-	private EmployeesController employeeController;
-	private DepartmentsController departmentController;	
+	private EmployeesController employeesController;
+	private DepartmentsController departmentsController;
+	private InputController inputController;
 	
 	/**
 	 * 
 	 */
 	public ApplicationController() {
-		this.employeeController = new EmployeesController();
-		this.departmentController = new DepartmentsController();
+		this.inputController = new InputController();
+		this.employeesController = new EmployeesController(inputController);
+		this.departmentsController = new DepartmentsController(inputController);
 	}
 	
 	/**
@@ -29,6 +31,7 @@ public class ApplicationController {
 	public void run() {
 		displayMenu();
 		saveData();
+		inputController.close();
 	}	
 	
 	/* 
@@ -50,17 +53,17 @@ public class ApplicationController {
 				"Show Help", 
 				"Exit Program"
 				};
-		Menu menu = new Menu(menuTitle, menuItems);
+		Menu menu = new Menu(inputController, menuTitle, menuItems);
 		boolean exitMenu = false;
 		
 		do {
 			menu.display();
 			switch (menu.getOption()) {
 			case 1:
-				departmentController.displayMenu();
+				departmentsController.displayMenu();
 				break;
 			case 2:
-				employeeController.displayMenu();
+				employeesController.displayMenu();
 			case 3:
 				// show help - main menu
 				break;
@@ -76,8 +79,8 @@ public class ApplicationController {
 	 * 
 	 */
 	private void saveData() {
-		employeeController.saveData();
-		departmentController.saveData();
+		employeesController.saveData();
+		departmentsController.saveData();
 	}
 	
 }
