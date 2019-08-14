@@ -4,6 +4,9 @@
 package ie.eamonnsweeney.app.controllers;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+
+import ie.eamonnsweeney.app.models.Department;
 import ie.eamonnsweeney.app.models.Employee;
 
 
@@ -14,20 +17,18 @@ import ie.eamonnsweeney.app.models.Employee;
 public abstract class EmployeeController {
 
 	private Employee employee;
+	private ArrayList<Department> departments;
+	private int maxDeptIdNum;
 	protected InputController inputController;
 	
 	/**
 	 * 
 	 */
-	public EmployeeController(InputController inputController) {
+	public EmployeeController(ArrayList<Department> departments, int maxDeptIdNum, 
+			InputController inputController) {
+		this.departments = departments;
+		this.maxDeptIdNum = maxDeptIdNum;
 		this.inputController = inputController;
-	}
-	
-	/**
-	 * 
-	 */
-	protected Employee getEmployee() {
-		return employee;
 	}
 	
 	/**
@@ -65,8 +66,9 @@ public abstract class EmployeeController {
 	 * 
 	 */
 	protected void inputDeptIdNum() {
-		//TODO: get total departments for max
-		int deptIdNum = inputController.getInteger("Department ID (1-3): ", 1, 3);
+		int deptIdNum = inputController.getInteger("Department ID (1-" 
+				+ maxDeptIdNum + "): ", 1, maxDeptIdNum);
+		// todo: is dept assignment legal.
 		this.employee.setDeptIdNum(deptIdNum);
 	}
 	

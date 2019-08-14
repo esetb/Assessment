@@ -3,6 +3,9 @@
  */
 package ie.eamonnsweeney.app.controllers;
 
+import java.util.ArrayList;
+
+import ie.eamonnsweeney.app.models.Department;
 import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
 import ie.eamonnsweeney.app.models.Menu;
@@ -20,8 +23,9 @@ public class ManagerController extends EmployeeController {
 	/**
 	 * 
 	 */
-	public ManagerController(InputController inputController) {
-		super(inputController);
+	public ManagerController(ArrayList<Department> departments, int maxDeptIdNum, 
+			InputController inputController) {
+		super(departments, maxDeptIdNum, inputController);
 	}
 	
 	/**
@@ -54,12 +58,12 @@ public class ManagerController extends EmployeeController {
 		do {
 			String menuTitle = "Edit Manager Menu";
 			String[] menuItems = {
-					"Title: " + employee.getName().getTitle(),
-					"First Name: " + employee.getName().getFirstName(),
-					"Last Name: " + employee.getName().getLastName(),
-					"Dept ID #: " + employee.getDeptIdNum(),
-					"Date Started: " + employee.getDateStarted().toString(),
-					"Phone #: " + employee.getPhoneNum(),
+					"Title: " + manager.getName().getTitle(),
+					"First Name: " + manager.getName().getFirstName(),
+					"Last Name: " + manager.getName().getLastName(),
+					"Dept ID #: " + manager.getDeptIdNum(),
+					"Date Started: " + manager.getDateStarted().toString(),
+					"Phone #: " + manager.getPhoneNum(),
 					"Num Staff: " + manager.getNumStaff(),
 					"Salary: " + manager.getSalary(),
 					"Bonus: "  + manager.getBonus(), 

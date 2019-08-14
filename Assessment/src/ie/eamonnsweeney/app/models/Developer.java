@@ -79,7 +79,7 @@ public class Developer extends Employee {
 				+ " " + getName().getFirstName() 
 				+ " " + getName().getLastName() 
 				+ ", ID: " + getIdNum()
-				+ ", Department: " + getIdNum()
+				+ ", Department ID: " + getDeptIdNum()
 				+ ", Date Started: " + getDateStarted()
 				+ ", Phone: " + getPhoneNum() 
 				+ ", Level: " + level

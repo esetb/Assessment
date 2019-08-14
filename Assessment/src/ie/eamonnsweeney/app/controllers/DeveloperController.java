@@ -3,6 +3,9 @@
  */
 package ie.eamonnsweeney.app.controllers;
 
+import java.util.ArrayList;
+
+import ie.eamonnsweeney.app.models.Department;
 import ie.eamonnsweeney.app.models.Developer;
 import ie.eamonnsweeney.app.models.Developer.Level;
 import ie.eamonnsweeney.app.models.Employee;
@@ -21,8 +24,9 @@ public class DeveloperController extends EmployeeController {
 	/**
 	 * 
 	 */
-	public DeveloperController(InputController inputController) {
-		super(inputController);
+	public DeveloperController(ArrayList<Department> departments, int maxDeptIdNum, 
+			InputController inputController) {
+		super(departments, maxDeptIdNum, inputController);
 	}
 	
 	
@@ -55,12 +59,12 @@ public class DeveloperController extends EmployeeController {
 		do {
 			String menuTitle = "Edit Developer Menu";
 			String[] menuItems = {
-					"Title: " + employee.getName().getTitle(),
-					"First Name: " + employee.getName().getFirstName(),
-					"Last Name: " + employee.getName().getLastName(),
-					"Dept ID #: " + employee.getDeptIdNum(),
-					"Date Started: " + employee.getDateStarted().toString(),
-					"Phone #: " + employee.getPhoneNum(),
+					"Title: " + developer.getName().getTitle(),
+					"First Name: " + developer.getName().getFirstName(),
+					"Last Name: " + developer.getName().getLastName(),
+					"Dept ID #: " + developer.getDeptIdNum(),
+					"Date Started: " + developer.getDateStarted().toString(),
+					"Phone #: " + developer.getPhoneNum(),
 					"Level: " + developer.getLevel(),
 					"Done (return to main menu)"
 					};
