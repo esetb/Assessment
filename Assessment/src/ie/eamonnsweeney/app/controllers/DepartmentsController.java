@@ -6,7 +6,6 @@ package ie.eamonnsweeney.app.controllers;
 import java.io.File;
 import java.util.ArrayList;
 
-import ie.eamonnsweeney.app.models.DataStorable;
 import ie.eamonnsweeney.app.models.Department;
 import ie.eamonnsweeney.app.models.Menu;
 
@@ -15,7 +14,7 @@ import ie.eamonnsweeney.app.models.Menu;
  * @author Eamonn A. Sweeney
  *
  */
-public class DepartmentsController implements DataStorable {
+public class DepartmentsController {
 
 	private FileIOController fileIOController;
 	private InputController inputController;

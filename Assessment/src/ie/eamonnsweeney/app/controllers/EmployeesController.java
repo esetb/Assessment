@@ -7,7 +7,6 @@ import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import ie.eamonnsweeney.app.models.DataStorable;
 import ie.eamonnsweeney.app.models.Developer;
 import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
@@ -19,7 +18,7 @@ import ie.eamonnsweeney.app.models.Name;
  * @author Eamonn A. Sweeney
  *
  */
-public class EmployeesController implements DataStorable {
+public class EmployeesController {
 
 	private FileIOController fileIOController;
 	private InputController inputController;

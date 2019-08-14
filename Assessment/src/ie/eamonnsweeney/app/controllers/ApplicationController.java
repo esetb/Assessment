@@ -31,7 +31,8 @@ public class ApplicationController {
 	 */
 	public void run() {
 		displayMenu();
-		saveData();
+		employeesController.storeData();
+		departmentsController.storeData();
 		inputController.close();
 	}	
 	
@@ -74,14 +75,6 @@ public class ApplicationController {
 		} while (!exitMenu);
 		
 		System.out.println("Goodbye!");
-	}
-	
-	/**
-	 * 
-	 */
-	private void saveData() {
-		employeesController.saveData();
-		departmentsController.saveData();
 	}
 	
 }
