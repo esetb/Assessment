@@ -62,18 +62,18 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * Run.
+	 * Run the Application.
 	 */
 	public void run() {
-		displayMenu();
+		displayMainMenu();
 		storeData();
 		inputController.close();
 	}	
 
 	/**
-	 * Display menu.
+	 * Display the main menu.
 	 */
-	private void displayMenu() {
+	private void displayMainMenu() {
 		String menuTitle = "Main Menu";
 		String[] menuItems = {
 				"List Departments",
