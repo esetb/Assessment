@@ -336,8 +336,7 @@ public class ApplicationController {
 	 */
 	private void addManager() {
 		if (canAddManager()) {
-			ManagerController mc = new ManagerController(departments, 
-					 (nextDepartmentIdNum -1), inputController);
+			ManagerController mc = new ManagerController(departments, inputController);
 			employees.add(mc.createNewManager(nextEmployeeIdNum));
 			nextEmployeeIdNum++;
 			System.out.println("Manager added.");
@@ -352,8 +351,7 @@ public class ApplicationController {
 	 */
 	private void addDeveloper() {
 		if (canAddEmployee()) {
-			DeveloperController dc = new DeveloperController(departments, 
-					(nextDepartmentIdNum -1), inputController);
+			DeveloperController dc = new DeveloperController(departments, inputController);
 			employees.add(dc.createNewDeveloper(nextEmployeeIdNum));
 			nextEmployeeIdNum++;
 			System.out.println("Manager added.");
@@ -374,12 +372,10 @@ public class ApplicationController {
 		for (Employee e : employees) {
 			if (e.getIdNum() == id) {
 				if (e instanceof Manager) {
-					ManagerController mc = new ManagerController(departments, 
-							(nextDepartmentIdNum -1), inputController);
+					ManagerController mc = new ManagerController(departments, inputController);
 					mc.edit(e);
 				} else {
-					DeveloperController dc = new DeveloperController(departments, 
-							(nextDepartmentIdNum -1), inputController);
+					DeveloperController dc = new DeveloperController(departments, inputController);
 					dc.edit(e);
 				}
 				idFound = true;

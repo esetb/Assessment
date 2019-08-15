@@ -30,9 +30,8 @@ public class DeveloperController extends EmployeeController {
 	 * @param maxDeptIdNum the max dept id num
 	 * @param inputController the input controller
 	 */
-	public DeveloperController(ArrayList<Department> departments, int maxDeptIdNum, 
-			InputController inputController) {
-		super(departments, maxDeptIdNum, inputController);
+	public DeveloperController(ArrayList<Department> departments, InputController inputController) {
+		super(departments, inputController);
 	}
 	
 	

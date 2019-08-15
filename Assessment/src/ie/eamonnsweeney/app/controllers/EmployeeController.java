@@ -23,9 +23,6 @@ public abstract class EmployeeController {
 	/** The departments. */
 	private ArrayList<Department> departments;
 	
-	/** The max dept id num. */
-	private int maxDeptIdNum;
-	
 	/** The input controller. */
 	protected InputController inputController;
 	
@@ -36,10 +33,8 @@ public abstract class EmployeeController {
 	 * @param maxDeptIdNum the max dept id num
 	 * @param inputController the input controller
 	 */
-	public EmployeeController(ArrayList<Department> departments, int maxDeptIdNum, 
-			InputController inputController) {
+	public EmployeeController(ArrayList<Department> departments, InputController inputController) {
 		this.departments = departments;
-		this.maxDeptIdNum = maxDeptIdNum;
 		this.inputController = inputController;
 	}
 	
@@ -80,14 +75,17 @@ public abstract class EmployeeController {
 	 * Input dept id num.
 	 */
 	protected void inputDeptIdNum() {
-		int deptIdNum = inputController.getInteger("Department ID (1-" 
-				+ maxDeptIdNum + "): ", 1, maxDeptIdNum);
-		/* todo: is dept assignment legal.
-		 * 
-		 * listDepartmentVacancies();
-		 * 
-		 * 
-		 */
+		ArrayList<Department> availableDepartments = getAvailableDepartments();
+		int[] validDepartmentIds = new int[availableDepartments.size()];
+		for (int i = 0; i < validDepartmentIds.length; i++) {
+			validDepartmentIds[i] = availableDepartments.get(i).getIdNum();
+		}
+		int max = availableDepartments.size();
+		
+		
+		int deptIdNum = inputController.getInteger("Department ID (1-" + max 
+				+ "): ", 1, max);
+		
 		this.employee.setDeptIdNum(deptIdNum);
 	}
 	
@@ -138,6 +136,11 @@ public abstract class EmployeeController {
 		}
 	}
 	
+	private ArrayList<Department> getAvailableDepartments() {
+		ArrayList<Department> availableDepartments = new ArrayList<>();
+		
+		return availableDepartments;
+	}
 	/**
 	 * Edits the.
 	 *
