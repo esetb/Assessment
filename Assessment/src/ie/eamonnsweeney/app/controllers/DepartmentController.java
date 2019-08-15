@@ -8,23 +8,32 @@ import ie.eamonnsweeney.app.models.Menu;
 
 
 /**
- * @author Eamonn A. Sweeney
+ * The Class DepartmentController.
  *
+ * @author Eamonn A. Sweeney
  */
 public class DepartmentController {
 	
+	/** The department. */
 	private Department department;
+	
+	/** The input controller. */
 	private InputController inputController;
 	
 	/**
-	 * 
+	 * Instantiates a new department controller.
+	 *
+	 * @param inputController the input controller
 	 */
 	public DepartmentController(InputController inputController) {
 		this.inputController = inputController;
 	}
 	
 	/**
-	 * 
+	 * Creates the new department.
+	 *
+	 * @param idNum the id num
+	 * @return the department
 	 */
 	public Department createNewDepartment(int idNum) {
 		this.department = new Department(idNum, null, 0);
@@ -33,7 +42,9 @@ public class DepartmentController {
 	}
 	
 	/**
-	 * 
+	 * Edits a departments data.
+	 *
+	 * @param department the department
 	 */
 	public void edit(Department department) {
 		this.department = department;
@@ -61,7 +72,7 @@ public class DepartmentController {
 	}
 	
 	/**
-	 * 
+	 * Input name.
 	 */
 	private void inputName() {
 		String name = inputController.getString("Enter new name: ");

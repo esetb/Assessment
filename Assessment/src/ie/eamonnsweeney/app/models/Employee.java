@@ -9,25 +9,41 @@ import java.util.Objects;
 
 
 /**
- * @author Eamonn A. Sweeney
+ * The Class Employee.
  *
+ * @author Eamonn A. Sweeney
  */
 public abstract class Employee implements Serializable {
 	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 6721678774293692883L;
+	
+	/** The id num. */
 	private int idNum;
+	
+	/** The name. */
 	private Name name;
+	
+	/** The dept id num. */
 	private int deptIdNum;
+	
+	/** The date started. */
 	private LocalDate dateStarted;
+	
+	/** The phone num. */
 	private String phoneNum;
+	
+	/** The monthly pay. */
 	private double monthlyPay;
 	
 	/**
-	 * @param idNum
-	 * @param name
-	 * @param dept
-	 * @param dateStarted
-	 * @param phoneNum
+	 * Instantiates a new employee.
+	 *
+	 * @param idNum the id num
+	 * @param name the name
+	 * @param deptIdNum the dept id num
+	 * @param dateStarted the date started
+	 * @param phoneNum the phone num
 	 */
 	protected Employee(int idNum, Name name, int deptIdNum, 
 			LocalDate dateStarted, String phoneNum) {
@@ -39,6 +55,8 @@ public abstract class Employee implements Serializable {
 	}
 	
 	/**
+	 * Gets the name.
+	 *
 	 * @return the name
 	 */
 	public Name getName() {
@@ -46,6 +64,8 @@ public abstract class Employee implements Serializable {
 	}
 	
 	/**
+	 * Sets the name.
+	 *
 	 * @param name the name to set
 	 */
 	public void setName(Name name) {
@@ -53,6 +73,8 @@ public abstract class Employee implements Serializable {
 	}
 	
 	/**
+	 * Gets the dept id num.
+	 *
 	 * @return the deptIdNum
 	 */
 	public int getDeptIdNum() {
@@ -60,13 +82,17 @@ public abstract class Employee implements Serializable {
 	}
 	
 	/**
-	 * @param dept the deptIdNum to set
+	 * Sets the dept id num.
+	 *
+	 * @param deptIdNum the new dept id num
 	 */
 	public void setDeptIdNum(int deptIdNum) {
 		this.deptIdNum = deptIdNum;
 	}
 	
 	/**
+	 * Gets the date started.
+	 *
 	 * @return the dateStarted
 	 */
 	public LocalDate getDateStarted() {
@@ -74,6 +100,8 @@ public abstract class Employee implements Serializable {
 	}
 	
 	/**
+	 * Sets the date started.
+	 *
 	 * @param dateStarted the dateStarted to set
 	 */
 	public void setDateStarted(LocalDate dateStarted) {
@@ -81,6 +109,8 @@ public abstract class Employee implements Serializable {
 	}
 	
 	/**
+	 * Gets the phone num.
+	 *
 	 * @return the phoneNum
 	 */
 	public String getPhoneNum() {
@@ -88,6 +118,8 @@ public abstract class Employee implements Serializable {
 	}
 	
 	/**
+	 * Sets the phone num.
+	 *
 	 * @param phoneNum the phoneNum to set
 	 */
 	public void setPhoneNum(String phoneNum) {
@@ -95,6 +127,8 @@ public abstract class Employee implements Serializable {
 	}
 	
 	/**
+	 * Gets the monthly pay.
+	 *
 	 * @return the monthlyPay
 	 */
 	public double getMonthlyPay() {
@@ -102,6 +136,8 @@ public abstract class Employee implements Serializable {
 	}
 	
 	/**
+	 * Sets the monthly pay.
+	 *
 	 * @param monthlyPay the monthlyPay to set
 	 */
 	public void setMonthlyPay(double monthlyPay) {
@@ -109,12 +145,19 @@ public abstract class Employee implements Serializable {
 	}
 	
 	/**
+	 * Gets the id num.
+	 *
 	 * @return the idNum
 	 */
 	public int getIdNum() {
 		return idNum;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "Employee: "  + name.getTitle() 
@@ -128,11 +171,22 @@ public abstract class Employee implements Serializable {
 				+ ".";
 	}
 
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(dateStarted, deptIdNum, idNum, monthlyPay, name, phoneNum);
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

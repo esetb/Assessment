@@ -7,21 +7,32 @@ import java.io.Serializable;
 import java.util.Objects;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Eamonn A. Sweeney
+ * The Class Name.
  *
+ * @author Eamonn A. Sweeney
  */
 public class Name implements Serializable {
 	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -5802807397429774898L;
+	
+	/** The title. */
 	private String title;
+	
+	/** The first name. */
 	private String firstName;
+	
+	/** The last name. */
 	private String lastName;
 	
 	/**
-	 * @param title
-	 * @param firstName
-	 * @param lastName
+	 * Instantiates a new name.
+	 *
+	 * @param title the title
+	 * @param firstName the first name
+	 * @param lastName the last name
 	 */
 	public Name(String title, String firstName, String lastName) {
 		this.title = title;
@@ -30,6 +41,8 @@ public class Name implements Serializable {
 	}
 
 	/**
+	 * Gets the title.
+	 *
 	 * @return the title
 	 */
 	public String getTitle() {
@@ -37,6 +50,8 @@ public class Name implements Serializable {
 	}
 	
 	/**
+	 * Sets the title.
+	 *
 	 * @param title the title to set
 	 */
 	public void setTitle(String title) {
@@ -44,6 +59,8 @@ public class Name implements Serializable {
 	}
 
 	/**
+	 * Gets the first name.
+	 *
 	 * @return the firstName
 	 */
 	public String getFirstName() {
@@ -51,6 +68,8 @@ public class Name implements Serializable {
 	}
 
 	/**
+	 * Sets the first name.
+	 *
 	 * @param firstName the firstName to set
 	 */
 	public void setFirstName(String firstName) {
@@ -58,6 +77,8 @@ public class Name implements Serializable {
 	}
 
 	/**
+	 * Gets the last name.
+	 *
 	 * @return the lastName
 	 */
 	public String getLastName() {
@@ -65,12 +86,19 @@ public class Name implements Serializable {
 	}
 
 	/**
+	 * Sets the last name.
+	 *
 	 * @param lastName the lastName to set
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "Name [title=" + title 
@@ -79,11 +107,22 @@ public class Name implements Serializable {
 				+ "]";
 	}
 
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(firstName, lastName, title);
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

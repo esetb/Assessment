@@ -5,15 +5,19 @@ package ie.eamonnsweeney.app.controllers;
 
 import java.util.Scanner;
 
+
 /**
- * @author Eamonn A. Sweeney
+ * The Class InputController.
  *
+ * @author Eamonn A. Sweeney
  */
 public class InputController {
+	
+	/** The input. */
 	private static Scanner input = new Scanner(System.in);
 	
 	/**
-	 * 
+	 * Close.
 	 */
 	public void close() {
 		if (input != null) {
@@ -22,7 +26,10 @@ public class InputController {
 	}
 	
 	/**
-	 * 
+	 * Gets a string input - cannot be empty.
+	 *
+	 * @param msg the msg
+	 * @return the string
 	 */
 	public String getString(String msg) {
 		boolean isValidInput = false;
@@ -42,14 +49,21 @@ public class InputController {
 	}
 	
 	/**
-	 * 
+	 * Gets an integer.
+	 *
+	 * @param msg the msg
+	 * @return the integer
 	 */
 	public int getInteger(String msg) {
 		return getIntegerInput(msg);
 	}
 	
 	/**
-	 * 
+	 * Gets an integer with a minimum value.
+	 *
+	 * @param msg the msg
+	 * @param min the min
+	 * @return the integer
 	 */
 	public int getInteger(String msg, int min) {
 		boolean isValidInput = false;
@@ -64,7 +78,12 @@ public class InputController {
 	}
 
 	/**
-	 * 
+	 * Gets an integer between two values min-max.
+	 *
+	 * @param msg the msg
+	 * @param min the min
+	 * @param max the max
+	 * @return the integer
 	 */
 	public int getInteger(String msg, int min, int max) {
 		boolean isValidInput = false;
@@ -79,14 +98,21 @@ public class InputController {
 	}
 	
 	/**
-	 * 
+	 * Gets a double.
+	 *
+	 * @param msg the msg
+	 * @return the double
 	 */
 	public double getDouble(String msg) {
 			return getDoubleInput(msg);
 	}
 	
 	/**
-	 * 
+	 * Gets a double with a minimum value
+	 *
+	 * @param msg the msg
+	 * @param min the min
+	 * @return the double
 	 */
 	public double getDouble(String msg, double min) {
 		boolean isValidInput = false;
@@ -101,7 +127,12 @@ public class InputController {
 	}
 
 	/**
-	 * 
+	 * Gets a double between two values min-max
+	 *
+	 * @param msg the msg
+	 * @param min the min
+	 * @param max the max
+	 * @return the double
 	 */
 	public double getDouble(String msg, double min, double max) {
 		boolean isValidInput = false;
@@ -116,7 +147,10 @@ public class InputController {
 	}
 	
 	/**
-	 * 
+	 * Gets the integer input.
+	 *
+	 * @param msg the msg
+	 * @return the integer input
 	 */
 	private int getIntegerInput(String msg) {
 		boolean isValidInput = false;
@@ -135,7 +169,10 @@ public class InputController {
 	}
 	
 	/**
-	 * 
+	 * Gets the double input.
+	 *
+	 * @param msg the msg
+	 * @return the double input
 	 */
 	private double getDoubleInput(String msg) {
 		boolean isValidInput = false;
@@ -154,7 +191,11 @@ public class InputController {
 	}
 
 	/**
-	 * 
+	 * Checks if is not less than.
+	 *
+	 * @param min the min
+	 * @param x the x
+	 * @return true, if is not less than
 	 */
 	private boolean isNotLessThan(int min, int x) {
 		if (x < min) {
@@ -166,7 +207,11 @@ public class InputController {
 	}
 	
 	/**
-	 * 
+	 * Checks if is not greater than.
+	 *
+	 * @param max the max
+	 * @param x the x
+	 * @return true, if is not greater than
 	 */
 	private boolean isNotGreaterThan(int max, int x) {
 		if (x > max) {
@@ -178,7 +223,11 @@ public class InputController {
 	}
 	
 	/**
-	 * 
+	 * Checks if is not less than.
+	 *
+	 * @param min the min
+	 * @param x the x
+	 * @return true, if is not less than
 	 */
 	private boolean isNotLessThan(double min, double x) {
 		if (x < min) {
@@ -190,7 +239,11 @@ public class InputController {
 	}
 	
 	/**
-	 * 
+	 * Checks if is not greater than.
+	 *
+	 * @param max the max
+	 * @param x the x
+	 * @return true, if is not greater than
 	 */
 	private boolean isNotGreaterThan(double max, double x) {
 		if (x > max) {
@@ -200,4 +253,5 @@ public class InputController {
 		
 		return true;
 	}
+	
 }

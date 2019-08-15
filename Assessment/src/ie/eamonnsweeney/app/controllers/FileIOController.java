@@ -15,13 +15,17 @@ import java.util.ArrayList;
 
 
 /**
- * @author Eamonn A. Sweeney
+ * The Class FileIOController.
  *
+ * @author Eamonn A. Sweeney
  */
 public class FileIOController {
 
 	/**
-	 * 
+	 * Read text from a file to a string.
+	 *
+	 * @param filePath the file path
+	 * @return the string
 	 */
 	public String readTextFile(File filePath) {
 		String text = "";
@@ -45,7 +49,10 @@ public class FileIOController {
 	}
 	
 	/**
-	 * 
+	 * Read generic array list.
+	 *
+	 * @param filePath the file path
+	 * @return the array list
 	 */
 	public ArrayList<?> readGenericArrayList(File filePath) {
 		ArrayList<?> array = new ArrayList<>();
@@ -62,7 +69,10 @@ public class FileIOController {
 	}
 
 	/**
-	 * 
+	 * Write generic array list.
+	 *
+	 * @param array the array
+	 * @param filePath the file path
 	 */
 	public void writeGenericArrayList(ArrayList<?> array, File filePath) {
 		try (FileOutputStream fos = new FileOutputStream(filePath);

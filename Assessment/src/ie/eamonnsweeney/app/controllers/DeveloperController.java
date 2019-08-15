@@ -14,15 +14,21 @@ import ie.eamonnsweeney.app.models.Name;
 
 
 /**
- * @author Eamonn A. Sweeney
+ * The Class DeveloperController.
  *
+ * @author Eamonn A. Sweeney
  */
 public class DeveloperController extends EmployeeController {
 	
+	/** The developer. */
 	private Developer developer;
 	
 	/**
-	 * 
+	 * Instantiates a new developer controller.
+	 *
+	 * @param departments the departments
+	 * @param maxDeptIdNum the max dept id num
+	 * @param inputController the input controller
 	 */
 	public DeveloperController(ArrayList<Department> departments, int maxDeptIdNum, 
 			InputController inputController) {
@@ -31,7 +37,10 @@ public class DeveloperController extends EmployeeController {
 	
 	
 	/**
-	 * 
+	 * Creates a new developer.
+	 *
+	 * @param idNum the id num
+	 * @return a developer object
 	 */
 	public Developer createNewDeveloper(int idNum) {
 		this.developer = new Developer(idNum, new Name("","",""), 0, null, null
@@ -48,7 +57,9 @@ public class DeveloperController extends EmployeeController {
 	}
 
 	/**
-	 * 
+	 * Edits employee data.
+	 *
+	 * @param employee the employee
 	 */
 	public void edit(Employee employee) {
 		super.setEmployee(employee);
@@ -90,7 +101,7 @@ public class DeveloperController extends EmployeeController {
 	}
 	
 	/**
-	 * 
+	 * Input level.
 	 */
 	private void inputLevel() {
 		int max = Level.values().length;

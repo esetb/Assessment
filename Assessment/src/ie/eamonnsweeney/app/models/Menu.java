@@ -7,17 +7,27 @@ import ie.eamonnsweeney.app.controllers.InputController;
 
 
 /**
- * @author Eamonn A. Sweeney
+ * The Class Menu.
  *
+ * @author Eamonn A. Sweeney
  */
 public class Menu {
 	
+	/** The input controller. */
 	private InputController inputController;
+	
+	/** The name. */
 	private String name;
+	
+	/** The options. */
 	private String[] options;
 	
 	/**
-	 * 
+	 * Instantiates a new menu.
+	 *
+	 * @param inputController the input controller
+	 * @param name the name
+	 * @param options the options
 	 */
 	public Menu(InputController inputController, String name, String[] options) {
 		this.inputController = inputController;
@@ -26,7 +36,7 @@ public class Menu {
 	}
 	
 	/**
-	 * 
+	 * Display.
 	 */
 	public void display() {
 		String menuStr = "\n" + name;
@@ -37,7 +47,9 @@ public class Menu {
 	}
 	
 	/**
-	 * 
+	 * Gets the option.
+	 *
+	 * @return the option
 	 */
 	public int getOption() {
 		int numOptions = options.length;

@@ -13,15 +13,21 @@ import ie.eamonnsweeney.app.models.Name;
 
 
 /**
- * @author Eamonn A. Sweeney
+ * The Class ManagerController.
  *
+ * @author Eamonn A. Sweeney
  */
 public class ManagerController extends EmployeeController {
 
+	/** The manager. */
 	private Manager manager;
 
 	/**
-	 * 
+	 * Instantiates a new manager controller.
+	 *
+	 * @param departments the departments
+	 * @param maxDeptIdNum the max dept id num
+	 * @param inputController the input controller
 	 */
 	public ManagerController(ArrayList<Department> departments, int maxDeptIdNum, 
 			InputController inputController) {
@@ -29,7 +35,10 @@ public class ManagerController extends EmployeeController {
 	}
 	
 	/**
-	 * 
+	 * Creates the new manager.
+	 *
+	 * @param idNum the id num
+	 * @return the manager
 	 */
 	public Manager createNewManager(int idNum) {
 		this.manager = new Manager(idNum, new Name("","",""), 0, null, null, 0, 0.0, 0.0);
@@ -47,7 +56,9 @@ public class ManagerController extends EmployeeController {
 	}
 
 	/**
-	 * 
+	 * Edits an employee data.
+	 *
+	 * @param employee the employee
 	 */
 	public void edit(Employee employee) {
 		super.setEmployee(employee);
@@ -98,7 +109,7 @@ public class ManagerController extends EmployeeController {
 	}
 	
 	/**
-	 * 
+	 * Input num staff.
 	 */
 	private void inputNumStaff() {
 		int numStaff = inputController.getInteger("Number of Staff (1-14): ", 1, 14);
@@ -106,7 +117,7 @@ public class ManagerController extends EmployeeController {
 	}
 	
 	/**
-	 * 
+	 * Input salary.
 	 */
 	private void inputSalary() {
 		double salary = inputController.getDouble("Salary (25000-65000): ", 25000, 65000);
@@ -114,7 +125,7 @@ public class ManagerController extends EmployeeController {
 	}
 	
 	/**
-	 * 
+	 * Input bonus.
 	 */
 	private void inputBonus() {
 		double bonus = inputController.getDouble("Bonus % (0.0-1.0): ", 0.0, 1.0);

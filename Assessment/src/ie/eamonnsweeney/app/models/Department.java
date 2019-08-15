@@ -8,20 +8,30 @@ import java.util.Objects;
 
 
 /**
- * @author Eamonn A. Sweeney
+ * The Class Department.
  *
+ * @author Eamonn A. Sweeney
  */
 public class Department implements Serializable {
 	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1928764860131292735L;
+	
+	/** The id num. */
 	private int idNum;
+	
+	/** The name. */
 	private String name;
+	
+	/** The num employees. */
 	private int numEmployees;
 
 	/**
-	 * @param idNum
-	 * @param name
-	 * @param numEmployees
+	 * Instantiates a new department.
+	 *
+	 * @param idNum the id num
+	 * @param name the name
+	 * @param numEmployees the num employees
 	 */
 	public Department(int idNum, String name, int numEmployees) {
 		this.idNum = idNum;
@@ -30,6 +40,8 @@ public class Department implements Serializable {
 	}
 	
 	/**
+	 * Gets the id num.
+	 *
 	 * @return the idNum
 	 */
 	public int getIdNum() {
@@ -37,6 +49,8 @@ public class Department implements Serializable {
 	}
 
 	/**
+	 * Gets the name.
+	 *
 	 * @return the name
 	 */
 	public String getName() {
@@ -44,6 +58,8 @@ public class Department implements Serializable {
 	}
 
 	/**
+	 * Sets the name.
+	 *
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
@@ -51,6 +67,8 @@ public class Department implements Serializable {
 	}
 
 	/**
+	 * Gets the num employees.
+	 *
 	 * @return the numEmployees
 	 */
 	public int getNumEmployees() {
@@ -58,12 +76,19 @@ public class Department implements Serializable {
 	}
 
 	/**
+	 * Sets the num employees.
+	 *
 	 * @param numEmployees the numEmployees to set
 	 */
 	public void setNumEmployees(int numEmployees) {
 		this.numEmployees = numEmployees;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "" 
@@ -73,11 +98,22 @@ public class Department implements Serializable {
 				;
 	}
 
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(idNum, name, numEmployees);
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

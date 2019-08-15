@@ -7,26 +7,37 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Eamonn A. Sweeney
+ * The Class Manager.
  *
+ * @author Eamonn A. Sweeney
  */
 public class Manager extends Employee {
 	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 4532872524230525657L;
+	
+	/** The num staff. */
 	private int numStaff;
+	
+	/** The salary. */
 	private double salary;
+	
+	/** The bonus. */
 	private double bonus;
 	
 	/**
-	 * @param idNum
-	 * @param name
-	 * @param dept
-	 * @param dateStarted
-	 * @param phoneNum
-	 * @param numStaff
-	 * @param salary
-	 * @param bonus
+	 * Instantiates a new manager.
+	 *
+	 * @param idNum the id num
+	 * @param name the name
+	 * @param deptIdNum the dept id num
+	 * @param dateStarted the date started
+	 * @param phoneNum the phone num
+	 * @param numStaff the num staff
+	 * @param salary the salary
+	 * @param bonus the bonus
 	 */
 	public Manager(int idNum, Name name, int deptIdNum, LocalDate dateStarted, 
 			String phoneNum, int numStaff, double salary, double bonus) {
@@ -38,6 +49,8 @@ public class Manager extends Employee {
 	}
 
 	/**
+	 * Gets the num staff.
+	 *
 	 * @return the numStaff
 	 */
 	public int getNumStaff() {
@@ -45,6 +58,8 @@ public class Manager extends Employee {
 	}
 
 	/**
+	 * Sets the num staff.
+	 *
 	 * @param numStaff the numStaff to set
 	 */
 	public void setNumStaff(int numStaff) {
@@ -52,6 +67,8 @@ public class Manager extends Employee {
 	}
 
 	/**
+	 * Gets the salary.
+	 *
 	 * @return the salary
 	 */
 	public double getSalary() {
@@ -59,6 +76,8 @@ public class Manager extends Employee {
 	}
 
 	/**
+	 * Sets the salary.
+	 *
 	 * @param salary the salary to set
 	 */
 	public void setSalary(double salary) {
@@ -67,6 +86,8 @@ public class Manager extends Employee {
 	}
 
 	/**
+	 * Gets the bonus.
+	 *
 	 * @return the bonus
 	 */
 	public double getBonus() {
@@ -74,12 +95,19 @@ public class Manager extends Employee {
 	}
 
 	/**
+	 * Sets the bonus.
+	 *
 	 * @param bonus the bonus to set
 	 */
 	public void setBonus(double bonus) {
 		this.bonus = bonus;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "" 
@@ -96,6 +124,11 @@ public class Manager extends Employee {
 				+ ".";
 	}
 
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -104,6 +137,12 @@ public class Manager extends Employee {
 		return result;
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

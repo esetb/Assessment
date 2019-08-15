@@ -142,7 +142,9 @@ import ie.eamonnsweeney.app.controllers.ApplicationController;
 public class Main {
 	
 	/**
-	 * The Application Entry Point
+	 * The Application Entry Point.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		

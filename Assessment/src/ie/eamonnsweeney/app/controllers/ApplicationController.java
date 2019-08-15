@@ -16,23 +16,39 @@ import ie.eamonnsweeney.app.models.Name;
 
 
 /**
- * @author Eamonn A. Sweeney
+ * The Class ApplicationController.
  *
+ * @author Eamonn A. Sweeney
  */
 public class ApplicationController {
 	
+	/** The file IO controller. */
 	private FileIOController fileIOController;
+	
+	/** The departments data file. */
 	private File departmentsDataFile;
+	
+	/** The employees data file. */
 	private File employeesDataFile;
+	
+	/** The input controller. */
 	private InputController inputController;
+	
+	/** The departments. */
 	private ArrayList<Department> departments;
+	
+	/** The employees. */
 	private ArrayList<Employee> employees;
+	
+	/** The next department id num. */
 	private int nextDepartmentIdNum;
+	
+	/** The next employee id num. */
 	private int nextEmployeeIdNum;
 	
 	
 	/**
-	 * 
+	 * Instantiates a new application controller.
 	 */
 	public ApplicationController() {
 		this.fileIOController = new FileIOController();
@@ -46,7 +62,7 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * Run.
 	 */
 	public void run() {
 		displayMenu();
@@ -55,7 +71,7 @@ public class ApplicationController {
 	}	
 
 	/**
-	 * 
+	 * Display menu.
 	 */
 	private void displayMenu() {
 		String menuTitle = "Main Menu";
@@ -117,7 +133,7 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * List departments.
 	 */
 	private void listDepartments() {
 		System.out.println("\n*** Departments ***");
@@ -127,7 +143,7 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * View department.
 	 */
 	private void viewDepartment() {
 		System.out.println("\n*** View Department ***");
@@ -135,7 +151,9 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * Adds the department.
+	 *
+	 * @return the department
 	 */
 	private Department addDepartment() {
 		DepartmentController dc = new DepartmentController(inputController);
@@ -143,8 +161,9 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
-	 * 
+	 * Load departments.
+	 *
+	 * @return the array list
 	 */
 	private ArrayList<Department> loadDepartments() {
 		ArrayList<Department> departments = new ArrayList<>();
@@ -162,7 +181,9 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * Read departments from file.
+	 *
+	 * @return the array list
 	 */
 	private ArrayList<Department> readDepartmentsFromFile() {
 		ArrayList<?> genericArrayListObject = fileIOController.readGenericArrayList(departmentsDataFile);
@@ -178,7 +199,9 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * Gets the highest department id num in use.
+	 *
+	 * @return the highest department id num
 	 */
 	private int getHighestDepartmentIdNum() {
 		int highestIdNum = 0;
@@ -194,8 +217,9 @@ public class ApplicationController {
 		return highestIdNum;
 	}
 
+
 	/**
-	 * 
+	 * List employees.
 	 */
 	private void listEmployees() {
 		System.out.println("\n*** Employees ***");
@@ -207,7 +231,7 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * List managers.
 	 */
 	private void listManagers() {
 		System.out.println("\n*** Managers ***");
@@ -219,7 +243,7 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * List developers.
 	 */
 	private void listDevelopers() {
 		System.out.println("\n*** Developers ***");
@@ -231,7 +255,7 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * Adds the employee.
 	 */
 	private void addEmployee() {
 		String menuTitle = "Add Employee";
@@ -264,7 +288,9 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * Adds the manager.
+	 *
+	 * @return the manager
 	 */
 	private Manager addManager() {
 		ManagerController mc = new ManagerController(departments, 
@@ -273,7 +299,9 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * Adds the developer.
+	 *
+	 * @return the developer
 	 */
 	private Developer addDeveloper() {
 		DeveloperController dc = new DeveloperController(departments, 
@@ -282,7 +310,7 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * Edits the employee.
 	 */
 	private void editEmployee() {
 		int max = (nextEmployeeIdNum - 1);
@@ -311,7 +339,7 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * Delete employee.
 	 */
 	private void deleteEmployee() {
 		int max = (nextEmployeeIdNum - 1);
@@ -333,7 +361,9 @@ public class ApplicationController {
 	}
 	
 	/**
-	 *  
+	 * Load employees.
+	 *
+	 * @return the array list
 	 */
 	private ArrayList<Employee> loadEmployees() {
 		ArrayList<Employee> employees = new ArrayList<>();
@@ -358,7 +388,9 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * Read employees from file.
+	 *
+	 * @return the array list
 	 */
 	private ArrayList<Employee> readEmployeesFromFile() {
 		ArrayList<?> genericArrayListObject = fileIOController.readGenericArrayList(employeesDataFile);
@@ -374,7 +406,9 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * Gets the highest employee id num.
+	 *
+	 * @return the highest employee id num
 	 */
 	private int getHighestEmployeeIdNum() {
 		int highestIdNum = 0;
@@ -391,10 +425,11 @@ public class ApplicationController {
 	}
 	
 	/**
-	 * 
+	 * Store data.
 	 */
 	private void storeData() {
 		fileIOController.writeGenericArrayList(departments, departmentsDataFile);
 		fileIOController.writeGenericArrayList(employees, employeesDataFile);
 	}
+	
 }

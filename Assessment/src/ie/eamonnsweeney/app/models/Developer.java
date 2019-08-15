@@ -8,22 +8,40 @@ import java.util.Objects;
 
 
 /**
+ * The Class Developer.
+ *
  * @author Eamonn A. Sweeney
- * 
  */
 public class Developer extends Employee {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 6343705531349944709L;
+	
+	/**
+	 * The Enum Level.
+	 */
 	public enum Level {
+		
+		/** Level one. */
 		ONE(1, 17.0),
+		
+		/** Level two. */
 		TWO(2, 18.0),
+		
+		/** Level three. */
 		THREE(3, 19.50);
 		
+		/** The level num. */
 		private final int levelNum;
+		
+		/** The hourly rate. */
 		private final double hourlyRate;
 		
 		/**
-		 * 
+		 * Instantiates a new level.
+		 *
+		 * @param levelNum the level num
+		 * @param hourlyRate the hourly rate
 		 */
 		private Level(int levelNum, double hourlyRate) {
 			this.levelNum = levelNum;
@@ -31,25 +49,37 @@ public class Developer extends Employee {
 		}
 		
 		/**
-		 * 
+		 * Gets the hourly rate.
+		 *
+		 * @return the hourly rate
 		 */
 		public double getHourlyRate() {
 			return hourlyRate;
 		}
 		
+		/**
+		 * To string.
+		 *
+		 * @return the string
+		 */
 		@Override
 		public String toString() {
 			return "" + levelNum;
 		}
 	}
+	
+	/** The level. */
 	private Level level;
 	
 	/**
-	 * @param name
-	 * @param deptIdNum
-	 * @param dateStarted
-	 * @param phoneNum
-	 * @param level
+	 * Instantiates a new developer.
+	 *
+	 * @param idNum the id num
+	 * @param name the name
+	 * @param deptIdNum the dept id num
+	 * @param dateStarted the date started
+	 * @param phoneNum the phone num
+	 * @param level the level
 	 */
 	public Developer(int idNum, Name name, int deptIdNum, LocalDate dateStarted, 
 			String phoneNum, Level level) {
@@ -59,6 +89,8 @@ public class Developer extends Employee {
 	}
 	
 	/**
+	 * Gets the level.
+	 *
 	 * @return the level
 	 */
 	public Level getLevel() {
@@ -66,12 +98,19 @@ public class Developer extends Employee {
 	}
 
 	/**
+	 * Sets the level.
+	 *
 	 * @param level the level to set
 	 */
 	public void setLevel(Developer.Level level) {
 		this.level = level;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return ""
@@ -87,6 +126,11 @@ public class Developer extends Employee {
 				+ ".";
 	}
 
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -95,6 +139,12 @@ public class Developer extends Employee {
 		return result;
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

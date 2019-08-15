@@ -11,18 +11,30 @@ import ie.eamonnsweeney.app.models.Employee;
 
 
 /**
- * @author Eamonn A. Sweeney
+ * The Class EmployeeController.
  *
+ * @author Eamonn A. Sweeney
  */
 public abstract class EmployeeController {
 
+	/** The employee. */
 	private Employee employee;
+	
+	/** The departments. */
 	private ArrayList<Department> departments;
+	
+	/** The max dept id num. */
 	private int maxDeptIdNum;
+	
+	/** The input controller. */
 	protected InputController inputController;
 	
 	/**
-	 * 
+	 * Instantiates a new employee controller.
+	 *
+	 * @param departments the departments
+	 * @param maxDeptIdNum the max dept id num
+	 * @param inputController the input controller
 	 */
 	public EmployeeController(ArrayList<Department> departments, int maxDeptIdNum, 
 			InputController inputController) {
@@ -32,14 +44,16 @@ public abstract class EmployeeController {
 	}
 	
 	/**
-	 * 
+	 * Sets the employee.
+	 *
+	 * @param employee the new employee
 	 */
 	protected void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
 
 	/**
-	 * 
+	 * Input title.
 	 */
 	protected void inputTitle() {
 		String title = inputController.getString("Title: ");	
@@ -47,7 +61,7 @@ public abstract class EmployeeController {
 	}
 	
 	/**
-	 * 
+	 * Input first name.
 	 */
 	protected void inputFirstName() {
 		String firstName = inputController.getString("First Name: ");	
@@ -55,7 +69,7 @@ public abstract class EmployeeController {
 	}
 	
 	/**
-	 * 
+	 * Input last name.
 	 */
 	protected void inputLastName() {
 		String lastName = inputController.getString("Last Name: ");	
@@ -63,7 +77,7 @@ public abstract class EmployeeController {
 	}
 	
 	/**
-	 * 
+	 * Input dept id num.
 	 */
 	protected void inputDeptIdNum() {
 		int deptIdNum = inputController.getInteger("Department ID (1-" 
@@ -73,7 +87,7 @@ public abstract class EmployeeController {
 	}
 	
 	/**
-	 * 
+	 * Input date started.
 	 */
 	protected void inputDateStarted() {
 		//TODO: sanity checking valid date - no feb 31
@@ -84,7 +98,7 @@ public abstract class EmployeeController {
 	}
 	
 	/**
-	 * 
+	 * Input phone num.
 	 */
 	protected void inputPhoneNum() {
 		String phoneNum = inputController.getString("Phone #: ");	
@@ -92,7 +106,9 @@ public abstract class EmployeeController {
 	}
 	
 	/**
-	 * 
+	 * Edits the employee data.
+	 *
+	 * @param menuOption the menu option
 	 */
 	protected void editEmployeeData(int menuOption) {
 		switch (menuOption) {
@@ -118,7 +134,9 @@ public abstract class EmployeeController {
 	}
 	
 	/**
-	 * 
+	 * Edits the.
+	 *
+	 * @param employee the employee
 	 */
 	protected abstract void edit(Employee employee);
 	
