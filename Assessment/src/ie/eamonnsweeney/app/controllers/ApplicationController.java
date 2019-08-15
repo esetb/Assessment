@@ -15,6 +15,7 @@ import ie.eamonnsweeney.app.models.Menu;
 import ie.eamonnsweeney.app.models.Name;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ApplicationController.
  *
@@ -46,6 +47,11 @@ public class ApplicationController {
 	/** The next employee id num. */
 	private int nextEmployeeIdNum;
 	
+	/** The max managers per department. */
+	private final int MAX_MANAGERS_PER_DEPARTMENT = 2;
+	
+	/** The max employees per department. */
+	private final int MAX_EMPLOYEES_PER_DEPARTMENT = 2;
 	
 	/**
 	 * Instantiates a new application controller.
@@ -55,8 +61,8 @@ public class ApplicationController {
 		this.employeesDataFile = new File("src/ie/eamonnsweeney/app/data/employees.dat");
 		this.departmentsDataFile = new File("src/ie/eamonnsweeney/app/data/departments.dat");
 		this.inputController = new InputController();
-		this.departments = loadDepartments();
 		this.employees = loadEmployees();
+		this.departments = loadDepartments(); // loadDepartments uses employees
 		this.nextDepartmentIdNum = (getHighestDepartmentIdNum() + 1);
 		this.nextEmployeeIdNum = (getHighestEmployeeIdNum() + 1);
 	}
@@ -146,18 +152,53 @@ public class ApplicationController {
 	 * View department.
 	 */
 	private void viewDepartment() {
-		System.out.println("\n*** View Department ***");
-
-	}
-	
-	/**
-	 * Adds the department.
-	 *
-	 * @return the department
-	 */
-	private Department addDepartment() {
-		DepartmentController dc = new DepartmentController(inputController);
-		return dc.createNewDepartment(nextDepartmentIdNum);
+		int deptIdNum = inputController.getInteger("Department ID (1-" 
+				+ (nextDepartmentIdNum - 1) + "):");
+		boolean departmentFound = false;
+		
+		for (Department department : departments) {
+			if (department.getIdNum() == deptIdNum) {
+				departmentFound = true;
+				ArrayList<Manager> managers = new ArrayList<>();
+				ArrayList<Developer> developers = new ArrayList<>();
+				
+				for (Employee employee : employees) {
+					if (employee.getDeptIdNum() == deptIdNum) {
+						if (employee instanceof Manager) {
+							managers.add((Manager) employee);
+						} else {
+							developers.add((Developer) employee);
+						}
+					}
+				}
+				System.out.println("\n*** View Department ***");
+				System.out.println("ID: " + department.getIdNum());
+				System.out.println("Name: " + department.getName());
+				System.out.println("Employees: " + department.getNumEmployees());
+				if (managers.size() > 0) {
+					System.out.println("Managers:");
+					for (Manager manager : managers) {
+						System.out.println("\t" 
+								+ manager.getName().getTitle() + " " 
+								+ manager.getName().getFirstName() + " "
+								+ manager.getName().getLastName());
+					}
+				}
+				if (developers.size() > 0) {
+					System.out.println("Developers:");
+					for (Developer developer : developers) {
+						System.out.println("\t" 
+								+ developer.getName().getTitle() + " " 
+								+ developer.getName().getFirstName() + " "
+								+ developer.getName().getLastName());
+					}
+				}
+			}
+		}
+		
+		if (!departmentFound) {
+			System.out.println("Error: No department exists with that id number.");
+		}
 	}
 	
 	/**
@@ -173,6 +214,13 @@ public class ApplicationController {
 			departments.add(new Department(1, "Development", 0));
 			departments.add(new Department(2, "DevOps", 0));
 			departments.add(new Department(3, "QA", 0));
+			for (Department department : departments) {
+				for(Employee employee : employees) {
+					if (employee.getDeptIdNum() == department.getIdNum()) {
+						department.setNumEmployees(department.getNumEmployees() + 1);
+					}
+				}
+			}
 		} else {
 			departments = readDepartmentsFromFile();
 		}
@@ -266,49 +314,55 @@ public class ApplicationController {
 				};
 		Menu menu = new Menu(inputController, menuTitle, menuItems);
 		boolean exitMenu = false;
-		Employee emp = null;
 		
 		do {
 			menu.display();
 			switch (menu.getOption()) {
 			case 1:
-				emp = addManager();
+				addManager();
 				break;
 			case 2:
-				emp = addDeveloper();
+				addDeveloper();
 				break;
 			case 3:
 				return;
 			}
 		} while (!exitMenu);
 		
-		employees.add(emp);
-		nextEmployeeIdNum++;
-		System.out.println("Employee added.");
 	}
 	
 	/**
-	 * Adds the manager.
-	 *
-	 * @return the manager
+	 * Adds a new manager.
 	 */
-	private Manager addManager() {
-		ManagerController mc = new ManagerController(departments, 
-				 (nextDepartmentIdNum -1), inputController);
-		return mc.createNewManager(nextEmployeeIdNum);
+	private void addManager() {
+		if (canAddManager()) {
+			ManagerController mc = new ManagerController(departments, 
+					 (nextDepartmentIdNum -1), inputController);
+			employees.add(mc.createNewManager(nextEmployeeIdNum));
+			nextEmployeeIdNum++;
+			System.out.println("Manager added.");
+		} else {
+			System.out.println("Cannot add a Manager - there are no managerial vacancies.");
+		}
 	}
 	
+
 	/**
-	 * Adds the developer.
-	 *
-	 * @return the developer
+	 * Adds a new developer.
 	 */
-	private Developer addDeveloper() {
-		DeveloperController dc = new DeveloperController(departments, 
-				(nextDepartmentIdNum -1), inputController);
-		return dc.createNewDeveloper(nextEmployeeIdNum);
+	private void addDeveloper() {
+		if (canAddEmployee()) {
+			DeveloperController dc = new DeveloperController(departments, 
+					(nextDepartmentIdNum -1), inputController);
+			employees.add(dc.createNewDeveloper(nextEmployeeIdNum));
+			nextEmployeeIdNum++;
+			System.out.println("Manager added.");
+		} else {
+			System.out.println("Cannot add a developer - there are no vacancies at this time.");
+		}
 	}
 	
+
 	/**
 	 * Edits the employee.
 	 */
@@ -422,6 +476,72 @@ public class ApplicationController {
 		}
 		
 		return highestIdNum;
+	}
+	
+	/**
+	 * Can add a new employee.
+	 *
+	 * @return true, if successful
+	 */
+	private boolean canAddEmployee() {
+		boolean canAddEmployee = false;
+		int departmentIdNum = 0;
+		ArrayList<Employee> departmentEmployees;
+		
+		for (Department department : departments) {
+			departmentIdNum = department.getIdNum();
+			departmentEmployees = new ArrayList<Employee>();
+					
+			for (Employee employee : employees) {
+				if (employee.getDeptIdNum() == departmentIdNum) {
+					departmentEmployees.add(employee);
+				}
+			}
+			
+			if (departmentEmployees.size() < MAX_EMPLOYEES_PER_DEPARTMENT) {
+				canAddEmployee = true;
+				break;
+			}
+		}
+		
+		return canAddEmployee;
+	}
+	
+	/**
+	 * Can add a new manager.
+	 *
+	 * @return true, if successful
+	 */
+	private boolean canAddManager() {
+		boolean canAddManager = false;
+		int departmentIdNum = 0;
+		int numManagersInDepartment = 0;
+		ArrayList<Employee> departmentEmployees;
+		
+		for (Department department : departments) {
+			departmentIdNum = department.getIdNum();
+			departmentEmployees = new ArrayList<Employee>();
+			numManagersInDepartment = 0;
+					
+			for (Employee employee : employees) {
+				if (employee.getDeptIdNum() == departmentIdNum) {
+					departmentEmployees.add(employee);
+				}
+			}
+			
+			for (Employee employee : departmentEmployees) {
+				if (employee instanceof Manager) {
+					numManagersInDepartment++;
+				}
+			}
+			
+			if (numManagersInDepartment < MAX_MANAGERS_PER_DEPARTMENT) {
+				canAddManager = true;
+				break;
+			}
+		}
+		
+		return canAddManager;
 	}
 	
 	/**

@@ -82,7 +82,12 @@ public abstract class EmployeeController {
 	protected void inputDeptIdNum() {
 		int deptIdNum = inputController.getInteger("Department ID (1-" 
 				+ maxDeptIdNum + "): ", 1, maxDeptIdNum);
-		// todo: is dept assignment legal.
+		/* todo: is dept assignment legal.
+		 * 
+		 * listDepartmentVacancies();
+		 * 
+		 * 
+		 */
 		this.employee.setDeptIdNum(deptIdNum);
 	}
 	

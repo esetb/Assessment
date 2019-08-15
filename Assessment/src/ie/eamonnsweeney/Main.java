@@ -125,8 +125,9 @@ draw.io
  */
 
 /*TODO:
- * departments 
+ * Departments 
  * 	manager/developer move departments
+ * Payment
  * draw.io diagrams
  */
 
