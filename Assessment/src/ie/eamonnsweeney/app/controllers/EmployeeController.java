@@ -81,10 +81,21 @@ public abstract class EmployeeController {
 			validDepartmentIds[i] = availableDepartments.get(i).getIdNum();
 		}
 		int max = availableDepartments.size();
+		boolean isValidDeptId = false;
+		int deptIdNum = 0;
 		
-		
-		int deptIdNum = inputController.getInteger("Department ID (1-" + max 
+		do {
+			deptIdNum = inputController.getInteger("Department ID (1-" + max 
 				+ "): ", 1, max);
+			for (int i = 0; i < validDepartmentIds.length; i++) {
+				if (deptIdNum == validDepartmentIds[i]) {
+					isValidDeptId = true;
+				}
+			}
+			if (!isValidDeptId) {
+				System.out.println("Please enter a valid Department ID #.");
+			}
+		} while (!isValidDeptId);
 		
 		this.employee.setDeptIdNum(deptIdNum);
 	}
@@ -138,6 +149,11 @@ public abstract class EmployeeController {
 	
 	private ArrayList<Department> getAvailableDepartments() {
 		ArrayList<Department> availableDepartments = new ArrayList<>();
+		int numManagersInDepartment = 0;
+		
+		for (Department department : departments) {
+		//TODO: 	
+		}
 		
 		return availableDepartments;
 	}
