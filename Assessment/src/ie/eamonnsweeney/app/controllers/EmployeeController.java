@@ -23,6 +23,9 @@ public abstract class EmployeeController {
 	/** The departments. */
 	private ArrayList<Department> departments;
 	
+	/** The employees. */
+	private ArrayList<Employee> employees;
+	
 	/** The input controller. */
 	protected InputController inputController;
 	
@@ -33,7 +36,9 @@ public abstract class EmployeeController {
 	 * @param maxDeptIdNum the max dept id num
 	 * @param inputController the input controller
 	 */
-	public EmployeeController(ArrayList<Department> departments, InputController inputController) {
+	public EmployeeController(ArrayList<Department> departments, 
+			ArrayList<Employee> employees,
+			InputController inputController) {
 		this.departments = departments;
 		this.inputController = inputController;
 	}
@@ -150,9 +155,14 @@ public abstract class EmployeeController {
 	private ArrayList<Department> getAvailableDepartments() {
 		ArrayList<Department> availableDepartments = new ArrayList<>();
 		int numManagersInDepartment = 0;
+		int numEmployeesInDepartment = 0;
 		
 		for (Department department : departments) {
-		//TODO: 	
+			numManagersInDepartment = 0;
+			numEmployeesInDepartment = 0;
+			for (Employee employee : employees) {
+				
+			}
 		}
 		
 		return availableDepartments;

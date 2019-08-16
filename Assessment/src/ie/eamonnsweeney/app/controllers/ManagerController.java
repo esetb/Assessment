@@ -29,8 +29,10 @@ public class ManagerController extends EmployeeController {
 	 * @param maxDeptIdNum the max dept id num
 	 * @param inputController the input controller
 	 */
-	public ManagerController(ArrayList<Department> departments, InputController inputController) {
-		super(departments, inputController);
+	public ManagerController(ArrayList<Department> departments, 
+			ArrayList<Employee> employees,
+			InputController inputController) {
+		super(departments, employees, inputController);
 	}
 	
 	/**

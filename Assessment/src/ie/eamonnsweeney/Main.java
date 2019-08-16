@@ -129,6 +129,17 @@ draw.io
  * 	manager/developer move departments
  * Payment
  * draw.io diagrams
+ * 
+ * REDESIGN
+ * 	EmployeesController(RuntimeConfiguration config,
+ * 		ArrayList<Department> departments, 
+ * 		ArrayList<Employee> employees,
+ * 		InputController input)
+ * 
+ * 	DepartmentsController(RuntimeConfiguration config,
+ * 		ArrayList<Department> departments, 
+ * 		ArrayList<Employee> employees,
+ * 		InputController input)
  */
 
 package ie.eamonnsweeney;
