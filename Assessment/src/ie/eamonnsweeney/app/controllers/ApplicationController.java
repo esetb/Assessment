@@ -13,7 +13,6 @@ import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
 import ie.eamonnsweeney.app.models.Menu;
 import ie.eamonnsweeney.app.models.Name;
-import ie.eamonnsweeney.app.models.RuntimeConfiguration;
 
 
 /**
@@ -23,8 +22,6 @@ import ie.eamonnsweeney.app.models.RuntimeConfiguration;
  */
 public class ApplicationController {
 	
-	/** The config. */
-	private RuntimeConfiguration config;
 	
 	/** The file IO controller. */
 	private FileIOController fileIOController;
@@ -60,17 +57,28 @@ public class ApplicationController {
 	 * Instantiates a new application controller.
 	 */
 	public ApplicationController() {
-		this.config = new RuntimeConfiguration();
+		
+		/*
+		this.dataController = new DataController();
+		
+		this.employees = dataController.getEmployees();
+		this.departments = dataController.getDepartments();
+		
+		this.employeesController = new EmployeesController(departments, employees);
+		this.departmentsController = new DepartmentsController(departments, employees);
+		
+		 */
+		
+		
+		
+		
+		
+		
+		
 		this.fileIOController = new FileIOController();
 		this.inputController = new InputController();
 		
-		/* int[][] departmentVacancies;
-		 * this.employeesController = new EmployeesController(fileIOController, inputController)
-		 * this.employees = employeesController.getEmployees();
-		 * this.departmentsController = new DepartmentsController(fileIOController, inputController)
-		 * this.departments = departmentsController.getDepartments();
-		 * this.departmentVacancies = departmentsController.getDepartmentVacancies(employees);
-		 */
+		
 		
 		this.employeesDataFile = new File("src/ie/eamonnsweeney/app/data/employees.dat");
 		this.departmentsDataFile = new File("src/ie/eamonnsweeney/app/data/departments.dat");
@@ -85,6 +93,7 @@ public class ApplicationController {
 	 */
 	public void run() {
 		displayMainMenu();
+		//dataController.saveData();
 		storeData();
 		inputController.close();
 	}	

@@ -17,7 +17,7 @@ public class Menu {
 	private InputController inputController;
 	
 	/** The name. */
-	private String name;
+	private String menuName;
 	
 	/** The options. */
 	private String[] options;
@@ -29,9 +29,9 @@ public class Menu {
 	 * @param name the name
 	 * @param options the options
 	 */
-	public Menu(InputController inputController, String name, String[] options) {
+	public Menu(InputController inputController, String menuName, String[] options) {
 		this.inputController = inputController;
-		this.name = name;
+		this.menuName = menuName;
 		this.options = options;
 	}
 	
@@ -39,7 +39,7 @@ public class Menu {
 	 * Display.
 	 */
 	public void display() {
-		String menuStr = "\n" + name;
+		String menuStr = "\n" + menuName;
 		for (int i = 0 ; i < options.length ; i++) {
 			menuStr += ("\n" + (i + 1) + ". " + options[i]); 
 		}
