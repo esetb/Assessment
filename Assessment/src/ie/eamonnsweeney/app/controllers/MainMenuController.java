@@ -1,25 +1,24 @@
-package ie.eamonnsweeney.app.views;
+package ie.eamonnsweeney.app.controllers;
 
-import ie.eamonnsweeney.app.controllers.DepartmentsController;
-import ie.eamonnsweeney.app.controllers.EmployeesController;
-import ie.eamonnsweeney.app.controllers.InputController;
 import ie.eamonnsweeney.app.models.Menu;
 
-public class MainMenuView {
+public class MainMenuController {
 	
 	private DepartmentsController departmentsController;
 	private EmployeesController employeesController;
 	private InputController inputController;
 	private String help;
 	
-	public MainMenuView(DepartmentsController departmentsController, 
+	public MainMenuController(
+			DepartmentsController departmentsController, 
 			EmployeesController employeesController,
-			InputController inputController, 
-			String help) {
+			String help,
+			InputController inputController
+			) {
 		this.departmentsController = departmentsController;
 		this.employeesController = employeesController;
-		this.inputController = inputController;
 		this.help = help;
+		this.inputController = inputController;
 	}
 	
 	/**

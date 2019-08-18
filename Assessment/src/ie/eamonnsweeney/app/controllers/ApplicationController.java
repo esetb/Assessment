@@ -3,15 +3,7 @@
  */
 package ie.eamonnsweeney.app.controllers;
 
-import java.util.ArrayList;
 
-import ie.eamonnsweeney.app.models.Department;
-import ie.eamonnsweeney.app.models.Employee;
-import ie.eamonnsweeney.app.models.Menu;
-import ie.eamonnsweeney.app.views.MainMenuView;
-
-
-// TODO: Auto-generated Javadoc
 /**
  * The Class ApplicationController.
  *
@@ -25,17 +17,8 @@ public class ApplicationController {
 	/** The data controller. */
 	private DataController dataController;
 	
-	/** The help. */
-	private String help;
-
-	/** The employees controller. */
-	private EmployeesController employeesController;
-
-	/** The departments controller. */
-	private DepartmentsController departmentsController;
-	
-	/** The main menu view. */
-	private MainMenuView mainMenuView;
+	/** The main menu Controller. */
+	private MainMenuController mainMenuController;
 	
 	/**
 	 * Instantiates a new application controller.
@@ -45,20 +28,20 @@ public class ApplicationController {
 		this.inputController = new InputController();
 		this.dataController = new DataController();
 		
-		this.help = dataController.getHelp();
+		this.mainMenuController = new MainMenuController(
+				new DepartmentsController(dataController, inputController), 
+				new EmployeesController(dataController, inputController), 
+				dataController.getHelp(),
+				inputController
+				);
 		
-		this.employeesController = new EmployeesController(dataController, inputController);
-		this.departmentsController = new DepartmentsController(dataController, inputController);
-
-		this.mainMenuView = new MainMenuView(departmentsController, employeesController, 
-				inputController, help);
 	}
 	
 	/**
 	 * Run the Application.
 	 */
 	public void run() {
-		mainMenuView.display();
+		mainMenuController.display();
 		dataController.saveData();
 		inputController.close();
 	}	
