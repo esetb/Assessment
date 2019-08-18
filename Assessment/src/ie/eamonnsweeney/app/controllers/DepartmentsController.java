@@ -11,16 +11,14 @@ public class DepartmentsController {
 	
 	private ArrayList<Department> departments;
 	private ArrayList<Employee> employees;
-	private InputController input;
+	private InputController inputController;
 	private int nextDepartmentIdNum;
 	private int[][] departmentVacancies;
 	
-	public DepartmentsController(ArrayList<Department> departments, 
-			ArrayList<Employee> employees,
-			InputController input) {
-		this.departments = departments;
-		this.employees = employees;
-		this.input = input;
+	public DepartmentsController(DataController dataController, InputController inputController) {
+		this.employees = dataController.getEmployees();
+		this.departments = dataController.getDepartments();
+		this.inputController = inputController;
 		this.nextDepartmentIdNum = (getHighestDepartmentIdNum() + 1);
 	}
 	
@@ -38,7 +36,7 @@ public class DepartmentsController {
 	 * View department.
 	 */
 	public void viewDepartment() {
-		int deptIdNum = input.getInteger("Department ID (1-" 
+		int deptIdNum = inputController.getInteger("Department ID (1-" 
 				+ (nextDepartmentIdNum - 1) + "):");
 		boolean departmentFound = false;
 		

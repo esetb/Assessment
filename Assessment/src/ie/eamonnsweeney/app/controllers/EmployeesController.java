@@ -13,9 +13,9 @@ import ie.eamonnsweeney.app.models.Name;
 
 public class EmployeesController {
 
+	private InputController inputController;
 	
-	/** The employees data file. */
-	private File employeesDataFile;
+	private ArrayList<Department> departments;
 	
 	/** The employees. */
 	private ArrayList<Employee> employees;
@@ -23,10 +23,16 @@ public class EmployeesController {
 	/** The next employee id num. */
 	private int nextEmployeeIdNum;
 	
+	/** The max managers per department. */
+	private final int MAX_MANAGERS_PER_DEPARTMENT = 2;
 	
+	/** The max employees per department. */
+	private final int MAX_EMPLOYEES_PER_DEPARTMENT = 14;
 	
-	public EmployeesController() {
-		this.employees = loadEmployees();
+	public EmployeesController(DataController dataController, InputController inputController) {
+		this.employees = dataController.getEmployees();
+		this.departments = dataController.getDepartments();
+		this.inputController = inputController;
 		this.nextEmployeeIdNum = (getHighestEmployeeIdNum() + 1);
 	}
 	
@@ -36,8 +42,7 @@ public class EmployeesController {
 	public void listEmployees() {
 		System.out.println("\n*** Employees ***");
 		for (Employee e : employees) {
-			System.out.print(
-					((e instanceof Manager) ? "Manager" : "Developer") + ": ");
+			System.out.print(((e instanceof Manager) ? "Manager" : "Developer") + ": ");
 			System.out.println(e);
 		}
 	}
@@ -174,50 +179,7 @@ public class EmployeesController {
 		}
 	}
 	
-	/**
-	 * Load employees.
-	 *
-	 * @return the array list
-	 */
-	private ArrayList<Employee> loadEmployees() {
-		ArrayList<Employee> employees = new ArrayList<>();
-		
-		// File.length() returns 0L if a file is empty or does not exist.
-		if (employeesDataFile.length() == 0) {
-			employees.add(new Manager(1, new Name("Mr", "Scrooge", "McDuck"), 
-					1, LocalDate.of(2014, 1, 12), "5551234560", 0, 60000, .155));
-			employees.add(new Manager(2, new Name("Mr", "Donald", "Duck"), 
-					2, LocalDate.of(2014, 1, 12), "5551234561", 0, 60000, .155));
-			employees.add(new Developer(3, new Name("Mr", "Huey", "Duck"),
-					1, LocalDate.of(2014, 2, 28), "5551234562", Developer.Level.ONE));
-			employees.add(new Developer(4, new Name("Mr", "Dewey", "Duck"),
-					1, LocalDate.of(2014, 3, 14), "5551234563", Developer.Level.TWO));
-			employees.add(new Developer(5, new Name("Mr", "Louie", "Duck"),
-					3, LocalDate.of(2014, 4, 1), "5551234564", Developer.Level.THREE));
-		} else {
-			employees = readEmployeesFromFile();
-		}
-		
-		return employees;	
-	}
 	
-	/**
-	 * Read employees from file.
-	 *
-	 * @return the array list
-	 */
-	private ArrayList<Employee> readEmployeesFromFile() {
-		ArrayList<?> genericArrayListObject = files.readGenericArrayList(employeesDataFile);
-		ArrayList<Employee> employees = new ArrayList<>();
-	
-		for (Object obj : genericArrayListObject) {
-			if (obj instanceof Employee) {
-				employees.add((Employee) obj);
-			}
-		}
-		
-		return employees;
-	}
 	
 	/**
 	 * Gets the highest employee id num.
