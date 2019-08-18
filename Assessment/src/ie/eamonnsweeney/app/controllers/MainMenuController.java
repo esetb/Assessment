@@ -9,22 +9,17 @@ public class MainMenuController {
 	private InputController inputController;
 	private String help;
 	
-	public MainMenuController(
-			DepartmentsController departmentsController, 
-			EmployeesController employeesController,
-			String help,
-			InputController inputController
-			) {
-		this.departmentsController = departmentsController;
-		this.employeesController = employeesController;
-		this.help = help;
+	public MainMenuController(DataController dataController, InputController inputController) {
+		this.departmentsController = new DepartmentsController(dataController, inputController);
+		this.employeesController = new EmployeesController(dataController, inputController);
+		this.help = dataController.getHelp();
 		this.inputController = inputController;
 	}
 	
 	/**
-	 * Display the main menu.
+	 * Run the main menu.
 	 */
-	public void display() {
+	public void run() {
 		String menuTitle = "Main Menu";
 		String[] menuItems = {
 				"List Departments",

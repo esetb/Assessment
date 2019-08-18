@@ -27,13 +27,7 @@ public class ApplicationController {
 		
 		this.inputController = new InputController();
 		this.dataController = new DataController();
-		
-		this.mainMenuController = new MainMenuController(
-				new DepartmentsController(dataController, inputController), 
-				new EmployeesController(dataController, inputController), 
-				dataController.getHelp(),
-				inputController
-				);
+		this.mainMenuController = new MainMenuController(dataController, inputController);
 		
 	}
 	
@@ -41,7 +35,7 @@ public class ApplicationController {
 	 * Run the Application.
 	 */
 	public void run() {
-		mainMenuController.display();
+		mainMenuController.run();
 		dataController.saveData();
 		inputController.close();
 	}	
