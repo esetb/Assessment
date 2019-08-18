@@ -188,8 +188,6 @@ public class EmployeesController {
 		}
 	}
 	
-	
-	
 	/**
 	 * Gets the highest employee id num.
 	 *

@@ -41,15 +41,14 @@ public class DeveloperController extends EmployeeController {
 	 * @return a developer object
 	 */
 	public Developer createNewDeveloper(int idNum) {
-		this.developer = new Developer(idNum, new Name("","",""), 0, null, null
-				, Level.ONE);
+		this.developer = new Developer(idNum, new Name("","",""), 0, null, null, Level.ONE);
 		super.setEmployee((Employee) developer); 
-		inputTitle();
-		inputFirstName();
-		inputLastName();
-		inputDeptIdNum();
-		inputDateStarted();
-		inputPhoneNum();
+		super.inputTitle();
+		super.inputFirstName();
+		super.inputLastName();
+		super.inputDeptIdNum();
+		super.inputDateStarted();
+		super.inputPhoneNum();
 		inputLevel();
 		return developer;
 	}
@@ -67,17 +66,13 @@ public class DeveloperController extends EmployeeController {
 		
 		do {
 			String menuTitle = "Edit Developer Menu";
-			String[] menuItems = {
-					"Title: " + developer.getName().getTitle(),
-					"First Name: " + developer.getName().getFirstName(),
-					"Last Name: " + developer.getName().getLastName(),
-					"Dept ID #: " + developer.getDeptIdNum(),
-					"Date Started: " + developer.getDateStarted().toString(),
-					"Phone #: " + developer.getPhoneNum(),
+			String[] developerMenuItems = {
 					"Level: " + developer.getLevel(),
 					"Done (return to main menu)"
-					};
+			};
+			String[] menuItems = super.mergeStringArrays(getEmployeeMenuItems(), developerMenuItems);
 			Menu menu = new Menu(inputController, menuTitle, menuItems);
+			
 			menu.display();
 			menuOption = menu.getOption();
 			switch (menuOption) {
@@ -87,7 +82,7 @@ public class DeveloperController extends EmployeeController {
 			case 4:
 			case 5:
 			case 6:
-				editEmployeeData(menuOption);
+				super.editEmployeeData(menuOption);
 				break;
 			case 7:
 				inputLevel();

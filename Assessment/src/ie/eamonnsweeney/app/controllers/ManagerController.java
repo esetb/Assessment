@@ -23,7 +23,7 @@ public class ManagerController extends EmployeeController {
 	 * Instantiates a new manager controller.
 	 *
 	 * @param departments the departments
-	 * @param maxDeptIdNum the max dept id num
+	 * @param employees the employees
 	 * @param inputController the input controller
 	 */
 	public ManagerController(ArrayList<Department> departments, 
@@ -41,12 +41,12 @@ public class ManagerController extends EmployeeController {
 	public Manager createNewManager(int idNum) {
 		this.manager = new Manager(idNum, new Name("","",""), 0, null, null, 0, 0.0, 0.0);
 		super.setEmployee((Employee) manager); 
-		inputTitle();
-		inputFirstName();
-		inputLastName();
-		inputDeptIdNum();
-		inputDateStarted();
-		inputPhoneNum();
+		super.inputTitle();
+		super.inputFirstName();
+		super.inputLastName();
+		super.inputDeptIdNum();
+		super.inputDateStarted();
+		super.inputPhoneNum();
 		inputNumStaff();
 		inputSalary();
 		inputBonus();
@@ -66,19 +66,15 @@ public class ManagerController extends EmployeeController {
 		
 		do {
 			String menuTitle = "Edit Manager Menu";
-			String[] menuItems = {
-					"Title: " + manager.getName().getTitle(),
-					"First Name: " + manager.getName().getFirstName(),
-					"Last Name: " + manager.getName().getLastName(),
-					"Dept ID #: " + manager.getDeptIdNum(),
-					"Date Started: " + manager.getDateStarted().toString(),
-					"Phone #: " + manager.getPhoneNum(),
+			String[] managerMenuItems = {
 					"Num Staff: " + manager.getNumStaff(),
 					"Salary: " + manager.getSalary(),
 					"Bonus: "  + manager.getBonus(), 
 					"Done (return to main menu)"
-					};
+			};
+			String[] menuItems = super.mergeStringArrays(getEmployeeMenuItems(), managerMenuItems);
 			Menu menu = new Menu(inputController, menuTitle, menuItems);
+			
 			menu.display();
 			menuOption = menu.getOption();
 			switch (menuOption) {
@@ -88,7 +84,7 @@ public class ManagerController extends EmployeeController {
 			case 4:
 			case 5:
 			case 6:
-				editEmployeeData(menuOption);
+				super.editEmployeeData(menuOption);
 				break;
 			case 7:
 				inputNumStaff();

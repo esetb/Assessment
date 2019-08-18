@@ -7,6 +7,7 @@ import ie.eamonnsweeney.app.models.Department;
 import ie.eamonnsweeney.app.models.Employee;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class EmployeeController.
  *
@@ -30,7 +31,7 @@ public abstract class EmployeeController {
 	 * Instantiates a new employee controller.
 	 *
 	 * @param departments the departments
-	 * @param maxDeptIdNum the max dept id num
+	 * @param employees the employees
 	 * @param inputController the input controller
 	 */
 	public EmployeeController(ArrayList<Department> departments, 
@@ -149,6 +150,11 @@ public abstract class EmployeeController {
 		}
 	}
 	
+	/**
+	 * Gets the available departments.
+	 *
+	 * @return the available departments
+	 */
 	private ArrayList<Department> getAvailableDepartments() {
 		ArrayList<Department> availableDepartments = new ArrayList<>();
 		int numManagersInDepartment = 0;
@@ -164,6 +170,47 @@ public abstract class EmployeeController {
 		
 		return availableDepartments;
 	}
+	
+	/**
+	 * Gets the employee menu items.
+	 *
+	 * @return the employee menu items
+	 */
+	protected String[] getEmployeeMenuItems() {
+		String[] employeeMenuItems = {
+				"Title: " + employee.getName().getTitle(),
+				"First Name: " + employee.getName().getFirstName(),
+				"Last Name: " + employee.getName().getLastName(),
+				"Dept ID #: " + employee.getDeptIdNum(),
+				"Date Started: " + employee.getDateStarted().toString(),
+				"Phone #: " + employee.getPhoneNum(),	
+		};
+		
+		return employeeMenuItems;
+	}
+	
+	/**
+	 * Merge string arrays.
+	 *
+	 * @param arrayA the array A
+	 * @param arrayB the array B
+	 * @return the string[]
+	 */
+	protected String[] mergeStringArrays(String[] arrayA, String[] arrayB) {
+		String[] newArray = new String[arrayA.length + arrayB.length];
+		int index = 0;
+		
+		for (int i = 0; i < arrayA.length; i++, index++) {
+			newArray[index] = arrayA[i];
+		}
+		
+		for (int i = 0; i < arrayB.length; i++, index++) {
+			newArray[index] = arrayB[i];
+		}
+		
+		return newArray;
+	}
+	
 	/**
 	 * Edits the.
 	 *
