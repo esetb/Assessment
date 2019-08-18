@@ -10,15 +10,36 @@ import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
 import ie.eamonnsweeney.app.models.Name;
 
+
+/**
+ * The Class DataController.
+ */
 public class DataController {
+	
+	/** The file IO controller. */
 	private FileIOController fileIOController;
+	
+	/** The employees data file. */
 	private File employeesDataFile;
+	
+	/** The departments data file. */
 	private File departmentsDataFile;
+	
+	/** The help file. */
 	private File helpFile;
+	
+	/** The employees. */
 	private ArrayList<Employee> employees;
+	
+	/** The departments. */
 	private ArrayList<Department> departments;
+	
+	/** The help. */
 	private String help;
 	
+	/**
+	 * Instantiates a new data controller.
+	 */
 	public DataController() {
 		this.fileIOController = new FileIOController();
 		this.employeesDataFile = new File("src/ie/eamonnsweeney/app/data/employees.dat");
@@ -29,25 +50,46 @@ public class DataController {
 		this.help = loadHelp();
 	}
 	
+	/**
+	 * Gets the employees.
+	 *
+	 * @return the employees
+	 */
 	public ArrayList<Employee> getEmployees() {
 		return employees;
 	}
 
-
+	/**
+	 * Gets the departments.
+	 *
+	 * @return the departments
+	 */
 	public ArrayList<Department> getDepartments() {
 		return departments;
 	}
 
-
+	/**
+	 * Gets the help.
+	 *
+	 * @return the help
+	 */
 	public String getHelp() {
 		return help;
 	}
 
+	/**
+	 * Save data.
+	 */
 	public void saveData() {
 		fileIOController.writeGenericArrayList(departments, departmentsDataFile);
 		fileIOController.writeGenericArrayList(employees, employeesDataFile);
 	}
 	
+	/**
+	 * Load departments.
+	 *
+	 * @return the array list
+	 */
 	private ArrayList<Department> loadDepartments() {
 		
 		// File.length() returns 0L if a file is empty or does not exist.
@@ -59,6 +101,11 @@ public class DataController {
 		
 	}
 	
+	/**
+	 * Read departments from file.
+	 *
+	 * @return the array list
+	 */
 	private ArrayList<Department> readDepartmentsFromFile() {
 		ArrayList<?> genericArrayListObject = fileIOController.readGenericArrayList(departmentsDataFile);
 		ArrayList<Department> departments = new ArrayList<>();
@@ -72,6 +119,11 @@ public class DataController {
 		return departments;
 	}
 	
+	/**
+	 * Creates the initial department data.
+	 *
+	 * @return the array list
+	 */
 	private ArrayList<Department> createInitialDepartmentData() {
 		ArrayList<Department> departments = new ArrayList<>();
 		
@@ -82,8 +134,11 @@ public class DataController {
 		return departments;	
 	}
 	
-	
-	
+	/**
+	 * Load employees.
+	 *
+	 * @return the array list
+	 */
 	private ArrayList<Employee> loadEmployees() {
 		
 		// File.length() returns 0L if a file is empty or does not exist.
@@ -95,7 +150,11 @@ public class DataController {
 		
 	}
 	
-	
+	/**
+	 * Read employees from file.
+	 *
+	 * @return the array list
+	 */
 	private ArrayList<Employee> readEmployeesFromFile() {
 		ArrayList<?> genericArrayListObject = fileIOController.readGenericArrayList(employeesDataFile);
 		ArrayList<Employee> employees = new ArrayList<>();
@@ -109,6 +168,11 @@ public class DataController {
 		return employees;
 	}
 	
+	/**
+	 * Creates the initial employee data.
+	 *
+	 * @return the array list
+	 */
 	private ArrayList<Employee> createInitialEmployeeData() {
 		ArrayList<Employee> employees = new ArrayList<>();
 		
@@ -126,7 +190,13 @@ public class DataController {
 		return employees;
 	}
 	
+	/**
+	 * Load help.
+	 *
+	 * @return the string
+	 */
 	private String loadHelp() {
 		return fileIOController.readTextFile(helpFile);
 	}
+	
 }

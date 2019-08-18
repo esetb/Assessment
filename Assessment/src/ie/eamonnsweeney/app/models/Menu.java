@@ -1,6 +1,3 @@
-/**
- * 
- */
 package ie.eamonnsweeney.app.models;
 
 import ie.eamonnsweeney.app.controllers.InputController;

@@ -1,13 +1,9 @@
-/**
- * Name Class
- */
 package ie.eamonnsweeney.app.models;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Name.
  *

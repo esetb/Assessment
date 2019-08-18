@@ -1,6 +1,3 @@
-/**
- * Department Class
- */
 package ie.eamonnsweeney.app.models;
 
 import java.io.Serializable;

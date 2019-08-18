@@ -1,6 +1,3 @@
-/**
- * 
- */
 package ie.eamonnsweeney.app.controllers;
 
 
@@ -24,11 +21,9 @@ public class ApplicationController {
 	 * Instantiates a new application controller.
 	 */
 	public ApplicationController() {
-		
 		this.inputController = new InputController();
 		this.dataController = new DataController();
 		this.mainMenuController = new MainMenuController(dataController, inputController);
-		
 	}
 	
 	/**

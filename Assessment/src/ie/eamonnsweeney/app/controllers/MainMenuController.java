@@ -2,13 +2,30 @@ package ie.eamonnsweeney.app.controllers;
 
 import ie.eamonnsweeney.app.models.Menu;
 
+
+/**
+ * The Class MainMenuController.
+ */
 public class MainMenuController {
 	
+	/** The departments controller. */
 	private DepartmentsController departmentsController;
+	
+	/** The employees controller. */
 	private EmployeesController employeesController;
+	
+	/** The input controller. */
 	private InputController inputController;
+	
+	/** The help. */
 	private String help;
 	
+	/**
+	 * Instantiates a new main menu controller.
+	 *
+	 * @param dataController the data controller
+	 * @param inputController the input controller
+	 */
 	public MainMenuController(DataController dataController, InputController inputController) {
 		this.departmentsController = new DepartmentsController(dataController, inputController);
 		this.employeesController = new EmployeesController(dataController, inputController);
@@ -17,7 +34,7 @@ public class MainMenuController {
 	}
 	
 	/**
-	 * Run the main menu.
+	 * Run.
 	 */
 	public void run() {
 		String menuTitle = "Main Menu";
@@ -77,4 +94,5 @@ public class MainMenuController {
 		
 		System.out.println("Goodbye!");
 	}
+	
 }

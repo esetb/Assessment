@@ -1,13 +1,9 @@
-/**
- * Manager Class extends Employee
- */
 package ie.eamonnsweeney.app.models;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Manager.
  *

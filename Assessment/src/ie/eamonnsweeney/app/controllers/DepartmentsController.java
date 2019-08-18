@@ -7,14 +7,30 @@ import ie.eamonnsweeney.app.models.Developer;
 import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
 
+
+/**
+ * The Class DepartmentsController.
+ */
 public class DepartmentsController {
 	
+	/** The departments. */
 	private ArrayList<Department> departments;
-	private ArrayList<Employee> employees;
-	private InputController inputController;
-	private int nextDepartmentIdNum;
-	private int[][] departmentVacancies;
 	
+	/** The employees. */
+	private ArrayList<Employee> employees;
+	
+	/** The input controller. */
+	private InputController inputController;
+	
+	/** The next department id num. */
+	private int nextDepartmentIdNum;
+	
+	/**
+	 * Instantiates a new departments controller.
+	 *
+	 * @param dataController the data controller
+	 * @param inputController the input controller
+	 */
 	public DepartmentsController(DataController dataController, InputController inputController) {
 		this.employees = dataController.getEmployees();
 		this.departments = dataController.getDepartments();

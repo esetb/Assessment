@@ -1,6 +1,3 @@
-/**
- * 
- */
 package ie.eamonnsweeney.app.controllers;
 
 import ie.eamonnsweeney.app.models.Department;

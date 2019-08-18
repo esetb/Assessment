@@ -1,7 +1,5 @@
 package ie.eamonnsweeney.app.controllers;
 
-import java.io.File;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import ie.eamonnsweeney.app.models.Department;
@@ -9,12 +7,17 @@ import ie.eamonnsweeney.app.models.Developer;
 import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
 import ie.eamonnsweeney.app.models.Menu;
-import ie.eamonnsweeney.app.models.Name;
 
+
+/**
+ * The Class EmployeesController.
+ */
 public class EmployeesController {
 
+	/** The input controller. */
 	private InputController inputController;
 	
+	/** The departments. */
 	private ArrayList<Department> departments;
 	
 	/** The employees. */
@@ -29,6 +32,12 @@ public class EmployeesController {
 	/** The max employees per department. */
 	private final int MAX_EMPLOYEES_PER_DEPARTMENT = 14;
 	
+	/**
+	 * Instantiates a new employees controller.
+	 *
+	 * @param dataController the data controller
+	 * @param inputController the input controller
+	 */
 	public EmployeesController(DataController dataController, InputController inputController) {
 		this.employees = dataController.getEmployees();
 		this.departments = dataController.getDepartments();

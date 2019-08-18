@@ -1,6 +1,3 @@
-/**
- * Developer Class extends Employee
- */
 package ie.eamonnsweeney.app.models;
 
 import java.time.LocalDate;
