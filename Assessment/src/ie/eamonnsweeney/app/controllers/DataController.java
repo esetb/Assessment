@@ -95,10 +95,9 @@ public class DataController {
 		// File.length() returns 0L if a file is empty or does not exist.
 		if (departmentsDataFile.length() != 0) {
 			return readDepartmentsFromFile();
-		} else {
-			return createInitialDepartmentData();
-		}
+		} 
 		
+		return createInitialDepartmentData();
 	}
 	
 	/**
@@ -144,10 +143,9 @@ public class DataController {
 		// File.length() returns 0L if a file is empty or does not exist.
 		if (employeesDataFile.length() != 0) {
 			return readEmployeesFromFile();
-		} else {
-			return createInitialEmployeeData();
 		}
-		
+			
+		return createInitialEmployeeData();
 	}
 	
 	/**
