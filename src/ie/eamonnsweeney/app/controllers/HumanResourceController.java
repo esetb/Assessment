@@ -14,14 +14,17 @@ public class HumanResourceController {
 	private ArrayList<Department> departments;
 	private ArrayList<Employee> employees;
 	private int nextEmployeeIdNum;
-	private int MAX_MANAGERS_PER_DEPARTMENT;
-	private int MAX_EMPLOYEES_PER_DEPARTMENT;
+	private int MAX_MANAGERS_PER_DEPARTMENT = 2;
+	private int MAX_EMPLOYEES_PER_DEPARTMENT = 14;
+	private int vacantManagerPositions = 0;
+	private int vacantEmployeePositions = 0;
 	
 	public HumanResourceController (DataController dataController, InputController inputController) {
 		this.departments = dataController.getDepartments();
 		this.employees = dataController.getEmployees();
 		this.inputController = inputController;
 		this.nextEmployeeIdNum = (getHighestEmployeeIdNum() + 1);
+		this.setVacantPositions();
 	}
 
 	public void listDepartments() {
@@ -32,7 +35,7 @@ public class HumanResourceController {
 	}
 	
 	public void listEmployeesByDepartmentId() {
-		int deptIdNum = inputController.getInteger("Department ID (1-3):");
+		int deptIdNum = inputController.getInteger("Department ID (1-3):", 1, 3);
 		boolean departmentFound = false;
 		
 		for (Department department : departments) {
@@ -50,26 +53,22 @@ public class HumanResourceController {
 						}
 					}
 				}
-				System.out.println("\n*** View Department ***");
-				System.out.println("ID: " + department.getIdNum());
-				System.out.println("Name: " + department.getName());
-				System.out.println("Employees: " + department.getNumEmployees());
+				System.out.printf("\n*** View Department ***\nID: %d\nName: %s\nEmployees: %d\n",
+						department.getIdNum(), department.getName(), department.getNumEmployees());
 				if (managers.size() > 0) {
 					System.out.println("Managers:");
 					for (Manager manager : managers) {
-						System.out.println("\t" 
-								+ manager.getName().getTitle() + " " 
-								+ manager.getName().getFirstName() + " "
-								+ manager.getName().getLastName());
+						System.out.println("\t" + manager.getName().getTitle() 
+								+ " " + manager.getName().getFirstName() 
+								+ " " + manager.getName().getLastName());
 					}
 				}
 				if (developers.size() > 0) {
 					System.out.println("Developers:");
 					for (Developer developer : developers) {
-						System.out.println("\t" 
-								+ developer.getName().getTitle() + " " 
-								+ developer.getName().getFirstName() + " "
-								+ developer.getName().getLastName());
+						System.out.println("\t" + developer.getName().getTitle() 
+								+ " " + developer.getName().getFirstName() 
+								+ " "+ developer.getName().getLastName());
 					}
 				}
 			}
@@ -209,9 +208,19 @@ public class HumanResourceController {
 		int id = inputController.getInteger("Employee ID to delete (1-" + max + "): ", 1, max);
 		boolean employeeFound = false;
 		
-		for (Employee e : employees) {
-			if (e.getIdNum() == id) {
-				employees.remove(e);
+		for (Employee employee : employees) {
+			if (employee.getIdNum() == id) {
+				if (employee instanceof Manager) {
+					vacantManagerPositions++;
+				} else {
+					vacantEmployeePositions++;
+				}
+				for (Department department : departments) {
+					if (department.getIdNum() == employee.getDeptIdNum()) {
+						department.setNumEmployees(department.getNumEmployees() -1);
+					}
+				}
+				employees.remove(employee);
 				System.out.println("Employee with ID: " + id + ", deleted successfully.");
 				employeeFound = true;
 				break;
@@ -224,10 +233,6 @@ public class HumanResourceController {
 	}
 
 	public void requestDepartmentChange(Employee employee, int departmentId) {
-		
-	}
-	
-	public void terminateEmployment(Employee employee) {
 		
 	}
 	
@@ -250,74 +255,40 @@ public class HumanResourceController {
 		return highestIdNum;
 	}
 	
-	/**
-	 * Can add a new employee.
-	 *
-	 * @return true, if successful
-	 */
 	private boolean canAddEmployee() {
-		boolean canAddEmployee = false;
-		int departmentIdNum = 0;
-		int employeesInDepartment = 0;
-		
-		for (Department department : departments) {
-			departmentIdNum = department.getIdNum();
-			employeesInDepartment = 0;
-					
-			for (Employee employee : employees) {
-				if (employee.getDeptIdNum() == departmentIdNum) {
-					employeesInDepartment++;
-				}
-			}
-			
-			if (employeesInDepartment < MAX_EMPLOYEES_PER_DEPARTMENT) {
-				canAddEmployee = true;
-				break;
-			}
-		}
-		
-		return canAddEmployee;
+		return (vacantEmployeePositions > 0);
 	}
 
-	/**
-	 * Can add a new manager.
-	 *
-	 * @return true, if successful
-	 */
+
 	private boolean canAddManager() {
-		boolean canAddManager = false;
-		int departmentIdNum = 0;
-		int numManagersInDepartment = 0;
-		ArrayList<Employee> departmentEmployees;
-		
-		for (Department department : departments) {
-			departmentIdNum = department.getIdNum();
-			departmentEmployees = new ArrayList<Employee>();
-			numManagersInDepartment = 0;
-					
-			for (Employee employee : employees) {
-				if (employee.getDeptIdNum() == departmentIdNum) {
-					departmentEmployees.add(employee);
-				}
-			}
-			
-			for (Employee employee : departmentEmployees) {
-				if (employee instanceof Manager) {
-					numManagersInDepartment++;
-				}
-			}
-			
-			if (numManagersInDepartment < MAX_MANAGERS_PER_DEPARTMENT) {
-				canAddManager = true;
-				break;
-			}
-		}
-		
-		return canAddManager;
+		return (vacantManagerPositions > 0);
 	}
 	
-	private void setDepartmentVacancies( ) {
-
+	private void setVacantPositions() {
+		int departmentIdNum = 0;
+		int numMangersInDepartment = 0;
+		int numEmployeesInDepartment = 0;
+		
+		for (Department department : departments) {
+			departmentIdNum = department.getIdNum();
+			numMangersInDepartment = 0;
+			numEmployeesInDepartment = 0;
+			
+			for (Employee employee : employees) {
+				if (employee.getDeptIdNum() == departmentIdNum) {
+					if (employee instanceof Manager) {
+						numMangersInDepartment++;
+						numEmployeesInDepartment++;
+					} else {
+						numEmployeesInDepartment++;
+					}
+				}
+			}
+			
+			this.vacantManagerPositions += (MAX_MANAGERS_PER_DEPARTMENT - numMangersInDepartment);
+			this.vacantEmployeePositions += (MAX_EMPLOYEES_PER_DEPARTMENT - numEmployeesInDepartment);
+		}
+	
 	}
 
 
