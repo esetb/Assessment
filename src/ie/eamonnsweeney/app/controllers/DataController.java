@@ -48,6 +48,7 @@ public class DataController {
 		this.departments = loadDepartments();
 		this.employees = loadEmployees();
 		this.help = loadHelp();
+		addEmployeesToDepartments();
 	}
 	
 	/**
