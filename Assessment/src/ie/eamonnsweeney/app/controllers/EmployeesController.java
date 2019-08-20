@@ -215,19 +215,19 @@ public class EmployeesController {
 	private boolean canAddEmployee() {
 		boolean canAddEmployee = false;
 		int departmentIdNum = 0;
-		ArrayList<Employee> departmentEmployees;
+		int employeesInDepartment = 0;
 		
 		for (Department department : departments) {
 			departmentIdNum = department.getIdNum();
-			departmentEmployees = new ArrayList<Employee>();
+			employeesInDepartment = 0;
 					
 			for (Employee employee : employees) {
 				if (employee.getDeptIdNum() == departmentIdNum) {
-					departmentEmployees.add(employee);
+					employeesInDepartment++;
 				}
 			}
 			
-			if (departmentEmployees.size() < MAX_EMPLOYEES_PER_DEPARTMENT) {
+			if (employeesInDepartment < MAX_EMPLOYEES_PER_DEPARTMENT) {
 				canAddEmployee = true;
 				break;
 			}
@@ -235,7 +235,7 @@ public class EmployeesController {
 		
 		return canAddEmployee;
 	}
-	
+
 	/**
 	 * Can add a new manager.
 	 *
