@@ -172,18 +172,18 @@ public class EmployeesController {
 	public void deleteEmployee() {
 		int max = (nextEmployeeIdNum - 1);
 		int id = inputController.getInteger("Employee ID to delete (1-" + max + "): ", 1, max);
-		boolean deletionOcurred = false;
+		boolean employeeFound = false;
 		
 		for (Employee e : employees) {
 			if (e.getIdNum() == id) {
 				employees.remove(e);
 				System.out.println("Employee with ID: " + id + ", deleted successfully.");
-				deletionOcurred = true;
+				employeeFound = true;
 				break;
 			}
 		}
 		
-		if (!deletionOcurred) {
+		if (!employeeFound) {
 			System.out.println("Employee ID: " + id + " does not exist.");
 		}
 	}

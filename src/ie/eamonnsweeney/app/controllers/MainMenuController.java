@@ -61,7 +61,7 @@ public class MainMenuController {
 				departmentsController.listDepartments();
 				break;
 			case 2:
-				departmentsController.viewDepartment();
+				departmentsController.viewDepartmentbyId();
 				break;
 			case 3:
 				employeesController.listEmployees();

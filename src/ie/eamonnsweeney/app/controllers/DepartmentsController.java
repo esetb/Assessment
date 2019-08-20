@@ -22,9 +22,6 @@ public class DepartmentsController {
 	/** The input controller. */
 	private InputController inputController;
 	
-	/** The next department id num. */
-	private int nextDepartmentIdNum;
-	
 	/**
 	 * Instantiates a new departments controller.
 	 *
@@ -35,7 +32,6 @@ public class DepartmentsController {
 		this.employees = dataController.getEmployees();
 		this.departments = dataController.getDepartments();
 		this.inputController = inputController;
-		this.nextDepartmentIdNum = (getHighestDepartmentIdNum() + 1);
 	}
 	
 	/**
@@ -51,9 +47,8 @@ public class DepartmentsController {
 	/**
 	 * View department.
 	 */
-	public void viewDepartment() {
-		int deptIdNum = inputController.getInteger("Department ID (1-" 
-				+ (nextDepartmentIdNum - 1) + "):");
+	public void viewDepartmentbyId() {
+		int deptIdNum = inputController.getInteger("Department ID (1-3):");
 		boolean departmentFound = false;
 		
 		for (Department department : departments) {
@@ -99,25 +94,6 @@ public class DepartmentsController {
 		if (!departmentFound) {
 			System.out.println("Error: No department exists with that id number.");
 		}
-	}
-	
-	/**
-	 * Gets the highest department id num in use.
-	 *
-	 * @return the highest department id num
-	 */
-	private int getHighestDepartmentIdNum() {
-		int highestIdNum = 0;
-		int idNum = 0;
-		
-		for (Department d : departments) {
-			idNum = d.getIdNum();
-			if (idNum > highestIdNum) {
-				highestIdNum = idNum;
-			}
-		}
-		
-		return highestIdNum;
 	}
 	
 }
