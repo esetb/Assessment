@@ -198,18 +198,24 @@ public class DataController {
 		return fileIOController.readTextFile(helpFile);
 	}
 	
+	/**
+	 * Adds the employees to departments.
+	 */
 	public void addEmployeesToDepartments() {
 		int deptNumEmployees = 0;
 		
 		for (Department department : departments) {
 			deptNumEmployees = 0;
+			
 			for (Employee employee : employees) {
-				if (employee.getIdNum() == department.getIdNum()) {
+				if (employee.getDeptIdNum() == department.getIdNum()) {
 					deptNumEmployees++;
 				}
 			}
+			
 			department.setNumEmployees(deptNumEmployees);
 		}
 		
 	}
+	
 }

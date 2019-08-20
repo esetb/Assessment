@@ -91,8 +91,7 @@ public class Department implements Serializable {
 		return "" 
 				+ name 
 				+ ", ID: " + idNum 
-				+ ", Employees: " + numEmployees
-				;
+				+ ", Employees: " + numEmployees;
 	}
 
 	/**
