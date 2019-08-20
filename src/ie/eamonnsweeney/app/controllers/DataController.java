@@ -197,4 +197,18 @@ public class DataController {
 		return fileIOController.readTextFile(helpFile);
 	}
 	
+	public void addEmployeesToDepartments() {
+		int deptNumEmployees = 0;
+		
+		for (Department department : departments) {
+			deptNumEmployees = 0;
+			for (Employee employee : employees) {
+				if (employee.getIdNum() == department.getIdNum()) {
+					deptNumEmployees++;
+				}
+			}
+			department.setNumEmployees(deptNumEmployees);
+		}
+		
+	}
 }
