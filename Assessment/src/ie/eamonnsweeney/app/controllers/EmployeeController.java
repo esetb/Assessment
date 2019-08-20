@@ -26,7 +26,7 @@ public abstract class EmployeeController {
 	
 	/** The input controller. */
 	protected InputController inputController;
-	
+	 
 	/**
 	 * Instantiates a new employee controller.
 	 *
