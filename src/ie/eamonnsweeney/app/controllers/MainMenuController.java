@@ -8,12 +8,9 @@ import ie.eamonnsweeney.app.models.Menu;
  */
 public class MainMenuController {
 	
-	/** The departments controller. */
-	private DepartmentsController departmentsController;
-	
-	/** The employees controller. */
-	private EmployeesController employeesController;
-	
+	/** The human resource controller. */
+	private HumanResourceController humanResourceController;
+		
 	/** The input controller. */
 	private InputController inputController;
 	
@@ -27,8 +24,7 @@ public class MainMenuController {
 	 * @param inputController the input controller
 	 */
 	public MainMenuController(DataController dataController, InputController inputController) {
-		this.departmentsController = new DepartmentsController(dataController, inputController);
-		this.employeesController = new EmployeesController(dataController, inputController);
+		this.humanResourceController = new HumanResourceController(dataController, inputController);
 		this.help = dataController.getHelp();
 		this.inputController = inputController;
 	}
@@ -58,28 +54,28 @@ public class MainMenuController {
 			menu.display();
 			switch (menu.getOption()) {
 			case 1:
-				departmentsController.listDepartments();
+				humanResourceController.listDepartments();
 				break;
 			case 2:
-				departmentsController.viewDepartmentbyId();
+				humanResourceController.listEmployeesByDepartmentId();
 				break;
 			case 3:
-				employeesController.listEmployees();
+				humanResourceController.listEmployees();
 				break;
 			case 4:
-				employeesController.listManagers();
+				humanResourceController.listManagers();
 				break;
 			case 5:
-				employeesController.listDevelopers();
+				humanResourceController.listDevelopers();
 				break;
 			case 6:
-				employeesController.addEmployee();
+				humanResourceController.addEmployee();
 				break;
 			case 7:
-				employeesController.editEmployee();
+				humanResourceController.editEmployeeById();
 				break;
 			case 8:
-				employeesController.deleteEmployee();
+				humanResourceController.deleteEmployeeById();
 				break;
 			case 9:
 				// payment();
