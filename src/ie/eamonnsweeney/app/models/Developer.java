@@ -104,7 +104,7 @@ public class Developer extends Employee {
 		int normalWorkHours = getNormalWorkHours();
 		int normalHoursWorked = 0;
 		int overtimeHoursWorked = 0;
-		double pay = 0;
+		double weeklyPay = 0;
 		
 		if (numHoursWorked > normalWorkHours) {
 			normalHoursWorked = normalWorkHours;
@@ -113,10 +113,10 @@ public class Developer extends Employee {
 			normalHoursWorked = numHoursWorked;
 		}
 		
-		pay = normalHoursWorked * level.hourlyRate;
-		pay += ((overtimeHoursWorked * level.hourlyRate) * 1.5);
+		weeklyPay = normalHoursWorked * level.hourlyRate;
+		weeklyPay += ((overtimeHoursWorked * level.hourlyRate) * 1.5);
 		
-		return pay;
+		return weeklyPay;
 	}
 	
 	/**

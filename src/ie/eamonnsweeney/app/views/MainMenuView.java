@@ -83,7 +83,7 @@ public class MainMenuView {
 				humanResourceController.deleteEmployeeById();
 				break;
 			case 9:
-				humanResourceController.payEmployeeById();
+				humanResourceController.payEmployee();
 				break;
 			case 10:
 				System.out.println(help);

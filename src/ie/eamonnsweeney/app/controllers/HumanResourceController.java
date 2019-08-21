@@ -256,7 +256,7 @@ public class HumanResourceController {
 	/**
 	 * Pay employee.
 	 */
-	public void payEmployeeById() {
+	public void payEmployee() {
 		int max = (nextEmployeeIdNum - 1);
 		int id = inputController.getInteger("Employee ID to pay (1-" + max + "): ", 1, max);
 		int numHoursWorked = 0;
@@ -266,7 +266,7 @@ public class HumanResourceController {
 		if (employee != null) {
 			numHoursWorked = inputController.getInteger("Number of hours worked (1-60): ", 1, 60);
 			pay = employee.calculatePay(numHoursWorked);
-			System.out.printf("%s %s %s has been paid %.2f for %d hours of work."
+			System.out.printf("%s %s %s has been paid %.2f for %d hours worked.\n"
 					, employee.getName().getTitle(), employee.getName().getFirstName()
 					, employee.getName().getLastName(), pay, numHoursWorked);
 		} else {
@@ -281,6 +281,7 @@ public class HumanResourceController {
 		for (Employee emp : employees) {
 			if (emp.getIdNum() == idNum) {
 				employee = emp;
+				break;
 			}
 		}
 		
