@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Department.
  *
@@ -23,17 +24,18 @@ public class Department implements Serializable {
 	/** The num employees. */
 	private int numEmployees;
 
+	/** The num managers. */
+	private int numManagers;
+	
 	/**
 	 * Instantiates a new department.
 	 *
 	 * @param idNum the id num
 	 * @param name the name
-	 * @param numEmployees the num employees
 	 */
-	public Department(int idNum, String name, int numEmployees) {
+	public Department(int idNum, String name) {
 		this.idNum = idNum;
 		this.name = name;
-		this.numEmployees = numEmployees;
 	}
 	
 	/**
@@ -81,6 +83,25 @@ public class Department implements Serializable {
 		this.numEmployees = numEmployees;
 	}
 
+	/**
+	 * Gets the num managers.
+	 *
+	 * @return the num managers
+	 */
+	public int getNumManagers() {
+		return numManagers;
+	}
+	
+	/**
+	 * Sets the num managers.
+	 *
+	 * @param numManagers the new num managers
+	 */
+	public void setNumManagers(int numManagers) {
+		this.numManagers = numManagers;
+	}
+	
+	
 	/**
 	 * To string.
 	 *

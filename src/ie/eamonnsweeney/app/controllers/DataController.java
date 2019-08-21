@@ -48,7 +48,6 @@ public class DataController {
 		this.departments = loadDepartments();
 		this.employees = loadEmployees();
 		this.help = loadHelp();
-		addEmployeesToDepartments();
 	}
 	
 	/**
@@ -126,11 +125,30 @@ public class DataController {
 	 */
 	private ArrayList<Department> createInitialDepartmentData() {
 		ArrayList<Department> departments = new ArrayList<>();
+		int deptNumManagers = 0;
+		int deptNumEmployees = 0;
 		
-		departments.add(new Department(1, "Development", 0));
-		departments.add(new Department(2, "DevOps", 0));
-		departments.add(new Department(3, "QA", 0));
-
+		departments.add(new Department(1, "Development"));
+		departments.add(new Department(2, "DevOps"));
+		departments.add(new Department(3, "QA"));
+		
+		for (Department department : departments) {
+			deptNumManagers = 0;
+			deptNumEmployees = 0;
+			
+			for (Employee employee : employees) {
+				if (employee.getDeptIdNum() == department.getIdNum()) {
+					deptNumEmployees++;
+					if (employee instanceof Manager) {
+						deptNumManagers++;
+					}
+				}
+			}
+			
+			department.setNumManagers(deptNumManagers);
+			department.setNumEmployees(deptNumEmployees);
+		}
+		
 		return departments;	
 	}
 	
@@ -196,26 +214,6 @@ public class DataController {
 	 */
 	private String loadHelp() {
 		return fileIOController.readTextFile(helpFile);
-	}
-	
-	/**
-	 * Adds the employees to departments.
-	 */
-	public void addEmployeesToDepartments() {
-		int deptNumEmployees = 0;
-		
-		for (Department department : departments) {
-			deptNumEmployees = 0;
-			
-			for (Employee employee : employees) {
-				if (employee.getDeptIdNum() == department.getIdNum()) {
-					deptNumEmployees++;
-				}
-			}
-			
-			department.setNumEmployees(deptNumEmployees);
-		}
-		
 	}
 	
 }
