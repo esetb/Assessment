@@ -106,7 +106,9 @@ public class Manager extends Employee {
 	 * @return the double
 	 */
 	public double calculatePay(int numHoursWorked) {
-		return 0;
+		double pay = getMonthlyPay();
+		pay += (pay * bonus);
+		return pay ;
 	}
 	
 	/**
