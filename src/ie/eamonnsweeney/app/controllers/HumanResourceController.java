@@ -9,6 +9,7 @@ import ie.eamonnsweeney.app.models.Manager;
 import ie.eamonnsweeney.app.models.Menu;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class HumanResourceController.
  */
@@ -231,33 +232,61 @@ public class HumanResourceController {
 	public void deleteEmployeeById() {
 		int max = (nextEmployeeIdNum - 1);
 		int id = inputController.getInteger("Employee ID to delete (1-" + max + "): ", 1, max);
-		boolean employeeFound = false;
+		Employee employee = getEmployeeById(id);
 		
-		for (Employee employee : employees) {
-			if (employee.getIdNum() == id) {
-				for (Department department : departments) {
-					if (department.getIdNum() == employee.getDeptIdNum()) {
-						if (employee instanceof Manager) {
-							vacantManagerPositions++;
-							department.setNumManagers(department.getNumManagers() -1);
-						}
-						vacantEmployeePositions++;
-						department.setNumEmployees(department.getNumEmployees() -1);
-						break;
+		if (employee != null) {
+			for (Department department : departments) {
+				if (department.getIdNum() == employee.getDeptIdNum()) {
+					if (employee instanceof Manager) {
+						vacantManagerPositions++;
+						department.setNumManagers(department.getNumManagers() -1);
 					}
+					vacantEmployeePositions++;
+					department.setNumEmployees(department.getNumEmployees() -1);
+					break;
 				}
-				employees.remove(employee);
-				System.out.println("Employee with ID: " + id + ", deleted successfully.");
-				employeeFound = true;
-				break;
 			}
-		}
-		
-		if (!employeeFound) {
+			employees.remove(employee);
+			System.out.println("Employee with ID: " + id + ", deleted successfully.");
+		} else {
 			System.out.println("Employee ID: " + id + " does not exist.");
 		}
 	}
 
+	/**
+	 * Pay employee.
+	 */
+	public void payEmployeeById() {
+		int max = (nextEmployeeIdNum - 1);
+		int id = inputController.getInteger("Employee ID to pay (1-" + max + "): ", 1, max);
+		int numHoursWorked = 0;
+		double pay = 0;
+		Employee employee = getEmployeeById(id);
+		
+		if (employee != null) {
+			numHoursWorked = inputController.getInteger("Number of hours worked (1-60): ", 1, 60);
+			pay = employee.calculatePay(numHoursWorked);
+			System.out.printf("%s %s %s has been paid %.2f for %d hours of work."
+					, employee.getName().getTitle(), employee.getName().getFirstName()
+					, employee.getName().getLastName(), pay, numHoursWorked);
+		} else {
+			System.out.println("Employee ID: " + id + " does not exist.");
+		}
+		
+	}
+	
+	private Employee getEmployeeById(int idNum) {
+		Employee employee = null;
+		
+		for (Employee emp : employees) {
+			if (emp.getIdNum() == idNum) {
+				employee = emp;
+			}
+		}
+		
+		return employee;
+	}
+	
 	/**
 	 * Gets the highest employee id num.
 	 *
