@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Objects;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Department.
  *
@@ -27,7 +26,10 @@ public class Department implements Serializable {
 	/** The num managers. */
 	private int numManagers;
 	
+	/** The max managers. */
 	private final int MAX_MANAGERS = 2;
+	
+	/** The max employees. */
 	private final int MAX_EMPLOYEES = 14;
 
 	/**
@@ -104,6 +106,11 @@ public class Department implements Serializable {
 		this.numManagers = numManagers;
 	}
 	
+	/**
+	 * Gets the max managers.
+	 *
+	 * @return the max managers
+	 */
 	public int getMaxManagers() {
 		return MAX_MANAGERS;
 	}

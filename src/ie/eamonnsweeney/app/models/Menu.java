@@ -23,7 +23,7 @@ public class Menu {
 	 * Instantiates a new menu.
 	 *
 	 * @param inputController the input controller
-	 * @param name the name
+	 * @param menuName the menu name
 	 * @param options the options
 	 */
 	public Menu(InputController inputController, String menuName, String[] options) {

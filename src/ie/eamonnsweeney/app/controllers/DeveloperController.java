@@ -24,13 +24,10 @@ public class DeveloperController extends EmployeeController {
 	 * Instantiates a new developer controller.
 	 *
 	 * @param departments the departments
-	 * @param maxDeptIdNum the max dept id num
 	 * @param inputController the input controller
 	 */
-	public DeveloperController(ArrayList<Department> departments, 
-			ArrayList<Employee> employees,
-			InputController inputController) {
-		super(departments, employees, inputController);
+	public DeveloperController(ArrayList<Department> departments, InputController inputController) {
+		super(departments, inputController);
 	}
 	
 	

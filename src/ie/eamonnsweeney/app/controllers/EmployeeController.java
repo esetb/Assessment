@@ -1,6 +1,7 @@
 package ie.eamonnsweeney.app.controllers;
 
 import java.time.LocalDate;
+import java.time.Year;
 import java.util.ArrayList;
 
 import ie.eamonnsweeney.app.models.Department;
@@ -8,7 +9,6 @@ import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class EmployeeController.
  *
@@ -22,9 +22,6 @@ public abstract class EmployeeController {
 	/** The departments. */
 	private ArrayList<Department> departments;
 	
-	/** The employees. */
-	private ArrayList<Employee> employees;
-	
 	/** The input controller. */
 	protected InputController inputController;
 	 
@@ -32,12 +29,9 @@ public abstract class EmployeeController {
 	 * Instantiates a new employee controller.
 	 *
 	 * @param departments the departments
-	 * @param employees the employees
 	 * @param inputController the input controller
 	 */
-	public EmployeeController(ArrayList<Department> departments, 
-			ArrayList<Employee> employees,
-			InputController inputController) {
+	public EmployeeController(ArrayList<Department> departments, InputController inputController) {
 		this.departments = departments;
 		this.inputController = inputController;
 	}
@@ -86,7 +80,7 @@ public abstract class EmployeeController {
 			deptIdNum = inputController.getInteger("Department ID (1-3): ", 1, 3);
 			for (Department department : departments) {
 				if (department.getIdNum() == deptIdNum) {
-					if (this.employee instanceof Manager) {
+					if (employee instanceof Manager) {
 						if (department.getNumManagers() < department.getMaxManagers()) {
 							isValidDepartment = true;
 						} else {
@@ -103,17 +97,90 @@ public abstract class EmployeeController {
 			}
 		} while (!isValidDepartment);
 		
+		if (employee.getDeptIdNum() != 0) {
+			// we are editing, not creating
+			moveDepartments(employee.getDeptIdNum(), deptIdNum);
+		}
+		
 		this.employee.setDeptIdNum(deptIdNum);
 	}
 	
 	/**
+	 * Move departments.
+	 *
+	 * @param oldDeptIdNum the old dept id num
+	 * @param newDeptIdNum the new dept id num
+	 */
+	private void moveDepartments(int oldDeptIdNum, int newDeptIdNum) {
+		Department oldDepartment = null;
+		Department newDepartment = null;
+		
+		for (Department department : departments) {
+			if (department.getIdNum() == oldDeptIdNum) {
+				oldDepartment = department;
+			}
+			if (department.getIdNum() == newDeptIdNum) {
+				newDepartment = department;
+			}
+		}
+		
+		if (employee instanceof Manager) {
+			oldDepartment.setNumManagers(oldDepartment.getNumManagers() - 1);
+			newDepartment.setNumManagers(newDepartment.getNumManagers() + 1);
+		}
+		
+		oldDepartment.setNumEmployees(oldDepartment.getNumEmployees() - 1);
+		newDepartment.setNumEmployees(newDepartment.getNumEmployees() + 1);
+	}
+
+	/**
 	 * Input date started.
 	 */
 	protected void inputDateStarted() {
-		//TODO: sanity checking valid date - no feb 31
+		int daysInMonth = 0;
+		
 		int year = inputController.getInteger("Year Started (2000-2019): ", 2000, 2019);
 		int month = inputController.getInteger("Month Started (1-12): ", 1, 12);
-		int day = inputController.getInteger("Day Started (1-31):", 1, 31);
+		
+		switch (month) {
+		case 1:
+			daysInMonth = 31;
+			break;
+		case 2:
+			daysInMonth = (Year.of(year).isLeap()) ? 29 : 28;
+			break;
+		case 3:
+			daysInMonth = 31;
+			break;
+		case 4:
+			daysInMonth = 30;
+			break;
+		case 5:
+			daysInMonth = 31;
+			break;
+		case 6:
+			daysInMonth = 30;
+			break;
+		case 7:
+		case 8:
+			daysInMonth = 31;
+			break;
+		case 9:
+			daysInMonth = 30;
+			break;
+		case 10:
+			daysInMonth = 31;
+			break;
+		case 11:
+			daysInMonth = 30;
+			break;
+		case 12:
+			daysInMonth = 31;
+			break;
+		}
+		
+		int day = inputController.getInteger("Day Started (1-" + daysInMonth + "):", 1, daysInMonth);
+		
 		this.employee.setDateStarted(LocalDate.of(year, month, day));
 	}
 	

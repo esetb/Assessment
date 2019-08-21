@@ -8,15 +8,36 @@ import ie.eamonnsweeney.app.models.Employee;
 import ie.eamonnsweeney.app.models.Manager;
 import ie.eamonnsweeney.app.models.Menu;
 
+
+/**
+ * The Class HumanResourceController.
+ */
 public class HumanResourceController {
 	
+	/** The input controller. */
 	private InputController inputController;
+	
+	/** The departments. */
 	private ArrayList<Department> departments;
+	
+	/** The employees. */
 	private ArrayList<Employee> employees;
+	
+	/** The next employee id num. */
 	private int nextEmployeeIdNum;
+	
+	/** The vacant manager positions. */
 	private int vacantManagerPositions = 0;
+	
+	/** The vacant employee positions. */
 	private int vacantEmployeePositions = 0;
 	
+	/**
+	 * Instantiates a new human resource controller.
+	 *
+	 * @param dataController the data controller
+	 * @param inputController the input controller
+	 */
 	public HumanResourceController (DataController dataController, InputController inputController) {
 		this.departments = dataController.getDepartments();
 		this.employees = dataController.getEmployees();
@@ -25,6 +46,9 @@ public class HumanResourceController {
 		this.setVacantPositions();
 	}
 
+	/**
+	 * List departments.
+	 */
 	public void listDepartments() {
 		System.out.println("\n*** Departments ***");
 		for (Department e : departments) {
@@ -32,6 +56,9 @@ public class HumanResourceController {
 		}
 	}
 	
+	/**
+	 * List employees by department id.
+	 */
 	public void listEmployeesByDepartmentId() {
 		int deptIdNum = inputController.getInteger("Department ID (1-3):", 1, 3);
 		boolean departmentFound = false;
@@ -146,7 +173,7 @@ public class HumanResourceController {
 	 */
 	public void addManager() {
 		if (canAddManager()) {
-			ManagerController mc = new ManagerController(departments, employees, inputController);
+			ManagerController mc = new ManagerController(departments, inputController);
 			employees.add(mc.createNewManager(nextEmployeeIdNum));
 			nextEmployeeIdNum++;
 			System.out.println("Manager added.");
@@ -161,7 +188,7 @@ public class HumanResourceController {
 	 */
 	public void addDeveloper() {
 		if (canAddEmployee()) {
-			DeveloperController dc = new DeveloperController(departments, employees, inputController);
+			DeveloperController dc = new DeveloperController(departments, inputController);
 			employees.add(dc.createNewDeveloper(nextEmployeeIdNum));
 			nextEmployeeIdNum++;
 			System.out.println("Manager added.");
@@ -182,10 +209,10 @@ public class HumanResourceController {
 		for (Employee e : employees) {
 			if (e.getIdNum() == id) {
 				if (e instanceof Manager) {
-					ManagerController mc = new ManagerController(departments, employees, inputController);
+					ManagerController mc = new ManagerController(departments, inputController);
 					mc.edit(e);
 				} else {
-					DeveloperController dc = new DeveloperController(departments, employees, inputController);
+					DeveloperController dc = new DeveloperController(departments, inputController);
 					dc.edit(e);
 				}
 				idFound = true;
@@ -250,15 +277,28 @@ public class HumanResourceController {
 		return highestIdNum;
 	}
 	
+	/**
+	 * Can add employee.
+	 *
+	 * @return true, if successful
+	 */
 	private boolean canAddEmployee() {
 		return (vacantEmployeePositions > 0);
 	}
 
 
+	/**
+	 * Can add manager.
+	 *
+	 * @return true, if successful
+	 */
 	private boolean canAddManager() {
 		return (vacantManagerPositions > 0);
 	}
 	
+	/**
+	 * Sets the vacant positions.
+	 */
 	private void setVacantPositions() {
 		int numMangersInDepartment = 0;
 		int numEmployeesInDepartment = 0;

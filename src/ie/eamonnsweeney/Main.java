@@ -148,8 +148,9 @@ import ie.eamonnsweeney.app.controllers.ApplicationController;
 
 
 /**
- * @author Eamonn A. Sweeney
+ * The Class Main.
  *
+ * @author Eamonn A. Sweeney
  */
 public class Main {
 	

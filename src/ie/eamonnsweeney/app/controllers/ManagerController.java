@@ -23,13 +23,10 @@ public class ManagerController extends EmployeeController {
 	 * Instantiates a new manager controller.
 	 *
 	 * @param departments the departments
-	 * @param employees the employees
 	 * @param inputController the input controller
 	 */
-	public ManagerController(ArrayList<Department> departments, 
-			ArrayList<Employee> employees,
-			InputController inputController) {
-		super(departments, employees, inputController);
+	public ManagerController(ArrayList<Department> departments, InputController inputController) {
+		super(departments, inputController);
 	}
 	
 	/**

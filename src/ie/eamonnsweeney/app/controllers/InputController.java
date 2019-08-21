@@ -105,7 +105,7 @@ public class InputController {
 	}
 	
 	/**
-	 * Gets a double with a minimum value
+	 * Gets a double with a minimum value.
 	 *
 	 * @param msg the msg
 	 * @param min the min
@@ -124,7 +124,7 @@ public class InputController {
 	}
 
 	/**
-	 * Gets a double between two values min-max
+	 * Gets a double between two values min-max.
 	 *
 	 * @param msg the msg
 	 * @param min the min
