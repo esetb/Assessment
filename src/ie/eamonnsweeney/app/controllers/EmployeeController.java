@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import ie.eamonnsweeney.app.models.Department;
 import ie.eamonnsweeney.app.models.Employee;
+import ie.eamonnsweeney.app.models.Manager;
 
 
 // TODO: Auto-generated Javadoc
@@ -78,27 +79,29 @@ public abstract class EmployeeController {
 	 * Input dept id num.
 	 */
 	protected void inputDeptIdNum() {
-		ArrayList<Department> availableDepartments = getAvailableDepartments();
-		int[] validDepartmentIds = new int[availableDepartments.size()];
-		for (int i = 0; i < validDepartmentIds.length; i++) {
-			validDepartmentIds[i] = availableDepartments.get(i).getIdNum();
-		}
-		int max = availableDepartments.size();
-		boolean isValidDeptId = false;
-		int deptIdNum = 0;
+		boolean isValidDepartment = false;
+		int deptIdNum;
 		
 		do {
-			deptIdNum = inputController.getInteger("Department ID (1-" + max 
-				+ "): ", 1, max);
-			for (int i = 0; i < validDepartmentIds.length; i++) {
-				if (deptIdNum == validDepartmentIds[i]) {
-					isValidDeptId = true;
+			deptIdNum = inputController.getInteger("Department ID (1-3): ", 1, 3);
+			for (Department department : departments) {
+				if (department.getIdNum() == deptIdNum) {
+					if (this.employee instanceof Manager) {
+						if (department.getNumManagers() < department.getMaxManagers()) {
+							isValidDepartment = true;
+						} else {
+							System.out.println("There are no managerial vacancies in " + department.getName() + ".");
+						}
+					} else {
+						if (department.getNumEmployees() < department.getMaxEmployees()) {
+							isValidDepartment = true;
+						} else {
+							System.out.println("There are no vacancies in " + department.getName() + ".");
+						}
+					}
 				}
 			}
-			if (!isValidDeptId) {
-				System.out.println("Please enter a valid Department ID #.");
-			}
-		} while (!isValidDeptId);
+		} while (!isValidDepartment);
 		
 		this.employee.setDeptIdNum(deptIdNum);
 	}
@@ -148,27 +151,6 @@ public abstract class EmployeeController {
 			inputPhoneNum();
 			break;
 		}
-	}
-	
-	/**
-	 * Gets the available departments.
-	 *
-	 * @return the available departments
-	 */
-	private ArrayList<Department> getAvailableDepartments() {
-		ArrayList<Department> availableDepartments = new ArrayList<>();
-		int numManagersInDepartment = 0;
-		int numEmployeesInDepartment = 0;
-		
-		for (Department department : departments) {
-			numManagersInDepartment = 0;
-			numEmployeesInDepartment = 0;
-			for (Employee employee : employees) {
-				
-			}
-		}
-		
-		return availableDepartments;
 	}
 	
 	/**

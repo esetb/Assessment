@@ -27,6 +27,9 @@ public class Department implements Serializable {
 	/** The num managers. */
 	private int numManagers;
 	
+	private final int MAX_MANAGERS = 2;
+	private final int MAX_EMPLOYEES = 14;
+
 	/**
 	 * Instantiates a new department.
 	 *
@@ -101,6 +104,18 @@ public class Department implements Serializable {
 		this.numManagers = numManagers;
 	}
 	
+	public int getMaxManagers() {
+		return MAX_MANAGERS;
+	}
+
+	/**
+	 * Gets the max employees.
+	 *
+	 * @return the max employees
+	 */
+	public int getMaxEmployees() {
+		return MAX_EMPLOYEES;
+	}
 	
 	/**
 	 * To string.

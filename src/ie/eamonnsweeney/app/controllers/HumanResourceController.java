@@ -14,8 +14,6 @@ public class HumanResourceController {
 	private ArrayList<Department> departments;
 	private ArrayList<Employee> employees;
 	private int nextEmployeeIdNum;
-	private int MAX_MANAGERS_PER_DEPARTMENT = 2;
-	private int MAX_EMPLOYEES_PER_DEPARTMENT = 14;
 	private int vacantManagerPositions = 0;
 	private int vacantEmployeePositions = 0;
 	
@@ -210,14 +208,15 @@ public class HumanResourceController {
 		
 		for (Employee employee : employees) {
 			if (employee.getIdNum() == id) {
-				if (employee instanceof Manager) {
-					vacantManagerPositions++;
-				} else {
-					vacantEmployeePositions++;
-				}
 				for (Department department : departments) {
 					if (department.getIdNum() == employee.getDeptIdNum()) {
+						if (employee instanceof Manager) {
+							vacantManagerPositions++;
+							department.setNumManagers(department.getNumManagers() -1);
+						}
+						vacantEmployeePositions++;
 						department.setNumEmployees(department.getNumEmployees() -1);
+						break;
 					}
 				}
 				employees.remove(employee);
@@ -232,10 +231,6 @@ public class HumanResourceController {
 		}
 	}
 
-	public void requestDepartmentChange(Employee employee, int departmentId) {
-		
-	}
-	
 	/**
 	 * Gets the highest employee id num.
 	 *
@@ -271,8 +266,8 @@ public class HumanResourceController {
 		for (Department department : departments) {
 			numMangersInDepartment = department.getNumManagers();
 			numEmployeesInDepartment = department.getNumEmployees();
-			this.vacantManagerPositions += (MAX_MANAGERS_PER_DEPARTMENT - numMangersInDepartment);
-			this.vacantEmployeePositions += (MAX_EMPLOYEES_PER_DEPARTMENT - numEmployeesInDepartment);
+			this.vacantManagerPositions += (department.getMaxManagers() - numMangersInDepartment);
+			this.vacantEmployeePositions += (department.getMaxEmployees() - numEmployeesInDepartment);
 		}
 	
 	}
