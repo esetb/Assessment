@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author Eamonn A. Sweeney
  */
-public abstract class Employee implements Serializable {
+public abstract class Employee implements Serializable, Payable {
 	
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 6721678774293692883L;
@@ -166,39 +166,6 @@ public abstract class Employee implements Serializable {
 				+ ", Phone #: " + phoneNum 
 				+ ", Monthly Pay" + monthlyPay 
 				+ ".";
-	}
-
-	/**
-	 * Hash code.
-	 *
-	 * @return the int
-	 */
-	@Override
-	public int hashCode() {
-		return Objects.hash(dateStarted, deptIdNum, idNum, monthlyPay, name, phoneNum);
-	}
-
-	/**
-	 * Equals.
-	 *
-	 * @param obj the obj
-	 * @return true, if successful
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (!(obj instanceof Employee))
-			return false;
-		Employee other = (Employee) obj;
-		return Objects.equals(dateStarted, other.dateStarted) 
-				&& deptIdNum == other.deptIdNum 
-				&& idNum == other.idNum
-				&& Double.doubleToLongBits(monthlyPay) == Double.doubleToLongBits(other.monthlyPay)
-				&& Objects.equals(name, other.name) 
-				&& Objects.equals(phoneNum, other.phoneNum);
 	}
 	
 }
