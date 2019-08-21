@@ -2,6 +2,7 @@ package ie.eamonnsweeney.app.controllers;
 
 import ie.eamonnsweeney.app.views.MainMenuView;
 
+
 /**
  * The Class ApplicationController.
  *
@@ -15,7 +16,8 @@ public class ApplicationController {
 	/** The data controller. */
 	private DataController dataController;
 	
-	/** The main menu Controller. */
+
+	/** The main menu view. */
 	private MainMenuView mainMenuView;
 	
 	/**
