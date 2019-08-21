@@ -265,32 +265,16 @@ public class HumanResourceController {
 	}
 	
 	private void setVacantPositions() {
-		int departmentIdNum = 0;
 		int numMangersInDepartment = 0;
 		int numEmployeesInDepartment = 0;
 		
 		for (Department department : departments) {
-			departmentIdNum = department.getIdNum();
-			numMangersInDepartment = 0;
-			numEmployeesInDepartment = 0;
-			
-			for (Employee employee : employees) {
-				if (employee.getDeptIdNum() == departmentIdNum) {
-					if (employee instanceof Manager) {
-						numMangersInDepartment++;
-						numEmployeesInDepartment++;
-					} else {
-						numEmployeesInDepartment++;
-					}
-				}
-			}
-			
+			numMangersInDepartment = department.getNumManagers();
+			numEmployeesInDepartment = department.getNumEmployees();
 			this.vacantManagerPositions += (MAX_MANAGERS_PER_DEPARTMENT - numMangersInDepartment);
 			this.vacantEmployeePositions += (MAX_EMPLOYEES_PER_DEPARTMENT - numEmployeesInDepartment);
 		}
 	
 	}
-
-
 	
 }
