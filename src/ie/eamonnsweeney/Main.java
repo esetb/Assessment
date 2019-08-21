@@ -95,7 +95,6 @@ to use the application as well as available offline as an ordinary text document
 Also create documentation for the support and maintenance of the application.
 
 Task C
-
 Use the agreed standard for naming, comments and code layout (see below). Also
 validate all data that comes from inputs. Identify and implement opportunities for
 error handling and reporting.
