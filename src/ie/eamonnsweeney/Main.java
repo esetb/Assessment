@@ -121,26 +121,8 @@ Pascal Case.
 Formatting will be essential. All code must be clean, tidy and readable. Opening
 braces ( { ) will be placed at the end of the line and not on a new line.
 
-draw.io
  */
 
-/*TODO:
- * Departments 
- * 	manager/developer move departments
- * Payment
- * draw.io diagrams
- * 
- * REDESIGN
- * 	EmployeesController(RuntimeConfiguration config,
- * 		ArrayList<Department> departments, 
- * 		ArrayList<Employee> employees,
- * 		InputController input)
- * 
- * 	DepartmentsController(RuntimeConfiguration config,
- * 		ArrayList<Department> departments, 
- * 		ArrayList<Employee> employees,
- * 		InputController input)
- */
 
 package ie.eamonnsweeney;
 

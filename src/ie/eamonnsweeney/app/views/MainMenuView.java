@@ -1,12 +1,15 @@
-package ie.eamonnsweeney.app.controllers;
+package ie.eamonnsweeney.app.views;
 
+import ie.eamonnsweeney.app.controllers.DataController;
+import ie.eamonnsweeney.app.controllers.HumanResourceController;
+import ie.eamonnsweeney.app.controllers.InputController;
 import ie.eamonnsweeney.app.models.Menu;
 
 
 /**
- * The Class MainMenuController.
+ * The Class MainMenuView.
  */
-public class MainMenuController {
+public class MainMenuView {
 	
 	/** The human resource controller. */
 	private HumanResourceController humanResourceController;
@@ -17,22 +20,24 @@ public class MainMenuController {
 	/** The help. */
 	private String help;
 	
+
 	/**
-	 * Instantiates a new main menu controller.
+	 * Instantiates a new main menu view.
 	 *
 	 * @param dataController the data controller
 	 * @param inputController the input controller
 	 */
-	public MainMenuController(DataController dataController, InputController inputController) {
+	public MainMenuView(DataController dataController, InputController inputController) {
 		this.humanResourceController = new HumanResourceController(dataController, inputController);
 		this.help = dataController.getHelp();
 		this.inputController = inputController;
 	}
 	
+	
 	/**
-	 * Run.
+	 * Display.
 	 */
-	public void run() {
+	public void display() {
 		String menuTitle = "Main Menu";
 		String[] menuItems = {
 				"List Departments",

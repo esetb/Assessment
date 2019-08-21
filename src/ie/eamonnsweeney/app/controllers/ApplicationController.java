@@ -1,5 +1,6 @@
 package ie.eamonnsweeney.app.controllers;
 
+import ie.eamonnsweeney.app.views.MainMenuView;
 
 /**
  * The Class ApplicationController.
@@ -15,7 +16,7 @@ public class ApplicationController {
 	private DataController dataController;
 	
 	/** The main menu Controller. */
-	private MainMenuController mainMenuController;
+	private MainMenuView mainMenuView;
 	
 	/**
 	 * Instantiates a new application controller.
@@ -23,14 +24,14 @@ public class ApplicationController {
 	public ApplicationController() {
 		this.inputController = new InputController();
 		this.dataController = new DataController();
-		this.mainMenuController = new MainMenuController(dataController, inputController);
+		this.mainMenuView = new MainMenuView(dataController, inputController);
 	}
 	
 	/**
 	 * Run the Application.
 	 */
 	public void run() {
-		mainMenuController.run();
+		mainMenuView.display();
 		dataController.saveData();
 		inputController.close();
 	}	
