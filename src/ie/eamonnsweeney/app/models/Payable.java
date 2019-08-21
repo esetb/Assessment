@@ -11,5 +11,5 @@ public interface Payable {
 	 * @param numHoursWorked the num hours worked
 	 * @return the double
 	 */
-	double calulatePay(int numHoursWorked);
+	double calculatePay(int numHoursWorked);
 }

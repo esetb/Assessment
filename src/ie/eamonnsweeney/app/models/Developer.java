@@ -1,9 +1,9 @@
 package ie.eamonnsweeney.app.models;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Developer.
  *
@@ -104,6 +104,16 @@ public class Developer extends Employee {
 	}
 
 	/**
+	 * Calculate pay.
+	 *
+	 * @param numHoursWorked the num hours worked
+	 * @return the double
+	 */
+	public double calculatePay(int numHoursWorked) {
+		return 0;
+	}
+	
+	/**
 	 * To string.
 	 *
 	 * @return the string
@@ -121,37 +131,6 @@ public class Developer extends Employee {
 				+ ", Level: " + level
 				+ ", Hourly Rate: " + level.getHourlyRate()
 				+ ".";
-	}
-
-	/**
-	 * Hash code.
-	 *
-	 * @return the int
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(level);
-		return result;
-	}
-
-	/**
-	 * Equals.
-	 *
-	 * @param obj the obj
-	 * @return true, if successful
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (!(obj instanceof Developer))
-			return false;
-		Developer other = (Developer) obj;
-		return level == other.level;
 	}
 	
 }
