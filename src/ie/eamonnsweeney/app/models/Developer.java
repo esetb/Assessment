@@ -1,9 +1,9 @@
 package ie.eamonnsweeney.app.models;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Developer.
  *
@@ -46,15 +46,6 @@ public class Developer extends Employee {
 		}
 		
 		/**
-		 * Gets the hourly rate.
-		 *
-		 * @return the hourly rate
-		 */
-		public double getHourlyRate() {
-			return hourlyRate;
-		}
-		
-		/**
 		 * To string.
 		 *
 		 * @return the string
@@ -82,7 +73,7 @@ public class Developer extends Employee {
 			String phoneNum, Level level) {
 		super(idNum, name, deptIdNum, dateStarted, phoneNum);
 		this.level = level;
-		super.setMonthlyPay(level.getHourlyRate() * 35 * 4);
+		super.setMonthlyPay(level.hourlyRate * getNormalWorkHours() * 4);
 	}
 	
 	/**
@@ -110,7 +101,22 @@ public class Developer extends Employee {
 	 * @return the double
 	 */
 	public double calculatePay(int numHoursWorked) {
-		return 0;
+		int normalWorkHours = getNormalWorkHours();
+		int normalHoursWorked = 0;
+		int overtimeHoursWorked = 0;
+		double pay = 0;
+		
+		if (numHoursWorked > normalWorkHours) {
+			normalHoursWorked = normalWorkHours;
+			overtimeHoursWorked = (numHoursWorked - normalWorkHours);
+		} else {
+			normalHoursWorked = numHoursWorked;
+		}
+		
+		pay = normalHoursWorked * level.hourlyRate;
+		pay += ((overtimeHoursWorked * level.hourlyRate) * 1.5);
+		
+		return pay;
 	}
 	
 	/**
@@ -128,9 +134,37 @@ public class Developer extends Employee {
 				+ ", Department ID: " + getDeptIdNum()
 				+ ", Date Started: " + getDateStarted()
 				+ ", Phone: " + getPhoneNum() 
-				+ ", Level: " + level
-				+ ", Hourly Rate: " + level.getHourlyRate()
+				+ ", Level: " + level.levelNum
+				+ ", Hourly Rate: " + level.hourlyRate
 				+ ".";
+	}
+
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(level);
+	}
+
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Developer))
+			return false;
+		Developer other = (Developer) obj;
+		return level == other.level;
 	}
 	
 }

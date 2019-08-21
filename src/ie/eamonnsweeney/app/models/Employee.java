@@ -33,6 +33,9 @@ public abstract class Employee implements Serializable, Payable {
 	/** The monthly pay. */
 	private double monthlyPay;
 	
+	/** The normal work hours. */
+	private final int NORMAL_WORK_HOURS = 35;
+	
 	/**
 	 * Instantiates a new employee.
 	 *
@@ -151,6 +154,15 @@ public abstract class Employee implements Serializable, Payable {
 	}
 
 	/**
+	 * Gets the normal work hours.
+	 *
+	 * @return the normal work hours
+	 */
+	protected int getNormalWorkHours() {
+		return NORMAL_WORK_HOURS;
+	}
+	
+	/**
 	 * To string.
 	 *
 	 * @return the string
@@ -167,5 +179,36 @@ public abstract class Employee implements Serializable, Payable {
 				+ ", Monthly Pay" + monthlyPay 
 				+ ".";
 	}
-	
+
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(NORMAL_WORK_HOURS, dateStarted, deptIdNum, idNum, monthlyPay, name, phoneNum);
+	}
+
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Employee))
+			return false;
+		Employee other = (Employee) obj;
+		return NORMAL_WORK_HOURS == other.NORMAL_WORK_HOURS && Objects.equals(dateStarted, other.dateStarted)
+				&& deptIdNum == other.deptIdNum && idNum == other.idNum
+				&& Double.doubleToLongBits(monthlyPay) == Double.doubleToLongBits(other.monthlyPay)
+				&& Objects.equals(name, other.name) && Objects.equals(phoneNum, other.phoneNum);
+	}
+
 }

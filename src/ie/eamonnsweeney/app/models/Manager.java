@@ -131,5 +131,39 @@ public class Manager extends Employee {
 				+ ", Bonus: " + String.format("%.2f%%", (bonus * 100))
 				+ ".";
 	}
+
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(bonus, numStaff, salary);
+		return result;
+	}
+
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (!(obj instanceof Manager))
+			return false;
+		Manager other = (Manager) obj;
+		return Double.doubleToLongBits(bonus) == Double.doubleToLongBits(other.bonus) 
+				&& numStaff == other.numStaff
+				&& Double.doubleToLongBits(salary) == Double.doubleToLongBits(other.salary);
+	}
+	
 	
 }
