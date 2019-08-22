@@ -36,6 +36,7 @@ instantiate an Employee). Followed by a Manager class and the Developer class
 both of which will inherit from Employee. All classes should have appropriate
 constructors, getters and setters, a toString method and an equals method. Each
 new employee added will have their own unique id.
+
 The Employee Class will be abstract and have:
 Unique Id
 Name
