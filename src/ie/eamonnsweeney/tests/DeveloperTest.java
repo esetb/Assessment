@@ -1,4 +1,4 @@
-package ie.eamonnsweeney.app.views;
+package ie.eamonnsweeney.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
