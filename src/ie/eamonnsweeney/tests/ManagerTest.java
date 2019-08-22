@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ie.eamonnsweeney.app.models.Developer;
 import ie.eamonnsweeney.app.models.Manager;
 import ie.eamonnsweeney.app.models.Name;
 
@@ -31,6 +32,14 @@ class ManagerTest {
 				, LocalDate.of(2010, 1, 1), "555-123456", 0, 60000.0, .15));
 	}
 
+	/**
+	 * Test equals object.
+	 */
+	@Test
+	void testEqualsObject() {
+		assertTrue(manager.equals(new Manager(1, new Name("Mr", "Scrooge", "McDuck"), 1
+				, LocalDate.of(2010, 1, 1), "555-123456", 0, 60000.0, .15)));
+	}
 	@Test
 	void testGetNumStaff() {
 		assertEquals(0, manager.getNumStaff());
@@ -72,7 +81,9 @@ class ManagerTest {
 	@Test
 	void testCalculatePay() {
 		int numHoursWorked = 35;
-		assertEquals(manager.getMonthlyPay(), manager.calculatePay(numHoursWorked));
+		double weeklyPay = (manager.getMonthlyPay() / 4);
+		weeklyPay += (weeklyPay * manager.getBonus());
+		assertEquals(weeklyPay, manager.calculatePay(numHoursWorked));
 	}
 
 }
