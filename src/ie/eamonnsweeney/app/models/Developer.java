@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Developer.
  *
@@ -63,6 +62,9 @@ public class Developer extends Employee {
 	/** The hourly rate. */
 	private double hourlyRate;
 	
+	/** The normal work hours. */
+	private final int NORMAL_WORK_HOURS = 35;
+	
 	/**
 	 * Instantiates a new developer.
 	 *
@@ -106,6 +108,15 @@ public class Developer extends Employee {
 	public double getHourlyRate() {
 		return hourlyRate;
 	}
+
+	/**
+	 * Gets the normal work hours.
+	 *
+	 * @return the normal work hours
+	 */
+	protected int getNormalWorkHours() {
+		return NORMAL_WORK_HOURS;
+	}
 	
 	/**
 	 * Calculate pay.
@@ -114,20 +125,19 @@ public class Developer extends Employee {
 	 * @return the double
 	 */
 	public double calculatePay(int numHoursWorked) {
-		int normalWorkHours = getNormalWorkHours();
 		int normalHoursWorked = 0;
 		int overtimeHoursWorked = 0;
 		double weeklyPay = 0;
 		
-		if (numHoursWorked > normalWorkHours) {
-			normalHoursWorked = normalWorkHours;
-			overtimeHoursWorked = (numHoursWorked - normalWorkHours);
+		if (numHoursWorked > NORMAL_WORK_HOURS) {
+			normalHoursWorked = NORMAL_WORK_HOURS;
+			overtimeHoursWorked = (numHoursWorked - NORMAL_WORK_HOURS);
 		} else {
 			normalHoursWorked = numHoursWorked;
 		}
 		
-		weeklyPay = normalHoursWorked * level.hourlyRate;
-		weeklyPay += ((overtimeHoursWorked * level.hourlyRate) * 1.5);
+		weeklyPay = normalHoursWorked * hourlyRate;
+		weeklyPay += ((overtimeHoursWorked * hourlyRate) * 1.5);
 		
 		return weeklyPay;
 	}

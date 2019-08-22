@@ -20,6 +20,9 @@ public class Manager extends Employee {
 	/** The salary. */
 	private double salary;
 	
+	/** The monthly pay. */
+	private double monthlyPay;
+	
 	/** The bonus. */
 	private double bonus;
 	
@@ -41,7 +44,7 @@ public class Manager extends Employee {
 		this.numStaff = numStaff;
 		this.salary = salary;
 		this.bonus = bonus;
-		super.setMonthlyPay(salary / 12);
+		setMonthlyPay(salary / 12);
 	}
 
 	/**
@@ -78,7 +81,7 @@ public class Manager extends Employee {
 	 */
 	public void setSalary(double salary) {
 		this.salary = salary;
-		super.setMonthlyPay(salary / 12);
+		setMonthlyPay(salary / 12);
 	}
 
 	/**
@@ -99,6 +102,24 @@ public class Manager extends Employee {
 		this.bonus = bonus;
 	}
 
+	/**
+	 * Gets the monthly pay.
+	 *
+	 * @return the monthlyPay
+	 */
+	public double getMonthlyPay() {
+		return monthlyPay;
+	}
+	
+	/**
+	 * Sets the monthly pay.
+	 *
+	 * @param monthlyPay the monthlyPay to set
+	 */
+	public void setMonthlyPay(double monthlyPay) {
+		this.monthlyPay = monthlyPay;
+	}
+	
 	/**
 	 * Calculate pay.
 	 *
@@ -141,7 +162,7 @@ public class Manager extends Employee {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(bonus, numStaff, salary);
+		result = prime * result + Objects.hash(bonus, monthlyPay, numStaff, salary);
 		return result;
 	}
 
@@ -160,10 +181,10 @@ public class Manager extends Employee {
 		if (!(obj instanceof Manager))
 			return false;
 		Manager other = (Manager) obj;
-		return Double.doubleToLongBits(bonus) == Double.doubleToLongBits(other.bonus) 
+		return Double.doubleToLongBits(bonus) == Double.doubleToLongBits(other.bonus)
+				&& Double.doubleToLongBits(monthlyPay) == Double.doubleToLongBits(other.monthlyPay)
 				&& numStaff == other.numStaff
 				&& Double.doubleToLongBits(salary) == Double.doubleToLongBits(other.salary);
 	}
-	
-	
+
 }

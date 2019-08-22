@@ -30,12 +30,6 @@ public abstract class Employee implements Serializable, Payable {
 	/** The phone num. */
 	private String phoneNum;
 	
-	/** The monthly pay. */
-	private double monthlyPay;
-	
-	/** The normal work hours. */
-	private final int NORMAL_WORK_HOURS = 35;
-	
 	/**
 	 * Instantiates a new employee.
 	 *
@@ -127,39 +121,12 @@ public abstract class Employee implements Serializable, Payable {
 	}
 	
 	/**
-	 * Gets the monthly pay.
-	 *
-	 * @return the monthlyPay
-	 */
-	public double getMonthlyPay() {
-		return monthlyPay;
-	}
-	
-	/**
-	 * Sets the monthly pay.
-	 *
-	 * @param monthlyPay the monthlyPay to set
-	 */
-	public void setMonthlyPay(double monthlyPay) {
-		this.monthlyPay = monthlyPay;
-	}
-	
-	/**
 	 * Gets the id num.
 	 *
 	 * @return the idNum
 	 */
 	public int getIdNum() {
 		return idNum;
-	}
-
-	/**
-	 * Gets the normal work hours.
-	 *
-	 * @return the normal work hours
-	 */
-	protected int getNormalWorkHours() {
-		return NORMAL_WORK_HOURS;
 	}
 	
 	/**
@@ -176,7 +143,6 @@ public abstract class Employee implements Serializable, Payable {
 				+ ", Dept ID: " + deptIdNum 
 				+ ", Date Started: " + dateStarted 
 				+ ", Phone #: " + phoneNum 
-				+ ", Monthly Pay" + monthlyPay 
 				+ ".";
 	}
 
@@ -187,7 +153,7 @@ public abstract class Employee implements Serializable, Payable {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(NORMAL_WORK_HOURS, dateStarted, deptIdNum, idNum, monthlyPay, name, phoneNum);
+		return Objects.hash(dateStarted, deptIdNum, idNum, name, phoneNum);
 	}
 
 	/**
@@ -205,10 +171,11 @@ public abstract class Employee implements Serializable, Payable {
 		if (!(obj instanceof Employee))
 			return false;
 		Employee other = (Employee) obj;
-		return NORMAL_WORK_HOURS == other.NORMAL_WORK_HOURS && Objects.equals(dateStarted, other.dateStarted)
-				&& deptIdNum == other.deptIdNum && idNum == other.idNum
-				&& Double.doubleToLongBits(monthlyPay) == Double.doubleToLongBits(other.monthlyPay)
-				&& Objects.equals(name, other.name) && Objects.equals(phoneNum, other.phoneNum);
+		return Objects.equals(dateStarted, other.dateStarted) 
+				&& deptIdNum == other.deptIdNum 
+				&& idNum == other.idNum
+				&& Objects.equals(name, other.name) 
+				&& Objects.equals(phoneNum, other.phoneNum);
 	}
 
 }
