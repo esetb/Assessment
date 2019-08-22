@@ -43,8 +43,8 @@ public class Manager extends Employee {
 		super(idNum, name, deptIdNum, dateStarted, phoneNum);
 		this.numStaff = numStaff;
 		this.salary = salary;
+		this.monthlyPay = (salary / 12);
 		this.bonus = bonus;
-		setMonthlyPay(salary / 12);
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class Manager extends Employee {
 	 */
 	public void setSalary(double salary) {
 		this.salary = salary;
-		setMonthlyPay(salary / 12);
+		this.monthlyPay = (salary / 12);
 	}
 
 	/**
@@ -112,22 +112,13 @@ public class Manager extends Employee {
 	}
 	
 	/**
-	 * Sets the monthly pay.
-	 *
-	 * @param monthlyPay the monthlyPay to set
-	 */
-	public void setMonthlyPay(double monthlyPay) {
-		this.monthlyPay = monthlyPay;
-	}
-	
-	/**
 	 * Calculate pay.
 	 *
 	 * @param numHoursWorked the num hours worked
 	 * @return the double
 	 */
 	public double calculatePay(int numHoursWorked) {
-		double weeklyPay = (getMonthlyPay() / 4);
+		double weeklyPay = (monthlyPay / 4);
 		weeklyPay += (weeklyPay * bonus);
 		return weeklyPay ;
 	}
