@@ -42,12 +42,15 @@ Name
 Department Id
 Date Started (Just use Java’s own built in classes for this)
 Phone Number (use String)
+
 The Manager Class will have:
 Monthly Salary
 Bonus (Which is a percentage)
+
 The Developer Class will have;
 Level, e.g. Developer level 1 or Developer level 2 and Developer level 3
 Hourly Rate
+
 To start, first draw out your class diagrams. This will give you a good understanding
 as to the connection between all the classes. Next create tester classes. You will
 want to show creating new objects for both the Manager and Developer classes.

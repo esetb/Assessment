@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Developer.
  *
@@ -59,6 +60,9 @@ public class Developer extends Employee {
 	/** The level. */
 	private Level level;
 	
+	/** The hourly rate. */
+	private double hourlyRate;
+	
 	/**
 	 * Instantiates a new developer.
 	 *
@@ -73,7 +77,7 @@ public class Developer extends Employee {
 			String phoneNum, Level level) {
 		super(idNum, name, deptIdNum, dateStarted, phoneNum);
 		this.level = level;
-		super.setMonthlyPay(level.hourlyRate * getNormalWorkHours() * 4);
+		this.hourlyRate = level.hourlyRate;
 	}
 	
 	/**
@@ -94,6 +98,15 @@ public class Developer extends Employee {
 		this.level = level;
 	}
 
+	/**
+	 * Gets the hourly rate.
+	 *
+	 * @return the hourly rate
+	 */
+	public double getHourlyRate() {
+		return hourlyRate;
+	}
+	
 	/**
 	 * Calculate pay.
 	 *
@@ -135,7 +148,7 @@ public class Developer extends Employee {
 				+ ", Date Started: " + getDateStarted()
 				+ ", Phone: " + getPhoneNum() 
 				+ ", Level: " + level.levelNum
-				+ ", Hourly Rate: " + level.hourlyRate
+				+ ", Hourly Rate: " + hourlyRate
 				+ ".";
 	}
 
@@ -146,7 +159,10 @@ public class Developer extends Employee {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(level);
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(hourlyRate, level);
+		return result;
 	}
 
 	/**
@@ -159,12 +175,13 @@ public class Developer extends Employee {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (!(obj instanceof Developer))
 			return false;
 		Developer other = (Developer) obj;
-		return level == other.level;
+		return Double.doubleToLongBits(hourlyRate) == Double.doubleToLongBits(other.hourlyRate) 
+				&& level == other.level;
 	}
 	
 }
