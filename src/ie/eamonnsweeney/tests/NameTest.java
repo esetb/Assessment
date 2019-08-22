@@ -17,7 +17,7 @@ class NameTest {
 	private Name name;
 	
 	/**
-	 * Sets the up.
+	 * Sets the objects state for each test.
 	 *
 	 * @throws Exception the exception
 	 */

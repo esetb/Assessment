@@ -20,7 +20,7 @@ class DeveloperTest {
 	Developer developer;
 	
 	/**
-	 * Sets the up.
+	 * Sets the objects state for each test.
 	 *
 	 * @throws Exception the exception
 	 */
