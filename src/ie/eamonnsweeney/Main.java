@@ -1,7 +1,3 @@
-/**
- * Main - contains the applications main() method.
- */
-
 /*
 The Amazing Software Company has been growing at an extremely fast rate. The
 company, which was a 3 man start-up in the beginning, now has over 400
@@ -124,8 +120,7 @@ Pascal Case.
 Formatting will be essential. All code must be clean, tidy and readable. Opening
 braces ( { ) will be placed at the end of the line and not on a new line.
 
- */
-
+*/
 
 package ie.eamonnsweeney;
 
