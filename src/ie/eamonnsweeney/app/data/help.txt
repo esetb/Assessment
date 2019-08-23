@@ -1,0 +1,9 @@
+
+*** The Amazing Software Company HR Application Help ***
+
+Upon starting the application you will be presented with a main menu comprising
+of 11 options. Enter a numeric value to select the corresponding option.
+
+When user input is required the valid ranges will be presented in parentheses 
+such as "Year started (2000 - 2019)" the minimum value that can be entered is 
+on the left with the maximum value on the right.
