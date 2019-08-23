@@ -72,7 +72,7 @@ public class DeveloperController extends EmployeeController {
 			
 			menu.display();
 			menuOption = menu.getOption();
-			switch (menuOption) {
+			switch (menu.getOption()) {
 			case 1:
 			case 2:
 			case 3:

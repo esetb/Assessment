@@ -112,6 +112,9 @@ public abstract class EmployeeController {
 	 * @param newDeptIdNum the new dept id num
 	 */
 	private void moveDepartments(int oldDeptIdNum, int newDeptIdNum) {
+		if (oldDeptIdNum == newDeptIdNum) {
+			return;
+		}
 		Department oldDepartment = null;
 		Department newDepartment = null;
 		
@@ -138,7 +141,6 @@ public abstract class EmployeeController {
 	 */
 	protected void inputDateStarted() {
 		int daysInMonth = 0;
-		
 		int year = inputController.getInteger("Year Started (2000-2019): ", 2000, 2019);
 		int month = inputController.getInteger("Month Started (1-12): ", 1, 12);
 		
@@ -261,7 +263,7 @@ public abstract class EmployeeController {
 	}
 	
 	/**
-	 * Edits the.
+	 * Edits the employee.
 	 *
 	 * @param employee the employee
 	 */
