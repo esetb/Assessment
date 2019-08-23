@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class InputController {
 	
 	/** The input. */
-	private static Scanner input = new Scanner(System.in);
+	private Scanner input = new Scanner(System.in);
 	
 	/**
 	 * Close.
