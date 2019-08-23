@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Manager.
  *
@@ -17,11 +18,8 @@ public class Manager extends Employee {
 	/** The num staff. */
 	private int numStaff;
 	
-	/** The salary. */
-	private double salary;
-	
-	/** The monthly pay. */
-	private double monthlyPay;
+	/** The monthly salary. */
+	private double monthlySalary;
 	
 	/** The bonus. */
 	private double bonus;
@@ -35,15 +33,14 @@ public class Manager extends Employee {
 	 * @param dateStarted the date started
 	 * @param phoneNum the phone num
 	 * @param numStaff the num staff
-	 * @param salary the salary
+	 * @param monthlySalary the monthly salary
 	 * @param bonus the bonus
 	 */
 	public Manager(int idNum, Name name, int deptIdNum, LocalDate dateStarted, 
-			String phoneNum, int numStaff, double salary, double bonus) {
+			String phoneNum, int numStaff, double monthlySalary, double bonus) {
 		super(idNum, name, deptIdNum, dateStarted, phoneNum);
 		this.numStaff = numStaff;
-		this.salary = salary;
-		this.monthlyPay = (salary / 12);
+		this.monthlySalary = monthlySalary;
 		this.bonus = bonus;
 	}
 
@@ -70,18 +67,17 @@ public class Manager extends Employee {
 	 *
 	 * @return the salary
 	 */
-	public double getSalary() {
-		return salary;
+	public double getMonthlySalary() {
+		return monthlySalary;
 	}
 
 	/**
 	 * Sets the salary.
 	 *
-	 * @param salary the salary to set
+	 * @param monthlySalary the new monthly salary
 	 */
-	public void setSalary(double salary) {
-		this.salary = salary;
-		this.monthlyPay = (salary / 12);
+	public void setMonthlySalary(double monthlySalary) {
+		this.monthlySalary = monthlySalary;
 	}
 
 	/**
@@ -101,15 +97,6 @@ public class Manager extends Employee {
 	public void setBonus(double bonus) {
 		this.bonus = bonus;
 	}
-
-	/**
-	 * Gets the monthly pay.
-	 *
-	 * @return the monthlyPay
-	 */
-	public double getMonthlyPay() {
-		return monthlyPay;
-	}
 	
 	/**
 	 * Calculate pay.
@@ -118,7 +105,7 @@ public class Manager extends Employee {
 	 * @return the double
 	 */
 	public double calculatePay(int numHoursWorked) {
-		double weeklyPay = (monthlyPay / 4);
+		double weeklyPay = (monthlySalary / 4);
 		weeklyPay += (weeklyPay * bonus);
 		return weeklyPay ;
 	}
@@ -139,7 +126,7 @@ public class Manager extends Employee {
 				+ ", Date Started: " + getDateStarted().toString()
 				+ ", Phone: " + getPhoneNum()  
 				+ ", Staff Managed: " + numStaff 
-				+ ", Salary: " + String.format("%.2f", salary) 
+				+ ", Salary: " + String.format("%.2f", monthlySalary) 
 				+ ", Bonus: " + String.format("%.2f%%", (bonus * 100))
 				+ ".";
 	}
@@ -153,7 +140,7 @@ public class Manager extends Employee {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(bonus, monthlyPay, numStaff, salary);
+		result = prime * result + Objects.hash(bonus, monthlySalary, numStaff);
 		return result;
 	}
 
@@ -173,9 +160,8 @@ public class Manager extends Employee {
 			return false;
 		Manager other = (Manager) obj;
 		return Double.doubleToLongBits(bonus) == Double.doubleToLongBits(other.bonus)
-				&& Double.doubleToLongBits(monthlyPay) == Double.doubleToLongBits(other.monthlyPay)
-				&& numStaff == other.numStaff
-				&& Double.doubleToLongBits(salary) == Double.doubleToLongBits(other.salary);
+				&& Double.doubleToLongBits(monthlySalary) == Double.doubleToLongBits(other.monthlySalary)
+				&& numStaff == other.numStaff;
 	}
 
 }

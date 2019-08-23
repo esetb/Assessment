@@ -45,7 +45,7 @@ public class ManagerController extends EmployeeController {
 		super.inputDateStarted();
 		super.inputPhoneNum();
 		inputNumStaff();
-		inputSalary();
+		inputMonthlySalary();
 		inputBonus();
 		return manager;
 	}
@@ -65,7 +65,7 @@ public class ManagerController extends EmployeeController {
 			String menuTitle = "Edit Manager Menu";
 			String[] managerMenuItems = {
 					"Num Staff: " + manager.getNumStaff(),
-					"Salary: " + manager.getSalary(),
+					"Monthly Salary: " + manager.getMonthlySalary(),
 					"Bonus: "  + manager.getBonus(), 
 					"Done (return to main menu)"
 			};
@@ -87,7 +87,7 @@ public class ManagerController extends EmployeeController {
 				inputNumStaff();
 				break;
 			case 8:
-				inputSalary();
+				inputMonthlySalary();
 				break;
 			case 9:
 				inputBonus();
@@ -110,9 +110,9 @@ public class ManagerController extends EmployeeController {
 	/**
 	 * Input salary.
 	 */
-	private void inputSalary() {
-		double salary = inputController.getDouble("Salary (25000-65000): ", 25000, 65000);
-		this.manager.setSalary(salary);
+	private void inputMonthlySalary() {
+		double monthlySalary = inputController.getDouble("Monthly Salary (3200-10000): ", 3200, 10000);
+		this.manager.setMonthlySalary(monthlySalary);
 	}
 	
 	/**

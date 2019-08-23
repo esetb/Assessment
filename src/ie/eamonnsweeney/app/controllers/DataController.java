@@ -127,9 +127,9 @@ public class DataController {
 		ArrayList<Employee> employees = new ArrayList<>();
 		
 		employees.add(new Manager(1, new Name("Mr", "Scrooge", "McDuck"), 
-				1, LocalDate.of(2014, 1, 12), "5551234560", 0, 60000, .15));
+				1, LocalDate.of(2014, 1, 12), "5551234560", 0, 5000, .15));
 		employees.add(new Manager(2, new Name("Mr", "Donald", "Duck"), 
-				1, LocalDate.of(2014, 1, 12), "5551234561", 0, 55000, .15));
+				1, LocalDate.of(2014, 1, 12), "5551234561", 0, 4800, .15));
 		employees.add(new Developer(3, new Name("Mr", "Huey", "Duck"),
 				2, LocalDate.of(2014, 2, 28), "5551234562", Developer.Level.ONE));
 		employees.add(new Developer(4, new Name("Mr", "Dewey", "Duck"),
