@@ -52,14 +52,14 @@ class ManagerTest {
 	}
 
 	@Test
-	void testGetSalary() {
-		assertEquals(60000.0, manager.getSalary());
+	void testGetMonthlySalary() {
+		assertEquals(60000.0, manager.getMonthlySalary());
 	}
 
 	@Test
-	void testSetSalary() {
-		manager.setSalary(50000);
-		assertEquals(50000.0, manager.getSalary());
+	void testSetMonthlySalary() {
+		manager.setMonthlySalary(50000);
+		assertEquals(50000.0, manager.getMonthlySalary());
 	}
 
 	@Test
@@ -74,14 +74,9 @@ class ManagerTest {
 	}
 
 	@Test
-	void testGetMonthlyPay() {
-		assertEquals((manager.getSalary() / 12), manager.getMonthlyPay());
-	}
-
-	@Test
 	void testCalculatePay() {
 		int numHoursWorked = 35;
-		double weeklyPay = (manager.getMonthlyPay() / 4);
+		double weeklyPay = (manager.getMonthlySalary() / 4);
 		weeklyPay += (weeklyPay * manager.getBonus());
 		assertEquals(weeklyPay, manager.calculatePay(numHoursWorked));
 	}
