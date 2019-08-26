@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ie.eamonnsweeney.app.models.Developer;
 import ie.eamonnsweeney.app.models.Manager;
 import ie.eamonnsweeney.app.models.Name;
 
